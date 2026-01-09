@@ -23,7 +23,7 @@ repository               : "Rafal_A_Bogaczewicz/rafalscientist.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "/assets/images/Rafal_github.jpg"
+  avatar           : "assets/images/Rafal_github.jpg"
   name             : "Rafał A. Bogaczewicz"
   pronouns         : # example: "she/her"  
   bio              : "Short biography for the left-hand sidebar"
