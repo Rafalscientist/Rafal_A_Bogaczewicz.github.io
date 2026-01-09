@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Fizyka i góry"
+title: "Fizyka"
 permalink: /
 author_profile: true
 redirect_from: 
