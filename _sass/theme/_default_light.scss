@@ -1,20 +1,20 @@
 /* ==========================================================================
     DEFAULT THEME - LIGHT VERSION
     ========================================================================== */
-/* Color codes used for the theme */
-$primary-color              : #2f7f93;
-$gray                       : #7a8288;
-$dark-gray                  : mix(#000, $gray, 40%);
-$darker-gray                : mix(#000, $gray, 60%);
-$light-gray                 : mix(#fff, $gray, 50%);
-$lighter-gray               : mix(#fff, $gray, 90%);
+/* Color codes used for the theme - ZMODYFIKOWANE POD ZIELEŃ I SZAROŚĆ */
+$primary-color              : #2d4f1e; // Głęboka, leśna zieleń (z Twojego zdjęcia)
+$gray                       : #7a8288; // Neutralna szarość skalna
+$dark-gray                  : #343a40; // Ciemny antracyt (dla czytelnego tekstu)
+$darker-gray                : #212529; // Prawie czarny (dla akcentów)
+$light-gray                 : #ced4da; // Jasna szarość (linie pomocnicze)
+$lighter-gray               : #f8f9fa; // Bardzo jasne tło sekcji
 
 /* Color codes used for the site */
-$danger-color               : #ee5f5b;
-$info-color                 : #2f7f93;
+$danger-color               : #a63a3a; // Stonowana czerwień
+$info-color                 : #2d4f1e; // Spójność z zielenią
 $notice-color               : #7a8288;
-$success-color              : #62c462;
-$warning-color              : #f89406;
+$success-color              : #4c7c4c; // Ciemniejsza zieleń sukcesu
+$warning-color              : #d97706; // Zgaszony pomarańcz (jak zachód słońca)
 
 /* Other basic settings for the template */
 $border-radius              : 4px;
@@ -36,13 +36,12 @@ $sidebar-screen-min-width   : 1024px;
     --global-code-background-color      : #fafafa;
     --global-code-text-color            : #{$darker-gray};
     --global-fig-caption-color          : mix(#fff,  #{$dark-gray}, 25%);
-    --global-link-color                 : #52adc8;
-    --global-link-color-hover           : mix(#000, #2f7f93, 25%);
-    --global-link-color-visited         : mix(#fff, #2f7f93, 25%);  
-    --global-masthead-link-color        : #{$dark-gray};
+    --global-link-color                 : #2d4f1e; # Linki w kolorze Twojej zieleni
+    --global-link-color-hover           : #1e3614; # Ciemniejsza zieleń przy najechaniu (efekt głębi)
+    --global-link-color-visited         : #455a47; # Zgaszona zieleń dla odwiedzonych  
+    --global-masthead-link-color        : #212529; # Menu górne - silne i wyraźne
     --global-masthead-link-color-hover  : mix(#000, #{$gray}, 25%);    
-    --global-text-color                 : #{$dark-gray};
+    --global-text-color                 : #343a40; # Zamiast mixu, czysty, silny grafit
     --global-text-color-light           : #{$light-gray};
-    --global-thead-color                : #{$lighter-gray};
+    --global-thead-color                : #{$lighter-gray};   
 }
-
