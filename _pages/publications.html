@@ -10,14 +10,25 @@ author_profile: true
 {% assign posts = site.publications | sort: 'date' | reverse %}
 {% assign count = posts | size %}
 
-{% for post in posts %}
-  <div class="list__item" style="display: flex; align-items: baseline; margin-bottom: 12px;">
-    <span style="font-size: 0.85em; color: #2d4f1e; min-width: 45px; font-family: 'Roboto', sans-serif; opacity: 0.8;">
-      ({{ count }})
-    </span>
-    <div style="flex: 1;">
-      {% include archive-single.html %}
+<div class="publications-list" style="font-size: 0.85em;"> <!-- Tutaj zmniejszamy całość do 85% -->
+  {% for post in posts %}
+    <div class="list__item" style="display: flex; align-items: baseline; margin-bottom: 10px; line-height: 1.4;">
+      <span style="color: #2d4f1e; min-width: 40px; font-weight: bold; opacity: 0.7;">
+        ({{ count }})
+      </span>
+      <div style="flex: 1;">
+        {% include archive-single.html %}
+      </div>
     </div>
-  </div>
-  {% assign count = count | minus: 1 %}
-{% endfor %}
+    {% assign count = count | minus: 1 %}
+  {% endfor %}
+</div>
+
+<style>
+  /* Dodatkowe wymuszenie mniejszej czcionki dla nagłówków wewnątrz listy */
+  .publications-list h2.archive__item-title {
+    font-size: 1em !important; 
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+</style>
