@@ -7,39 +7,26 @@
 {% endif %}
 
 <div class="{{ include.type | default: 'list' }}__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork" style="margin-bottom: 0.5em;">
+  <article class="archive__item" itemscope itemtype="schema.org" style="margin-bottom: 0.5em; line-height: 1.4;">
     
-    <!-- 1. AUTORZY (Citation) na samej górze -->
+    <!-- 1. AUTORZY (Twoje nazwisko będzie podkreślone w pliku .md) -->
     {% if post.citation %}
-      <span class="archive__item-citation" style="display: block; margin-bottom: 0.2em;">
-        {{ post.citation }}
+      <span class="archive__item-citation" style="display: block; margin-bottom: 0.1em;">
+        {{ post.citation }},
       </span>
     {% endif %}
 
-    <!-- 2. TYTUŁ (Link do podstrony publikacji) -->
-    <h2 class="archive__item-title" itemprop="headline" style="font-size: 1.1em; margin: 0; line-height: 1.2;">
-      {% if post.link %}
-        <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i></a>
-      {% else %}
-        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
-      {% endif %}
+    <!-- 2. TYTUŁ (Podkreślony i jako jedyne hiperłącze) -->
+    <h2 class="archive__item-title" itemprop="headline" style="font-size: 1.1em; margin: 0; display: inline;">
+      <a href="{{ post.paperurl }}" rel="permalink" style="text-decoration: underline;">{{ title }}</a>
     </h2>
 
-    <!-- 3. CZASOPISMO I DATA -->
-    <div style="font-size: 0.95em; margin-top: 0.2em;">
+    <!-- 3. CZASOPISMO, VOLUME, STRONA I ROK -->
+    <span style="font-size: 1em; margin-left: 5px;">
       {% if post.collection == 'publications' %}
-        <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}
+        {{ post.venue }} <b>{{ post.volume }}</b>, {{ post.pages }} ({{ post.date | default: "1900-01-01" | date: "%Y" }})
       {% endif %}
-      
-      <!-- 4. LINKI (Paper, Slides, etc.) -->
-      {% if post.paperurl or post.slidesurl or post.bibtexurl %}
-        <span class="publication-links" style="margin-left: 10px; font-size: 0.9em;">
-          {% if post.paperurl %}<a href="{{ post.paperurl }}">[Download Paper]</a>{% endif %}
-          {% if post.slidesurl %} | <a href="{{ post.slidesurl }}">[Slides]</a>{% endif %}
-          {% if post.bibtexurl %} | <a href="{{ post.bibtexurl }}">[BibTeX]</a>{% endif %}
-        </span>
-      {% endif %}
-    </div>
+    </span>
 
   </article>
 </div>
