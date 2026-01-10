@@ -16,15 +16,15 @@
       </span>
     {% endif %}
 
-    <!-- 2. TYTUŁ (Czysty tekst bez podkreślenia + PRZECINEK) -->
+    <!-- 2. TYTUŁ (Czysty tekst bez podkreślenia, zablokowane podkreślenie na hover) -->
     <h2 class="archive__item-title" itemprop="headline" style="font-size: 1.1em; margin: 0; display: inline; font-weight: normal;">
-      {{ title }},
+      <span class="no-hover-underline">{{ title }}</span>,
     </h2>
 
-    <!-- 3. CZASOPISMO, VOLUME, STRONA I ROK (Jako hiperłącze) -->
+    <!-- 3. CZASOPISMO, VOLUME, STRONA I ROK (Jako hiperłącze z hover-underline) -->
     <span style="font-size: 1em; margin-left: 2px;">
       {% if post.collection == 'publications' %}
-        <a href="{{ post.paperurl }}" rel="permalink" style="text-decoration: none;">
+        <a href="{{ post.paperurl }}" class="publication-link" rel="permalink" style="text-decoration: none;">
           {{ post.venue }} <b>{{ post.volume }}</b>, {{ post.pages }} ({{ post.date | default: "1900-01-01" | date: "%Y" }})
         </a>
       {% endif %}
@@ -32,3 +32,20 @@
 
   </article>
 </div>
+
+<style>
+  /* Całkowite zablokowanie podkreślenia dla tytułu */
+  .no-hover-underline:hover {
+    text-decoration: none !important;
+  }
+
+  /* Styl dla linku czasopisma */
+  .publication-link {
+    color: var(--global-link-color) !important;
+  }
+
+  /* Podkreślenie tylko po najechaniu myszką na czasopismo */
+  .publication-link:hover {
+    text-decoration: underline !important;
+  }
+</style>
