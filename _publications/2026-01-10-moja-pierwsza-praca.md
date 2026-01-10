@@ -3,8 +3,8 @@ title: "Determination of the band structure diagram of semiconductor heterostruc
 collection: publications
 permalink: /publication/2026-moja-pierwsza-praca
 date: 2026-01-10
-venue: "Nazwa Czasopisma"
+venue: "Optica Applicata"
 paperurl: "arxiv.org"
-citation: "Bogaczewicz, R. A. (2026). 'Tytuł'. <i>Nazwa Czasopisma</i>, 1(1)."
+citation: "<b>R. A. Bogaczewicz</b>, E. Popko, K. R. Gwóźdź, <i>Nazwa Czasopisma</i>  (2026). 'Tytuł'. , 1(1)."
 ---
 To jest moja pierwsza publikacja dodana do nowego systemu.
