@@ -1,7 +1,7 @@
 ---
-title: "Nazwa Twojej Konferencji"
-link: "https://www.conference-website.edu" # Link do strony konferencji
-date: 2026-01-11                            # Format RRRR-MM-DD (do sortowania)
-date_display: "11-15 Jan 2026"              # To co faktycznie wyświetli się na stronie
-location: "Wrocław (Polska)"                # Miasto i Kraj
+title: "AGH International Student Conference: Knowledge, Technology and Society"
+link: "https://perspektywy.pl/portal/index.php?option=com_content&view=article&id=3847&catid=22&Itemid=119" # Link do strony konferencji
+date: 2018-10-10                            # Format RRRR-MM-DD (do sortowania)
+date_display: "10-12 October 2018"              # To co faktycznie wyświetli się na stronie
+location: "Kraków (Polska)"                # Miasto i Kraj
 ---
