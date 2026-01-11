@@ -12,12 +12,36 @@ author_profile: true
 
 <div class="publications-list" style="font-size: 0.85em;"> 
   {% for post in posts %}
-    <div class="list__item" style="display: flex; align-items: baseline; margin-bottom: 10px; line-height: 1.4;">
+    <div class="list__item" style="display: flex; align-items: baseline; margin-bottom: 15px; line-height: 1.4;">
+      
+      <!-- Numeracja (Identyczna jak w publikacjach) -->
       <span style="color: var(--global-text-color); min-width: 40px; font-weight: bold; opacity: 0.7;">
         ({{ count }})
       </span>
+
       <div style="flex: 1;">
-        {% include archive-single.html %}
+        <!-- Nazwa konferencji: klasa archive__item-title gwarantuje kolory i hover z publikacji -->
+        <h3 class="archive__item-title" style="margin: 0; font-size: 1.15em;">
+          {% if post.paperurl %}
+            <a href="{{ post.paperurl }}" rel="permalink">{{ post.title }}</a>
+          {% elsif post.link %}
+            <a href="{{ post.link }}" rel="permalink">{{ post.title }}</a>
+          {% else %}
+            {{ post.title }}
+          {% endif %}
+        </h3>
+
+        <!-- Czas trwania i Miasto (Kraj) -->
+        <div style="font-size: 0.95em; margin-top: 3px; color: var(--global-text-color); opacity: 0.8;">
+          {% if post.date_range %}
+            {{ post.date_range }}
+          {% else %}
+            {{ post.date | date: "%B %Y" }}
+          {% endif %}
+          {% if post.location %}
+            &nbsp;| {{ post.location }}
+          {% endif %}
+        </div>
       </div>
     </div>
     {% assign count = count | minus: 1 %}
