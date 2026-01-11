@@ -8,37 +8,18 @@ author_profile: true
 {% include base_path %}
 
 {% assign posts = site.conferences | sort: 'date' | reverse %}
-{% assign count = posts.size %}
+{% assign count = posts | size %}
 
 <div class="publications-list" style="font-size: 0.85em;"> 
-  
   {% for post in posts %}
-    <div class="list__item" style="display: flex; align-items: baseline; margin-bottom: 12px; line-height: 1.4;">
-      
-      <!-- Numeracja (styl identyczny jak w publikacjach) -->
+    <div class="list__item" style="display: flex; align-items: baseline; margin-bottom: 10px; line-height: 1.4;">
       <span style="color: var(--global-text-color); min-width: 40px; font-weight: bold; opacity: 0.7;">
         ({{ count }})
       </span>
-
       <div style="flex: 1;">
-        <!-- Nazwa konferencji z dynamicznym kolorem linku -->
-        {% if post.link %}
-          <a href="{{ post.link }}" style="font-weight: bold; text-decoration: underline;">{{ post.title }}</a>
-        {% else %}
-          <strong style="color: var(--global-text-color);">{{ post.title }}</strong>
-        {% endif %}
-
-        <!-- Dane pomocnicze: Czas i Lokalizacja -->
-        <div style="font-size: 0.9em; margin-top: 2px; opacity: 0.8; color: var(--global-text-color);">
-          <span>{{ post.date_display }}</span> | <span>{{ post.location }}</span>
-        </div>
+        {% include archive-single.html %}
       </div>
     </div>
     {% assign count = count | minus: 1 %}
   {% endfor %}
-
-  {% if posts.size == 0 %}
-    <p>Archiwum w przygotowaniu.</p>
-  {% endif %}
-
 </div>
