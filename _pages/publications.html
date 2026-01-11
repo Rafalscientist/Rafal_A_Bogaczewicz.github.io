@@ -25,9 +25,14 @@ author_profile: true
 </div>
 
 <style>
-  /* Celujemy w główny tytuł strony, aby miał kolor linków (czasopism) */
+  /* Wykorzystujemy zmienną, która odpowiada za zielony akcent w Twoim motywie */
   .page__title, h1.page__title {
-    color: var(--link-color, var(--brand-primary, #2980b9)) !important;
+    color: var(--global-theme-color) !important;
+  }
+
+  /* Sprawiamy, że licznik (25) ma ten sam kolor co reszta tekstu */
+  .publications-list span {
+    color: var(--global-text-color) !important;
   }
 
   /* Dodatkowe wymuszenie mniejszej czcionki dla nagłówków wewnątrz listy */
