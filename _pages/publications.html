@@ -42,7 +42,7 @@ author_profile: true
     --pub-hover: #00FFAB;
   }
 
-  /* 2. PUBLIKACJE (Zostawiamy, bo pisałeś, że tu jest OK) */
+  /* 2. PUBLIKACJE */
   .page__title { color: var(--pub-zielony) !important; }
   .publication-link, .publication-link:visited {
     color: var(--pub-zielony) !important;
@@ -55,43 +55,43 @@ author_profile: true
   }
   .title-static { color: var(--global-text-color) !important; text-decoration: none !important; }
 
-  /* 3. NAPRAWA NAWIGACJI (GÓRA I BOK) - ATRAKCYJNA ZIELEŃ ZAMIAST ZGNIŁEJ */
+  /* 3. AGRESYWNA NAPRAWA NAWIGACJI (MASTHEAD) DLA TRYBU CIEMNEGO */
   
-  /* Wymuszamy brak zmiany koloru na "zgniły" w trybie ciemnym dla menu i profilu */
+  /* Celujemy bezpośrednio w linki w menu, aby nie brały kolorów z motywu */
   html[data-theme='dark'] .masthead__menu-item a,
+  html[data-theme='dark'] .greedy-nav a,
   html[data-theme='dark'] .site-title,
-  html[data-theme='dark'] .author__urls a {
+  html[data-theme='dark'] .site-subtitle {
     color: var(--global-text-color) !important;
   }
 
-  /* HOVER - To jest kluczowe miejsce, gdzie motyw prawdopodobnie wygrywał */
-  /* Celujemy w linki wewnątrz nawigacji, profilu i tzw. "greedy nav" */
+  /* HOVER NA GÓRNE MENU I TYTUŁ STRONY */
+  html[data-theme='dark'] .masthead__menu-item a:hover,
   html[data-theme='dark'] .greedy-nav a:hover,
   html[data-theme='dark'] .greedy-nav .site-title:hover,
-  html[data-theme='dark'] .masthead__menu-item a:hover,
-  html[data-theme='dark'] .author__urls a:hover,
-  html[data-theme='dark'] .author__urls-wrapper span:hover,
-  html[data-theme='dark'] .author__urls.social-icons i:hover {
+  html[data-theme='dark'] .greedy-nav .visible-links li a:hover {
+    color: var(--pub-hover) !important;
+    background-color: transparent !important;
+  }
+
+  /* 4. AGRESYWNA NAPRAWA SIDEBARA (LEWA STRONA) DLA TRYBU CIEMNEGO */
+  
+  /* Linki w profilu (Social Icons i inne) */
+  html[data-theme='dark'] .sidebar .author__urls-wrapper ul li a,
+  html[data-theme='dark'] .sidebar .author__urls-wrapper ul li a i {
+    color: var(--global-text-color);
+  }
+
+  /* HOVER W SIDEBARZE */
+  html[data-theme='dark'] .sidebar .author__urls-wrapper ul li a:hover,
+  html[data-theme='dark'] .sidebar .author__urls-wrapper ul li a:hover i,
+  html[data-theme='dark'] .sidebar .author__urls-wrapper ul li a:hover span {
     color: var(--pub-hover) !important;
     opacity: 1 !important;
-    background-color: transparent !important;
   }
 
-  /* Specyficzna poprawka dla linków w profilu (lewa strona) */
-  html[data-theme='dark'] .sidebar .author__urls-wrapper ul li a:hover {
-    color: var(--pub-hover) !important;
-  }
-
-  /* Aktywna zakładka w górnym menu */
-  html[data-theme='dark'] .masthead__menu-item--active a,
-  html[data-theme='dark'] .greedy-nav .visible-links .masthead__menu-item--active a {
+  /* Aktywna zakładka (żeby się wyróżniała) */
+  html[data-theme='dark'] [class*="masthead__menu-item--active"] a {
     color: var(--pub-zielony) !important;
-    border-bottom: 2px solid var(--pub-zielony) !important;
-  }
-
-  /* Wyłączenie szarych nakładek na hover w menu */
-  html[data-theme='dark'] .greedy-nav button:hover,
-  html[data-theme='dark'] .greedy-nav .visible-links li a:hover {
-    background-color: transparent !important;
   }
 </style>
