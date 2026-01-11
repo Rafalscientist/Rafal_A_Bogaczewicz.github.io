@@ -14,14 +14,14 @@ author_profile: true
   {% for post in posts %}
     <div class="list__item" style="display: flex; align-items: baseline; margin-bottom: 15px; line-height: 1.4;">
       
-      <!-- Numeracja (Styl identyczny jak w publikacjach) -->
+      <!-- Numeracja -->
       <span style="color: var(--global-text-color); min-width: 40px; font-weight: bold; opacity: 0.7;">
         ({{ count }})
       </span>
 
-      <div style="flex: 1;">
-        <!-- Nazwa konferencji: używamy klasy archive__item-title dla identycznych kolorów i hover -->
-        <h3 class="archive__item-title" style="margin: 0; font-size: 1.1em;">
+      <div class="archive__item" style="flex: 1;">
+        <!-- Nazwa konferencji z klasą tytułu z publikacji -->
+        <h3 class="archive__item-title" itemprop="headline" style="margin-top: 0; margin-bottom: 0;">
           {% if post.link %}
             <a href="{{ post.link }}" rel="permalink">{{ post.title }}</a>
           {% else %}
@@ -29,8 +29,8 @@ author_profile: true
           {% endif %}
         </h3>
 
-        <!-- Dane: Czas i Lokalizacja (z zachowaniem zmiennych trybu jasny/ciemny) -->
-        <div style="font-size: 0.95em; margin-top: 3px; color: var(--global-text-color); opacity: 0.8;">
+        <!-- Dane dodatkowe (Data i Lokalizacja) -->
+        <p class="archive__item-excerpt" itemprop="description" style="margin-top: 2px; font-size: 0.95em; opacity: 0.8;">
           {% if post.date_display %}
             {{ post.date_display }}
           {% else %}
@@ -39,7 +39,7 @@ author_profile: true
           {% if post.location %}
             &nbsp;| {{ post.location }}
           {% endif %}
-        </div>
+        </p>
       </div>
     </div>
     {% assign count = count | minus: 1 %}
