@@ -25,64 +25,56 @@ author_profile: true
 </div>
 
 <style>
-  /* 1. DEFINICJA TWOJEJ ZIELENI DLA OBU TRYBÓW */
+  /* 1. DEFINICJE DLA TRYBU JASNEGO */
   :root {
-    --moj-zielony: #006400;       /* Ciemny zielony w dzień */
-    --moj-zielony-hover: #008000; /* Trochę jaśniejszy na hover w dzień */
+    --pub-zielony: #2d4f1e;       /* Głęboka leśna zieleń */
+    --pub-hover: #006400;         /* Ciemniejsza, wyraźna zieleń na białym tle (dobry kontrast) */
   }
 
-  /* Tryb ciemny (systemowy i wymuszony przez atrybut) */
+  /* 2. DEFINICJE DLA TRYBU CIEMNEGO */
   @media (prefers-color-scheme: dark) {
     :root {
-      --moj-zielony: #90EE90;       /* Jasny zielony w nocy */
-      --moj-zielony-hover: #ADFF2F; /* Jaskrawy zielony na hover w nocy */
+      --pub-zielony: #90EE90;     /* Jasna zieleń */
+      --pub-hover: #00FFAB;       /* Neonowy miętowy (super kontrast w nocy) */
     }
   }
   html[data-theme='dark'] {
-    --moj-zielony: #90EE90;
-    --moj-zielony-hover: #ADFF2F;
+    --pub-zielony: #90EE90;
+    --pub-hover: #00FFAB;
   }
 
-  /* 2. TYTUŁ STRONY (Napis Publications) */
+  /* 3. TYTUŁ STRONY */
   .page__title {
-    color: var(--moj-zielony) !important;
+    color: var(--pub-zielony) !important;
   }
- 
-/* 3. STYL DLA LINKU - Blokujemy zgniłą zieleń dla odwiedzonych linków */
-.publication-link, 
-.publication-link:visited, 
-.publication-link i, 
-.publication-link b {
-  color: var(--moj-zielony) !important;
-  text-decoration: none !important;
-  border-bottom: none !important;
-  transition: all 0.2s ease;
-}
 
-/* 4. HOVER - Wymuszamy nowy kolor, nawet jeśli link był odwiedzony */
-.publication-link:hover,
-.publication-link:hover:visited, /* KLUCZ: To zabije zgniłą zieleń przy najechaniu */
-.publication-link:hover i,
-.publication-link:hover b {
-  color: #00FFAB !important; /* Tutaj Twój nowy, atrakcyjny kolor (np. Neon Mint) */
-  text-decoration: underline !important;
-}
-
-  /* 5. BLOKADA PODKREŚLEŃ DLA TYTUŁU PRACY */
-  /* Celujemy w nagłówek h2, aby wyłączyć podkreślenie z motywu */
-  .publications-list h2.archive__item-title,
-  .publications-list .title-static {
+  /* 4. LINKI W PUBLIKACJACH (Czasopismo, tom, rok) */
+  .publication-link, 
+  .publication-link:visited,
+  .publication-link i, 
+  .publication-link b {
+    color: var(--pub-zielony) !important;
     text-decoration: none !important;
     border-bottom: none !important;
+    transition: all 0.2s ease;
+  }
+
+  /* 5. HOVER - Teraz inteligentnie dobiera kolor do tła */
+  .publication-link:hover,
+  .publication-link:hover:visited,
+  .publication-link:hover i,
+  .publication-link:hover b {
+    color: var(--pub-hover) !important; /* Tutaj dzieje się magia rozdziału kolorów */
+    text-decoration: underline !important;
+  }
+
+  /* 6. TYTUŁ PRACY */
+  .title-static {
     color: var(--global-text-color) !important;
-  }
-  
-  /* To wyłącza podkreślenie, gdy kursor jest nad całym wpisem */
-  .publications-list .archive__item:hover h2.archive__item-title,
-  .publications-list .archive__item:hover .title-static {
-    text-decoration: none !important;
-    border-bottom: none !important;
+    font-weight: 500;
   }
 
-  
+  .archive__item-title {
+    border-bottom: none !important;
+  }
 </style>
