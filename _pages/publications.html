@@ -25,20 +25,28 @@ author_profile: true
 </div>
 
 <style>
-  /* 1. Dopasowanie głównego tytułu do koloru czasopism */
+  /* 1. TYTUŁ STRONY: Ma być zielony jak czasopisma */
   .page__title, h1.page__title {
     color: var(--global-link-color) !important;
   }
 
-  /* 2. Zapewnienie, że numeracja (25) pozostaje w kolorze tekstu (czytelność) */
-  .publications-list span:not(.publication-link) {
+  /* 2. TYTUŁY ARTYKUŁÓW I AUTORZY: Przywracamy standardowy kolor tekstu (czarny/biały) */
+  .publications-list, 
+  .archive__item-citation, 
+  .title-static {
     color: var(--global-text-color) !important;
-    opacity: 0.7;
+    opacity: 1 !important; /* Wyraźny czarny/biały, bez szarości */
   }
 
-  /* 3. Utrzymanie rozmiaru czcionki zgodnie z Twoimi preferencjami */
+  /* 3. LISTA: Rozmiar czcionki i odstępy */
   .publications-list h2.archive__item-title {
     font-size: 1em !important; 
     margin: 0 !important;
+    font-weight: normal;
+  }
+
+  /* 4. LICZNIK (np. 25): Może zostać lekko przygaszony, by nie odciągać uwagi */
+  .publications-list span:not(.publication-link) {
+    opacity: 0.7;
   }
 </style>
