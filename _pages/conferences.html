@@ -12,34 +12,25 @@ author_profile: true
 
 <div class="publications-list" style="font-size: 0.85em;"> 
   {% for post in posts %}
-    <div class="list__item" style="display: flex; align-items: baseline; margin-bottom: 15px; line-height: 1.4;">
+    <div class="list__item" style="display: flex; align-items: baseline; margin-bottom: 12px; line-height: 1.4;">
       
-      <!-- Numeracja -->
+      <!-- Numeracja - identyczna jak w publikacjach -->
       <span style="color: var(--global-text-color); min-width: 40px; font-weight: bold; opacity: 0.7;">
         ({{ count }})
       </span>
 
-      <div class="archive__item" style="flex: 1;">
-        <!-- Nazwa konferencji z klasą tytułu z publikacji -->
-        <h3 class="archive__item-title" itemprop="headline" style="margin-top: 0; margin-bottom: 0;">
-          {% if post.link %}
-            <a href="{{ post.link }}" rel="permalink">{{ post.title }}</a>
-          {% else %}
+      <div style="flex: 1;">
+        <!-- Nazwa konferencji jako hiperłącze - wymuszamy kolory i podkreślenia systemowe -->
+        <h2 style="font-size: 1.1em; margin: 0; display: inline; font-weight: normal;">
+          <a href="{{ post.link | default: post.paperurl }}" class="publication-link" style="text-decoration: underline;">
             {{ post.title }}
-          {% endif %}
-        </h3>
+          </a>
+        </h2>
 
-        <!-- Dane dodatkowe (Data i Lokalizacja) -->
-        <p class="archive__item-excerpt" itemprop="description" style="margin-top: 2px; font-size: 0.95em; opacity: 0.8;">
-          {% if post.date_display %}
-            {{ post.date_display }}
-          {% else %}
-            {{ post.date | date: "%B %Y" }}
-          {% endif %}
-          {% if post.location %}
-            &nbsp;| {{ post.location }}
-          {% endif %}
-        </p>
+        <!-- Metadane: Czas i Lokalizacja -->
+        <div style="font-size: 1em; margin-top: 2px; color: var(--global-text-color); opacity: 0.8;">
+          {{ post.date_display | default: post.date | date: "%B %Y" }} | {{ post.location }}
+        </div>
       </div>
     </div>
     {% assign count = count | minus: 1 %}
