@@ -25,20 +25,20 @@ author_profile: true
 </div>
 
 <style>
-  /* Wykorzystujemy zmienną, która odpowiada za zielony akcent w Twoim motywie */
+  /* 1. Dopasowanie głównego tytułu do koloru czasopism */
   .page__title, h1.page__title {
-    color: var(--global-theme-color) !important;
+    color: var(--global-link-color) !important;
   }
 
-  /* Sprawiamy, że licznik (25) ma ten sam kolor co reszta tekstu */
-  .publications-list span {
+  /* 2. Zapewnienie, że numeracja (25) pozostaje w kolorze tekstu (czytelność) */
+  .publications-list span:not(.publication-link) {
     color: var(--global-text-color) !important;
+    opacity: 0.7;
   }
 
-  /* Dodatkowe wymuszenie mniejszej czcionki dla nagłówków wewnątrz listy */
+  /* 3. Utrzymanie rozmiaru czcionki zgodnie z Twoimi preferencjami */
   .publications-list h2.archive__item-title {
     font-size: 1em !important; 
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+    margin: 0 !important;
   }
 </style>
