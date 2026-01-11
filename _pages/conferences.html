@@ -7,34 +7,15 @@ author_profile: true
 
 {% include base_path %}
 
-{% capture now %}{{'now' | date: '%Y-%m-%d'}}{% endcapture %}
+{% assign posts = site.conferences | sort: 'date' | reverse %}
+{% assign count = posts.size %}
 
-<div class="publications-list" style="font-size: 0.85em;">
-
-  <!-- SEKCOJA: Nadchodzące wydarzenia (Upcoming) -->
-  {% assign upcoming = site.conferences | where_exp: "item", "item.date >= now" | sort: 'date' %}
-  {% if upcoming.size > 0 %}
-    <h2 style="border-bottom: 1px solid #eee; padding-bottom: 10px;">Nadchodzące / Upcoming</h2>
-    {% for post in upcoming %}
-      <div class="list__item" style="display: flex; align-items: baseline; margin-bottom: 12px; line-height: 1.4; border-left: 3px solid #2ecc71; padding-left: 10px;">
-        <span style="color: #2ecc71; min-width: 45px; font-weight: bold;">NEW</span>
-        <div style="flex: 1;">
-          {% include archive-single.html %}
-        </div>
-      </div>
-    {% endfor %}
-    <br>
-  {% endif %}
-
-  <!-- SEKCJA: Archiwum (Past) -->
-  <h2 style="border-bottom: 1px solid #eee; padding-bottom: 10px;">Wystąpienia archiwalne / Past Talks</h2>
-  {% assign past = site.conferences | where_exp: "item", "item.date < now" | sort: 'date' | reverse %}
-  {% assign count = past.size %}
-
-  {% for post in past %}
+<div class="publications-list" style="font-size: 0.85em;"> 
+  
+  {% for post in posts %}
     <div class="list__item" style="display: flex; align-items: baseline; margin-bottom: 10px; line-height: 1.4;">
-      <span style="color: var(--global-text-color); min-width: 40px; font-weight: bold; opacity: 0.5;">
-        [{{ count }}]
+      <span style="color: var(--global-text-color); min-width: 40px; font-weight: bold; opacity: 0.7;">
+        ({{ count }})
       </span>
       <div style="flex: 1;">
         {% include archive-single.html %}
@@ -42,5 +23,9 @@ author_profile: true
     </div>
     {% assign count = count | minus: 1 %}
   {% endfor %}
+
+  {% if posts.size == 0 %}
+    <p>Archiwum w przygotowaniu.</p>
+  {% endif %}
 
 </div>
