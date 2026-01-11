@@ -28,14 +28,14 @@ author_profile: true
   /* 1. DEFINICJE DLA TRYBU JASNEGO */
   :root {
     --pub-zielony: #2d4f1e;       /* Głęboka leśna zieleń */
-    --pub-hover: #006400;         /* Ciemniejsza, wyraźna zieleń na białym tle (dobry kontrast) */
+    --pub-hover: #006400;         /* Ciemniejsza zieleń na białe tło */
   }
 
   /* 2. DEFINICJE DLA TRYBU CIEMNEGO */
   @media (prefers-color-scheme: dark) {
     :root {
       --pub-zielony: #90EE90;     /* Jasna zieleń */
-      --pub-hover: #00FFAB;       /* Neonowy miętowy (super kontrast w nocy) */
+      --pub-hover: #00FFAB;       /* Neonowy miętowy w nocy */
     }
   }
   html[data-theme='dark'] {
@@ -47,7 +47,8 @@ author_profile: true
   .page__title {
     color: var(--pub-zielony) !important;
   }
-/* 4. STYL DLA LINKÓW */
+
+  /* 4. STYL DLA LINKÓW W PUBLIKACJACH */
   .publication-link, 
   .publication-link:visited {
     color: var(--pub-zielony) !important;
@@ -56,45 +57,59 @@ author_profile: true
     transition: all 0.2s ease;
   }
 
-  /* 5. HOVER - TYLKO DLA LINKU */
+  /* 5. HOVER DLA LINKÓW W PUBLIKACJACH */
   .publication-link:hover,
   .publication-link:hover:visited {
     color: var(--pub-hover) !important;
-    text-decoration: underline !important; /* Podkreślamy tylko to, co jest wewnątrz <a> */
+    text-decoration: underline !important;
   }
 
   /* 6. BLOKADA PODKREŚLENIA DLA TYTUŁU PUBLIKACJI */
-  /* Celujemy w h2 i span, żeby upewnić się, że hover na linku ich nie "zarazi" */
   .archive__item-title,
   .title-static {
     color: var(--global-text-color) !important;
-    text-decoration: none !important; /* Całkowity brak podkreślenia */
+    text-decoration: none !important;
     border-bottom: none !important;
     font-weight: 500;
   }
 
-  /* Dodatkowe zabezpieczenie: gdy najedziesz na link, tytuł ma zostać czysty */
   .archive__item:hover .title-static,
   .archive__item-title:hover {
     text-decoration: none !important;
   }
 
-  /* POPRAWKA NAWIGACJI I PROFILU DLA TRYBU CIEMNEGO */
-  html[data-theme='dark'] .masthead__menu-item a:hover,
-  html[data-theme='dark'] .site-title:hover,
-  html[data-theme='dark'] .author__urls a:hover {
-  color: var(--pub-hover) !important; /* Użyje Twojego neonowego zielonego #00FFAB */
-  opacity: 1;
-}
-
-/* Kolor nazwy w sidebarze (Twoje Imię i Nazwisko) */
-  html[data-theme='dark'] .author__name {
-  color: var(--global-text-color);
-}
-
-/* Opcjonalnie: kolor aktywnych linków w menu, żeby nie "gasły" */
-  html[data-theme='dark'] .masthead__menu-item.active a {
-  color: var(--pub-zielony) !important;
-}
+  /* 7. POPRAWKA NAWIGACJI (MASTHEAD) I PROFILU DLA TRYBU CIEMNEGO */
   
+  /* Naprawa linków w menu górnym (Greedy Nav) i tytułu strony */
+  html[data-theme='dark'] .greedy-nav a,
+  html[data-theme='dark'] .greedy-nav .site-title,
+  html[data-theme='dark'] .greedy-nav .visible-links li a {
+    transition: color 0.2s ease;
+  }
+
+  /* Hover dla menu i Imienia/Nazwiska na górze */
+  html[data-theme='dark'] .greedy-nav a:hover,
+  html[data-theme='dark'] .greedy-nav .site-title:hover,
+  html[data-theme='dark'] .greedy-nav .visible-links li a:hover {
+    color: var(--pub-hover) !important;
+    background-color: transparent !important;
+  }
+
+  /* Aktywna zakładka w menu */
+  html[data-theme='dark'] .greedy-nav .visible-links .masthead__menu-item--active a {
+    color: var(--pub-zielony) !important;
+  }
+
+  /* Hover dla linków w sidebarze (pod zdjęciem profilowym) */
+  html[data-theme='dark'] .author__urls-wrapper a:hover,
+  html[data-theme='dark'] .author__urls a:hover {
+    color: var(--pub-hover) !important;
+    opacity: 1;
+  }
+
+  /* Kolor Imienia i Nazwiska w sidebarze */
+  html[data-theme='dark'] .author__name {
+    color: var(--global-text-color);
+  }
+
 </style>
