@@ -7,34 +7,36 @@ author_profile: true
 
 {% include base_path %}
 
-<!-- Sekcja z cytatami - podział na PL i EN z oddzielnymi źródłami -->
-<div class="values-header" style="font-size: 0.8em; margin-bottom: 35px; border-left: 2px solid var(--global-text-color); padding-left: 15px; opacity: 0.85; line-height: 1.4;">
+<!-- Sekcja z cytatami - trzy odcienie szarości (opacity) -->
+<div class="values-header" style="font-size: 0.8em; margin-bottom: 35px; border-left: 2px solid var(--global-text-color); padding-left: 15px; line-height: 1.4;">
   
-  <!-- Wersja Polska -->
-  <div style="margin-bottom: 12px;">
-    <div style="font-style: italic; margin: 0; color: var(--global-text-color);">
+  <!-- 1. Najciemniejsza szarość dla tekstu PL -->
+  <div style="margin-bottom: 12px; opacity: 1; color: var(--global-text-color);">
+    <div style="font-style: italic; margin: 0;">
       „Całe złoto w porównaniu z [Mądrością] jest garścią piasku, a srebro przy niej ma wartość błota”.
     </div>
-    <div style="font-weight: bold; opacity: 0.6; color: var(--global-text-color);">
-      — Mdr 7, 9
+    <div style="font-weight: bold; margin-top: 2px;">— Mdr 7, 9</div>
+  </div>
+
+  <!-- 2. Średnia szarość dla tekstu EN -->
+  <div style="opacity: 0.75; color: var(--global-text-color); margin-bottom: 8px;">
+    <div style="font-style: italic; margin: 0;">
+      "All gold, in view of [Wisdom], is a bit of sand, and before her, silver is to be accounted as clay".
     </div>
   </div>
 
-  <!-- Wersja Angielska -->
-  <div style="opacity: 0.7;">
-    <div style="font-style: italic; margin: 0; color: var(--global-text-color);">
-      "All gold, in view of [Wisdom], is a bit of sand, and before her, silver is to be accounted as clay".
-    </div>
-    <div style="font-weight: bold; opacity: 0.8; color: var(--global-text-color);">
-      — Wis 7, 9
-    </div>
+  <!-- 3. Najjaśniejsza szarość dla źródła EN -->
+  <div style="opacity: 0.55; color: var(--global-text-color); font-weight: bold;">
+    — Wis 7, 9
   </div>
 </div>
+
+<!-- NAGŁÓWEK ZIELONY (kolor linku) -->
+<h1 style="color: var(--link-color); font-size: 1.5em; margin-bottom: 20px;">Publikacje / Publications</h1>
 
 {% assign posts = site.publications | sort: 'date' | reverse %}
 {% assign count = posts | size %}
 
-<!-- DODANO TYLKO 'clear: both;', ABY LISTA NIE WCHODZIŁA POD ZDJĘCIE (SIDEBAR) -->
 <div class="publications-list" style="font-size: 0.85em; clear: both;"> 
   {% for post in posts %}
     <div class="list__item" style="display: flex; align-items: baseline; margin-bottom: 10px; line-height: 1.4;">
