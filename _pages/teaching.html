@@ -29,7 +29,7 @@ author_profile: true
 
 <hr style="opacity: 0.2; clear: both;">
 
-<!-- Lista zajęć - z dynamicznym kolorem zielonym (var(--link-color)) -->
+<!-- Lista zajęć - Wymuszony dynamiczny kolor zielony -->
 <div class="teaching-list" style="font-size: 0.85em; clear: both;"> 
   {% assign posts = site.teaching | sort: 'date' | reverse %}
   
@@ -37,8 +37,8 @@ author_profile: true
     <div class="list__item" style="margin-bottom: 25px; line-height: 1.4;">
       
       {% if post.title contains "doktoranckich" or post.title contains "Archive" %}
-        <!-- LINK ARCHIWUM: Kolor identyczny jak czasopisma w obu trybach -->
-        <a href="{{ post.permalink }}" style="color: var(--link-color); font-size: 1.3em; font-weight: normal; text-decoration: underline;">
+        <!-- LINK ARCHIWUM: Wymuszony kolor zielony za pomocą !important -->
+        <a href="{{ post.permalink }}" style="color: var(--link-color) !important; font-size: 1.3em; font-weight: normal; text-decoration: underline !important;">
           Poprzednie semestry / Past semesters
         </a>
       {% else %}
