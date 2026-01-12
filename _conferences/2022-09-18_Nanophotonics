@@ -1,1 +1,7 @@
-
+---
+title: "Nanophotonics in Toruń"
+link: "https://nanophotonics.faj.org.pl/" # Link do strony konferencji
+date: 2022-09-18                            # Format RRRR-MM-DD (do sortowania)
+date_display: "18-21 September 2022"              # To co faktycznie wyświetli się na stronie
+location: "Toruń (Poland)"                # Miasto i Kraj
+---
