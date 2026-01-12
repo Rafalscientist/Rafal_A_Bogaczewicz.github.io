@@ -14,17 +14,14 @@ author_profile: true
   }
 </style>
 
-<!-- Sekcja z cytatem JP2 - trzy odcienie szarości -->
+<!-- Sekcja z cytatem JP2 -->
 <div class="values-header" style="font-size: 0.8em; margin-bottom: 35px; border-left: 2px solid var(--global-text-color); padding-left: 15px; line-height: 1.3;">
-  
   <div style="font-style: italic; margin: 0; color: var(--global-text-color); opacity: 1;">
     „Musicie od siebie wymagać, nawet gdyby inni od was nie wymagali”.
   </div>
-  
   <div style="font-style: italic; margin-top: 2px; margin-bottom: 0; color: var(--global-text-color); opacity: 0.75;">
     "You must demand of yourselves even if others do not demand of you."
   </div>
-
   <div style="font-weight: bold; margin-top: 2px; color: var(--global-text-color); opacity: 0.55;">
     — Jan Paweł II / John Paul II
   </div>
@@ -32,15 +29,28 @@ author_profile: true
 
 <hr style="opacity: 0.2; clear: both;">
 
-<!-- Lista zajęć - USUNIĘTO NUMERACJĘ (count) -->
+<!-- Lista zajęć - ZMIANY TYLKO TUTAJ -->
 <div class="teaching-list" style="font-size: 0.85em; clear: both;"> 
   {% assign posts = site.teaching | sort: 'date' | reverse %}
   
   {% for post in posts %}
-    <div class="list__item" style="margin-bottom: 10px; line-height: 1.4;">
-      <div style="flex: 1;">
-        {% include archive-single.html %}
-      </div>
+    <div class="list__item" style="margin-bottom: 15px; line-height: 1.4;">
+      
+      {% if post.title contains "doktoranckich" or post.title contains "Archive" %}
+        <!-- OPCJA A: Dla archiwum - Zielony link "Poprzednie semestry" -->
+        <a href="{{ post.permalink }}" style="color: var(--link-color); font-size: 1.3em; font-weight: normal; text-decoration: underline;">
+          Poprzednie semestry / Past semesters
+        </a>
+      {% else %}
+        <!-- OPCJA B: Dla aktualnego semestru - Większy napis bez przecinka -->
+        <span style="font-size: 1.3em; color: var(--global-text-color); font-weight: normal;">
+          {{ post.title | remove: "," }}
+        </span>
+        <div style="margin-top: 5px; opacity: 0.8;">
+          W obecnym semestrze nie prowadzę zajęć dydaktycznych.
+        </div>
+      {% endif %}
+      
     </div>
   {% endfor %}
 </div>
