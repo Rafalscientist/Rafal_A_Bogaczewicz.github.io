@@ -20,8 +20,8 @@ author_profile: true
     "Science is rooted in conversations. Only in the collaboration of many people can great scientific results arise."
   </div>
 
-  <!-- Podpis - większy odstęp od cytatów (margin-top: 12px) -->
-  <div style="font-weight: bold; opacity: 0.6; margin-top: 12px; color: var(--global-text-color);">
+  <!-- Podpis - skrócony odstęp od cytatów (zmieniono margin-top: 12px na 2px) -->
+  <div style="font-weight: bold; opacity: 0.6; margin-top: 2px; color: var(--global-text-color);">
     — Werner Heisenberg
   </div>
 </div>
@@ -33,7 +33,8 @@ author_profile: true
 {% assign posts = site.conferences | sort: 'date' | reverse %}
 {% assign count = posts.size %}
 
-<div class="publications-list" style="font-size: 0.85em;"> 
+<!-- ZABEZPIECZENIE: clear: both; chroni przed nachodzeniem listy na sidebar -->
+<div class="publications-list" style="font-size: 0.85em; clear: both;"> 
   {% for post in posts %}
     <div class="list__item" style="display: flex; align-items: baseline; margin-bottom: 12px; line-height: 1.4;">
       
