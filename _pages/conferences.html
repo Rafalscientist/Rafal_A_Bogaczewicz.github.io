@@ -7,6 +7,20 @@ author_profile: true
 
 {% include base_path %}
 
+<!-- Pojedynczy, mocny cytat Heisenberga -->
+<div class="values-header" style="font-size: 0.8em; margin-bottom: 30px; border-left: 2px solid var(--global-text-color); padding-left: 15px; opacity: 0.85;">
+  <div style="font-style: italic; margin-bottom: 5px; color: var(--global-text-color); line-height: 1.4;">
+    „Nauka zakorzeniona jest w rozmowie. Dopiero we współpracy wielu osób mogą powstać wielkie naukowe rezultaty”.
+  </div>
+  <div style="font-weight: bold; opacity: 0.6; color: var(--global-text-color);">
+    — Werner Heisenberg
+  </div>
+</div>
+
+{% for post in site.talks reversed %}
+  {% include archive-single.html %}
+{% endfor %}
+
 {% assign posts = site.conferences | sort: 'date' | reverse %}
 {% assign count = posts.size %}
 
