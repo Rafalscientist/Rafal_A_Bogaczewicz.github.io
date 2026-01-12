@@ -7,32 +7,30 @@ author_profile: true
 
 {% include base_path %}
 
-<!-- Sekcja z cytatami - trzy odcienie szarości (opacity) -->
+<style>
+  /* Celujemy w automatyczny tytuł Jekylla */
+  .page__title {
+    color: var(--link-color) !important;
+  }
+</style>
+
+<!-- Sekcja z cytatami - trzy odcienie szarości -->
 <div class="values-header" style="font-size: 0.8em; margin-bottom: 35px; border-left: 2px solid var(--global-text-color); padding-left: 15px; line-height: 1.4;">
-  
-  <!-- 1. Najciemniejsza szarość dla tekstu PL -->
   <div style="margin-bottom: 12px; opacity: 1; color: var(--global-text-color);">
     <div style="font-style: italic; margin: 0;">
       „Całe złoto w porównaniu z [Mądrością] jest garścią piasku, a srebro przy niej ma wartość błota”.
     </div>
     <div style="font-weight: bold; margin-top: 2px;">— Mdr 7, 9</div>
   </div>
-
-  <!-- 2. Średnia szarość dla tekstu EN -->
   <div style="opacity: 0.75; color: var(--global-text-color); margin-bottom: 8px;">
     <div style="font-style: italic; margin: 0;">
       "All gold, in view of [Wisdom], is a bit of sand, and before her, silver is to be accounted as clay".
     </div>
   </div>
-
-  <!-- 3. Najjaśniejsza szarość dla źródła EN -->
   <div style="opacity: 0.55; color: var(--global-text-color); font-weight: bold;">
     — Wis 7, 9
   </div>
 </div>
-
-<!-- NAGŁÓWEK ZIELONY (kolor linku) -->
-<h1 style="color: var(--link-color); font-size: 1.5em; margin-bottom: 20px;">Publikacje / Publications</h1>
 
 {% assign posts = site.publications | sort: 'date' | reverse %}
 {% assign count = posts | size %}
