@@ -1,1 +1,7 @@
-
+---
+title: "Nanophotonics of 2D Materials"
+link: "https://n2d-2025.faj.org.pl/" # Link do strony konferencji
+date: 2025-10-06                            # Format RRRR-MM-DD (do sortowania)
+date_display: "6-9 October 2025"              # To co faktycznie wyświetli się na stronie
+location: "Toruń (Poland)"                # Miasto i Kraj
+---
