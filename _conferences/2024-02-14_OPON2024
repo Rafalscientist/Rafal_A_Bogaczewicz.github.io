@@ -1,1 +1,7 @@
-
+---
+title: "7th International Workshop on the Optical Properties of Nanostructures (OPON 2024)"
+link: "https://opon2024.pwr.edu.pl/" # Link do strony konferencji
+date: 2024-02-14                            # Format RRRR-MM-DD (do sortowania)
+date_display: "14-16 February 2024"              # To co faktycznie wyświetli się na stronie
+location: "Wrocław (Poland)"                # Miasto i Kraj
+---
