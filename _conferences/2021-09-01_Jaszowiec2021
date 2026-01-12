@@ -1,1 +1,7 @@
-
+---
+title: "49th International School & Conference on the Physics of Semiconductor Jaszowiec 2021"
+link: "https://www.jaszowiec.edu.pl/2021/" # Link do strony konferencji
+date: 2021-09-01                            # Format RRRR-MM-DD (do sortowania)
+date_display: "1-10 September 2021"              # To co faktycznie wyświetli się na stronie
+location: "Szczyrk (Poland), online attendance"                # Miasto i Kraj
+---
