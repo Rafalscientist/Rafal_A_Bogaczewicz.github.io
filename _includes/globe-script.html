@@ -1,16 +1,12 @@
+<!-- 1. Pełny adres do biblioteki (musi być konkretny plik JS) -->
 <script src="unpkg.com" crossorigin="anonymous"></script>
 
 <script>
-  // Funkcja inicjująca, wywoływana dopiero gdy strona jest gotowa
   window.onload = function() {
-    console.log("Próba inicjalizacji globusa...");
+    console.log("Inicjalizacja globusa...");
     
     const elem = document.getElementById('globeViz');
-    
-    if (!elem) {
-      console.error("BŁĄD: Nie znaleziono kontenera #globeViz!");
-      return;
-    }
+    if (!elem) return;
 
     const myData = [
       { city: "Münster", lat: 51.96, lng: 7.62, events: [{ name: "NOEKS 15", id: "noeks-15", nr: "15" }] },
@@ -20,21 +16,21 @@
 
     try {
       const world = Globe()(elem)
+        // 2. Pełny adres do obrazu tekstury (musi być plik .jpg)
         .globeImageUrl('unpkg.com')
-        .backgroundColor('rgba(0,0,0,0)') // Przezroczyste tło, by pasowało do czarnego div
+        .backgroundColor('rgba(0,0,0,0)') 
         .pointsData(myData)
         .pointColor(() => '#ffffff')
         .pointRadius(0.7)
         .pointLabel(d => `<div style="background:rgba(0,0,0,0.8);padding:5px;border-radius:3px;color:white">${d.city}</div>`)
         .pointOfView({ lat: 52, lng: 19, altitude: 2 }, 0);
 
-      // Dopasowanie rozmiaru
       world.width(elem.offsetWidth);
       world.height(elem.offsetHeight);
       
-      console.log("Globus powinien być widoczny.");
+      console.log("Sukces: Silnik Globe.gl załadowany.");
     } catch (err) {
-      console.error("Błąd silnika Globe.gl:", err);
+      console.error("Błąd: Sprawdź połączenie z internetem lub adresy URL.", err);
     }
   };
 </script>
