@@ -34,7 +34,8 @@ author_profile: true
 {% assign posts = site.publications | sort: 'date' | reverse %}
 {% assign count = posts | size %}
 
-<div class="publications-list" style="font-size: 0.85em;"> 
+<!-- DODANO TYLKO 'clear: both;', ABY LISTA NIE WCHODZIŁA POD ZDJĘCIE (SIDEBAR) -->
+<div class="publications-list" style="font-size: 0.85em; clear: both;"> 
   {% for post in posts %}
     <div class="list__item" style="display: flex; align-items: baseline; margin-bottom: 10px; line-height: 1.4;">
       <span style="color: var(--global-text-color); min-width: 40px; font-weight: bold; opacity: 0.7;">
