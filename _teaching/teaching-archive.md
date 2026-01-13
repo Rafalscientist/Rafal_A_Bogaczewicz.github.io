@@ -6,22 +6,19 @@ author_profile: true
 ---
 
 {% include base_path %}
-
 <style>
   /* 1. ATOMOWE WYMUSZENIE MENU - POGRUBIENIE I PODKREŚLENIE (RESET KOLORU) */
-  
-  /* Celujemy w każdy możliwy element linku Dydaktyki w menu */
+  /* Ten punkt zostawiamy bez zmian, skoro działa idealnie */
   .masthead__menu-item a[href*="/teaching"],
   .masthead__menu-item--active a,
   nav.visible a[href*="/teaching"],
   .masthead__menu-item a[href*="/teaching"] span {
-    font-weight: 900 !important; /* Ekstremalne wytłuszczenie */
+    font-weight: 900 !important;
     color: inherit !important;
-    border-bottom: 3px solid currentColor !important; /* Grubsza kreska dla pewności */
+    border-bottom: 3px solid currentColor !important;
     opacity: 1 !important;
   }
 
-  /* Wymuszenie koloru podkreślenia zależnie od trybu, by nie było zielone */
   .masthead__menu-item a[href*="/teaching"] {
     border-bottom-color: #333 !important; 
   }
@@ -36,17 +33,30 @@ author_profile: true
     }
   }
 
-  /* 2. TYTUŁ STRONY (Dydaktyka / Teaching) - ZABEZPIECZONY */
-  .page__title, .archive__title, h1, .page-teaching h1 {
+  /* 2. ATOMOWE WYMUSZENIE JASNEJ ZIELENI DLA TYTUŁU - OPCJA TOTALNA */
+  /* To podmieniamy, aby napis obok zdjęcia profilowego "rozjaśniał" się w trybie ciemnym */
+  .page__title, .archive__title, h1, .page-teaching h1, .page__inner-wrap .page__title {
     color: #0e7a3a !important;
   }
+
   @media (prefers-color-scheme: dark) {
-    .page__title, .archive__title, h1, .page-teaching h1,
-    html.dark h1, [data-theme='dark'] h1 {
+    html.dark .page__title, 
+    [data-theme='dark'] .page__title,
+    html.dark .archive__title,
+    [data-theme='dark'] .archive__title,
+    html.dark h1,
+    [data-theme='dark'] h1,
+    .page__content h1,
+    #main h1,
+    .page__inner-wrap .page__title {
       color: #11ee4a !important;
+      -webkit-text-fill-color: #11ee4a !important;
+      filter: none !important;
+      opacity: 1 !important;
     }
   }
 </style>
+
 
 <div class="page-teaching">
   <!-- Twój cytat JP2 -->
