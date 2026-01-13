@@ -20,31 +20,23 @@ repository               : "rafal-a-bogaczewicz/rafal-a-bogaczewicz.github.io"
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
 #               Additional customization can be done by editing /_includes/author-profile.html
+
 author:
-  # Biographic information
-  avatar           : "rafal.jpg"
-  name             : "Rafał A. Bogaczewicz"
-  pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
-  location         : "Earth"
-  employer         : "Red Brick University"
-  uri              : # URL
-  email            : "none@example.org" 
+  name   : "Twój Imię i Nazwisko"
 
-  # Academic websites
-  academia         : # URL
-  arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    : "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
-  inspire-hep      : # URL
-  impactstory      : # URL
-  orcid            : "https://orcid.org/yourorcidurl"
-  semantic         : # URL
-  ssrn             : # URL
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  researchgate     : Rafal_Bogaczewicz
-  scopus           : # URL
-  zotero           : # URL
-
+  bio    : "Fizyk teoretyk" # Możesz tu wpisać specjalizację
+  location: "Wrocław, Poland"
+  
+  # 1. Politechnika Wrocławska zamiast Red Brick
+  employer: "Politechnika Wrocławska"
+  
+  # 2. Usuwamy zbędne (skasuj te linie lub zostaw puste cudzysłowy)
+  uri:       # tu był earth/strona www
+  email:     # usuwamy, by nie być na każde zawołanie
+  
+  # 3. Naukowe (zostawiamy i uzupełniamy linki)
+  orcid:         "https://orcid.org/0000-0001-7148-5250"
+  researchgate:  "https://www.researchgate.net/profile/Rafal_Bogaczewicz?ev=hdr_xprf"
 
   # Repositories and software development
   bitbucket        : # Username - Update with your username on the site
