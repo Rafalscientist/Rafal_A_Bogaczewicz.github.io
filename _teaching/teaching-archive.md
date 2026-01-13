@@ -8,43 +8,40 @@ author_profile: true
 {% include base_path %}
 
 <style>
-  /* 1. WYMUSZENIE PODŚWIETLENIA MENU GÓRNEGO - TYLKO STYL, BEZ ZMIANY KOLORU */
+  /* 1. WYMUSZENIE STANDARDOWEGO KOLORU W MENU (Lek na kapryśność) */
+  
+  /* Tryb Jasny */
   .masthead__menu-item a[href*="/teaching"] {
     font-weight: bold !important;
-    /* Usuwamy color: #0e7a3a !important; */
-    border-bottom: 2px solid #494e52 !important; /* Standardowy kolor podkreślenia */
+    color: #333 !important; /* Wymuszamy ciemnoszary/czarny zamiast zieleni */
+    border-bottom: 2px solid #333 !important; 
   }
 
+  /* Tryb Ciemny */
   @media (prefers-color-scheme: dark) {
     .masthead__menu-item a[href*="/teaching"] {
-      /* Usuwamy color: #11ee4a !important; */
-      border-bottom-color: #ffffff !important; /* Białe podkreślenie w trybie ciemnym */
-    }
-  }
-  
-  /* 2. TYTUŁ STRONY (Pozostaje zielony) */
-  .page__title, .archive__title, h1, .page-teaching h1 { 
-    color: #0e7a3a !important; 
-  }
-  @media (prefers-color-scheme: dark) {
-    .page__title, .archive__title, h1, .page-teaching h1 { 
-      color: #11ee4a !important; 
+      color: #fff !important; /* Wymuszamy biały zamiast zieleni */
+      border-bottom-color: #fff !important;
     }
   }
 
-  /* 3. LINKI W TREŚCI (Pozostają zielone) */
-  .page-teaching a {
-    color: #0e7a3a !important;
-    text-decoration: none !important;
-    border-bottom: 1px solid transparent !important;
+  /* Dodatkowe zabezpieczenie dla klas aktywnych motywu */
+  .masthead__menu-item--active a[href*="/teaching"],
+  .masthead__menu-item.active a[href*="/teaching"] {
+    color: #333 !important;
   }
+
   @media (prefers-color-scheme: dark) {
-    .page-teaching a { 
-      color: #11ee4a !important; 
+    html.dark .masthead__menu-item--active a[href*="/teaching"],
+    [data-theme='dark'] .masthead__menu-item--active a[href*="/teaching"] {
+      color: #fff !important;
     }
   }
-  .page-teaching a:hover {
-    border-bottom-color: #11ee88 !important;
+
+  /* RESZTA STYLÓW DLA TREŚCI (Tytuł i linki w tekście zostają zielone) */
+  .page__title, .archive__title, h1, .page-teaching h1 { color: #0e7a3a !important; }
+  @media (prefers-color-scheme: dark) {
+    .page__title, .archive__title, h1, .page-teaching h1 { color: #11ee4a !important; }
   }
 </style>
 
