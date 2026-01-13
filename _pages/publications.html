@@ -1,114 +1,101 @@
 ---
 layout: archive
-title: "Publikacje / Publications"
-
-permalink: /publications/
+title: "Dydaktyka"
+permalink: /teaching-archive/
 author_profile: true
 ---
 
 {% include base_path %}
 
 <style>
-  :root, html, body, #main, [class*="page__inner"] {
-    --primary-color: #16a085 !important;
-    --title-color: #16a085 !important;
-    --link-color: #16a085 !important;
+  :root {
+    --accent-sea: #16a085; /* Twoja morska zieleń */
+    --accent-hover: #2ecc71; /* Jasna zieleń interakcji */
   }
 
-  h1, .page__title, .archive__title, #page-title, [class*="page__inner"] h1 {
-    color: #16a085 !important;
-    -webkit-text-fill-color: #16a085 !important;
-    filter: none !important;
+  /* 1. ATOMOWE WYMUSZENIE MENU */
+  .masthead__menu-item a[href*="/teaching"],
+  .masthead__menu-item.active a,
+  .masthead__menu-item--active a {
+    font-weight: 900 !important;
+    color: inherit !important;
+    border-bottom: 3px solid var(--accent-sea) !important;
     opacity: 1 !important;
   }
 
-  .page-publications .pub-link {
-    color: #16a085 !important;
+  /* 2. NUKLEARNE WYMUSZENIE DLA TYTUŁU */
+  h1, .page__title, .archive__title, #page-title {
+    color: var(--accent-sea) !important;
+    -webkit-text-fill-color: var(--accent-sea) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.5px;
+  }
+
+  /* 3. LINKI I ELEMENTY ARCHIWUM */
+  .page-teaching .teaching-list a {
+    color: var(--accent-sea) !important;
     text-decoration: none !important;
+    font-weight: 600;
     transition: all 0.2s ease-in-out;
   }
 
-  .page-publications .pub-link:hover {
-    color: #2ecc71 !important;
-    text-decoration: underline !important;
+  .page-teaching .teaching-list a:hover {
+    color: var(--accent-hover) !important;
+    padding-left: 5px; /* Subtelny efekt ruchu High-Value */
   }
 
-  .my-name-underlined {
-    text-decoration: underline !important;
-    font-weight: 500;
+  /* 4. CYTAT JPII - ESTETYKA PREMIUM */
+  .page-teaching .values-header {
+    font-size: 0.9em;
+    margin-bottom: 40px;
+    border-left: 3px solid var(--accent-sea);
+    padding: 10px 20px;
+    background: rgba(22, 160, 133, 0.05); /* Bardzo delikatne tło */
+    border-radius: 0 5px 5px 0;
   }
 
-  .page-publications .list__item,
-  .page-publications .list__item span,
-  .page-publications .list__item div {
+  /* 5. STRUKTURA SEMESTRÓW */
+  .page-teaching .semester-title {
+    font-size: 1.4em;
+    font-weight: 700;
+    margin-top: 40px;
     color: var(--global-text-color);
-  }
-
-  .page-publications .values-header {
-    font-size: 0.8em; 
-    margin-bottom: 35px; 
-    border-left: 2px solid var(--global-text-color); 
-    padding-left: 15px; 
-    line-height: 1.3;
   }
 </style>
 
-<div class="page-publications">
+<div class="page-teaching">
   
   <div class="values-header">
-    <div style="font-style: italic; margin: 0; color: var(--global-text-color); opacity: 1;">
-      „W porównaniu z nią [Mądrością] złoto jest tylko piaskiem, a srebro przy niej ma wartość błota.”
+    <div style="font-style: italic; letter-spacing: 0.2px;">
+      „Musicie od siebie wymagać, nawet gdyby inni od was nie wymagali”.
     </div>
-    <div style="font-style: italic; margin-top: 2px; margin-bottom: 0; color: var(--global-text-color); opacity: 0.75;">
-      "In comparison with her [Wisdom] all gold is but a little sand, and before her silver shall be accounted as clay."
+    <div style="font-style: italic; opacity: 0.8; margin-top: 4px;">
+      "You must demand of yourselves even if others do not demand of you."
     </div>
-    <div style="font-weight: bold; margin-top: 2px; color: var(--global-text-color); opacity: 0.55;">
-      — Mdr 7, 9 / Wis 7, 9
+    <div style="font-weight: bold; margin-top: 8px; font-size: 0.8em; text-transform: uppercase; opacity: 0.6;">
+      — Jan Paweł II / John Paul II
     </div>
   </div>
 
+  <div class="teaching-list">
+    <h2 style="border-bottom: 2px solid var(--accent-sea); padding-bottom: 10px; margin-top: 0; font-size: 1.8em;">
+      Archiwum zajęć
+    </h2>
 
-  {% assign posts = site.publications | sort: 'date' | reverse %}
-  {% assign count = posts.size %}
-
-  <div class="publications-list" style="font-size: 0.85em; clear: both;"> 
-    {% for post in posts %}
-      <div class="list__item" style="display: flex; align-items: baseline; margin-bottom: 20px; line-height: 1.4;">
-        <span style="color: var(--global-text-color); min-width: 40px; font-weight: bold; opacity: 0.7;">
-          ({{ count }})
-        </span>
-        
-        <div style="flex: 1;">
-          <!-- Linia 1: Próba wyciągnięcia autorów z różnych pól .md -->
-          <div style="margin-bottom: 2px;">
-            {% capture raw_authors %}
-              {% if post.citation %}
-                {{ post.citation }}
-              {% elsif post.authors %}
-                {{ post.authors }}
-              {% else %}
-
-                {{ post.content | strip_html | truncatewords: 20 }}
-              {% endif %}
-            {% endcapture %}
-
-
-            {{ raw_authors | replace: "R. A. Bogaczewicz", "<span class='my-name-underlined'>R. A. Bogaczewicz</span>" | replace: "R.A. Bogaczewicz", "<span class='my-name-underlined'>R.A. Bogaczewicz</span>" }}
+    {% assign past_posts = site.teaching | sort: 'date' | reverse %}
+    {% for post in past_posts %}
+      {% comment %} Wykluczamy bieżący semestr 2025/2026 i samo archiwum {% endcomment %}
+      {% unless post.title contains "2025/2026" or post.url contains "archive" %}
+        <div class="list__item" style="border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 20px;">
+          <div class="semester-title">{{ post.title }}</div>
+          <div style="opacity: 0.9; line-height: 1.6;">
+            {{ post.content | strip_html | truncatewords: 30 }}
           </div>
-
-          <!-- Linia 2: Tytuł i Hiperłącze bibliograficzne -->
-          <div>
-            <span>{{ post.title }},</span>
-
-            <a href="{{ post.paperurl | default: post.link }}" class="pub-link" target="_blank" rel="noopener noreferrer">
-
-              <i>{{ post.venue }}</i>{% if post.volume %} <b>{{ post.volume }}</b>{% endif %}{% if post.pages %}, {{ post.pages }}{% endif %} ({{ post.date | date: "%Y" }})
-            </a>
+          <div style="margin-top: 12px;">
+            <a href="{{ post.url }}">Szczegóły przedmiotu / Course details →</a>
           </div>
         </div>
-      </div>
-
-      {% assign count = count | minus: 1 %}
+      {% endunless %}
     {% endfor %}
   </div>
 </div>
