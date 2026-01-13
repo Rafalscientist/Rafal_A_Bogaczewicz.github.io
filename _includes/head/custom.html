@@ -1,5 +1,43 @@
 {% include base_path %}
 
+<style>
+  /* 1. ZAKŁADKI NA GÓRZE (Menu nawigacyjne) */
+  .masthead__menu-item a:hover {
+    color: #16a085 !important;
+    opacity: 1 !important;
+  }
+
+  /* 2. IKONA SŁOŃCA/KSIĘŻYCA (Toggle trybu) */
+  /* Celujemy w przycisk i samą ikonę */
+  .greedy-nav__toggle:hover,
+  #theme-toggle:hover,
+  .theme-toggle:hover i {
+    color: #16a085 !important;
+  }
+
+  /* 3. LEWA KOLUMNA (Sidebar: Earth, Email, Scholar, ORCID itd.) */
+  /* W motywach typu Minimal Mistakes to są linki w klasie author__urls */
+  .sidebar .author__urls-wrapper a:hover,
+  .sidebar .author__urls-wrapper a:hover span,
+  .sidebar .author__urls-wrapper a:hover i,
+  .sidebar .author__urls-wrapper .author__urls a:hover {
+    color: #16a085 !important;
+    text-decoration: none !important;
+  }
+
+  /* Specyficzne wymuszenie dla ikon w sidebarze (np. FontAwesome) */
+  .author__urls i:hover, 
+  .author__urls span:hover {
+    color: #16a085 !important;
+  }
+
+  /* Dodatkowo: plynne przejście dla efektu High-Value */
+  a, .author__urls i, .author__urls span, .greedy-nav__toggle {
+    transition: color 0.2s ease-in-out !important;
+  }
+</style>
+
+
 <!-- start custom head snippets -->
 
 <!-- Support for Academicons -->
