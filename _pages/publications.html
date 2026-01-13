@@ -7,26 +7,6 @@ author_profile: true
 
 {% include base_path %}
 
-<style>
-  /* 1. WYMUSZENIE KOLORÓW TYTUŁU (Dla trybu jasnego i ciemnego) */
-  .page__title, .archive__title, h1 {
-    color: #0e7a3a !important;
-  }
-
-  /* Wykrywanie trybu ciemnego przez system, klasę .dark lub atrybut data-theme */
-  @media (prefers-color-scheme: dark) {
-    .page__title, .archive__title, h1 { color: #11ee4a !important; }
-  }
-  html.dark .page__title, html.dark .archive__title, html.dark h1,
-  body.dark .page__title, body.dark .archive__title, body.dark h1,
-  [data-theme='dark'] .page__title, [data-theme='dark'] .archive__title, [data-theme='dark'] h1 {
-    color: #11ee4a !important;
-  }
-</style>
-
-<!-- UNIKALNY KONTENER DLA TEJ PODSTRONY -->
-<div class="page-publications">
-  
   <style>
     /* 2. STYLE DLA LINKÓW - TRYB JASNY */
     .page-publications .publications-list a, 
@@ -34,40 +14,37 @@ author_profile: true
       color: #0e7a3a !important; 
       text-decoration: underline !important;
     }
-    .page-publications .publications-list a:hover, 
-    .page-publications .publications-list a:hover * {
-      color: #0eab3a !important;
-    }
 
-        /* STYLE DLA LINKÓW - TRYB CIEMNY (Łamiemy upór czasopism i tomów) */
+    /* 3. STYLE DLA LINKÓW - TRYB CIEMNY (OPCJA ATOMOWA) */
+    
+    /* Wykrywanie przez systemowy Dark Mode */
     @media (prefers-color-scheme: dark) {
+      .page-publications .publications-list,
+      .page-publications .publications-list *,
       .page-publications .publications-list a, 
-      .page-publications .publications-list a * { 
-        color: #11ee4a !important; 
-      }
-      .page-publications .publications-list a:hover, 
-      .page-publications .publications-list a:hover * { 
-        color: #11ee88 !important; 
+      .page-publications .publications-list a * {
+        color: #11ee4a !important;
       }
     }
 
-    /* Wymuszenie dla konkretnych tagów HTML wewnątrz linków, które Jekyll mógł sformatować */
-    html.dark .page-publications .publications-list a,
-    html.dark .page-publications .publications-list a em,
-    html.dark .page-publications .publications-list a strong,
-    html.dark .page-publications .publications-list a span,
-    body.dark .page-publications .publications-list a *,
-    [data-theme='dark'] .page-publications .publications-list a * {
+    /* Wykrywanie przez klasy motywu (.dark lub data-theme) */
+    html.dark .page-publications .publications-list,
+    html.dark .page-publications .publications-list *,
+    body.dark .page-publications .publications-list *,
+    [data-theme='dark'] .page-publications .publications-list * {
       color: #11ee4a !important;
     }
 
-    /* Styl cytatu */
-    .page-publications .values-header {
-      font-size: 0.8em; 
-      margin-bottom: 35px; 
-      border-left: 2px solid var(--global-text-color); 
-      padding-left: 15px; 
-      line-height: 1.3;
+    /* Efekt Hover w trybie ciemnym */
+    @media (prefers-color-scheme: dark) {
+      .page-publications .publications-list a:hover, 
+      .page-publications .publications-list a:hover * {
+        color: #11ee88 !important;
+      }
+    }
+    html.dark .page-publications .publications-list a:hover *,
+    [data-theme='dark'] .page-publications .publications-list a:hover * {
+      color: #11ee88 !important;
     }
   </style>
 
