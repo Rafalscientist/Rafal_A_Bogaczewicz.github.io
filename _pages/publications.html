@@ -39,24 +39,26 @@ author_profile: true
       color: #0eab3a !important;
     }
 
-    /* STYLE DLA LINKÓW - TRYB CIEMNY (Wszystkie metody wykrywania) */
+        /* STYLE DLA LINKÓW - TRYB CIEMNY (Łamiemy upór czasopism i tomów) */
     @media (prefers-color-scheme: dark) {
       .page-publications .publications-list a, 
-      .page-publications .publications-list a * { color: #11ee4a !important; }
+      .page-publications .publications-list a * { 
+        color: #11ee4a !important; 
+      }
       .page-publications .publications-list a:hover, 
-      .page-publications .publications-list a:hover * { color: #11ee88 !important; }
+      .page-publications .publications-list a:hover * { 
+        color: #11ee88 !important; 
+      }
     }
 
-    html.dark .page-publications .publications-list a, 
-    html.dark .page-publications .publications-list a *,
-    body.dark .page-publications .publications-list a,
-    [data-theme='dark'] .page-publications .publications-list a {
+    /* Wymuszenie dla konkretnych tagów HTML wewnątrz linków, które Jekyll mógł sformatować */
+    html.dark .page-publications .publications-list a,
+    html.dark .page-publications .publications-list a em,
+    html.dark .page-publications .publications-list a strong,
+    html.dark .page-publications .publications-list a span,
+    body.dark .page-publications .publications-list a *,
+    [data-theme='dark'] .page-publications .publications-list a * {
       color: #11ee4a !important;
-    }
-    
-    html.dark .page-publications .publications-list a:hover,
-    [data-theme='dark'] .page-publications .publications-list a:hover {
-      color: #11ee88 !important;
     }
 
     /* Styl cytatu */
