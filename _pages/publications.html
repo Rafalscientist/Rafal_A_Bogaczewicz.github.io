@@ -12,10 +12,12 @@ author_profile: true
   
 <style>
   /* --- TRYB JASNY (Default) --- */
-    
-  /* Nagłówek strony */
-  .page-publications .page__title {
-    color: #2980b9 !important; /* Ciemniejszy niebieski dla jasnego tła */
+  /* TRYB JASNY */
+  /* Dodajemy więcej selektorów, aby mieć pewność, że trafimy w tytuł */
+  .page-publications h1,
+  .page-publications .page__title,
+  .page-publications .archive__title {
+    color: #2980b9 !important;
   }
 
   /* Linki: stan normalny i wszystko w środku */
@@ -32,10 +34,12 @@ author_profile: true
   }
 
   /* --- TRYB CIEMNY (Automatyczne wykrywanie) --- */
+  /* TRYB CIEMNY */
   @media (prefers-color-scheme: dark) {
-    /* Nagłówek strony w trybie ciemnym */
-    .page-publications .page__title {
-      color: #5dade2 !important; /* Jaśniejszy błękit, żeby nie zniknął na czarnym */
+    .page-publications h1,
+    .page-publications .page__title,
+    .page-publications .archive__title {
+      color: #5dade2 !important;
     }
      /* Linki w trybie ciemnym */
     .page-publications .publications-list a, 
