@@ -20,7 +20,7 @@ author_profile: true
     -webkit-text-fill-color: #16a085 !important;
   }
 
-  /* 2. STYLIZACJA LINKU BIBLIOGRAFICZNEGO (MORSKI, PODKREŚLONY TYLKO NA HOVER) */
+  /* 2. STYLIZACJA LINKU BIBLIOGRAFICZNEGO */
   .page-publications .pub-link {
     color: #16a085 !important;
     text-decoration: none !important;
@@ -29,14 +29,17 @@ author_profile: true
 
   .page-publications .pub-link:hover {
     color: #2ecc71 !important;
-    text-decoration: underline !important;
+    border-bottom: 1px solid #2ecc71 !important;
   }
 
-  /* 3. SUBTELNE PODKREŚLENIE TWOJEGO NAZWISKA (NORMALNA WAGA) */
+  /* 3. ATOMOWE POJEDYNCZE PODKREŚLENIE NAZWISKA */
+  /* Wyłączamy text-decoration, używamy border, by uniknąć podwójnej linii */
   .my-name-underlined {
-    text-decoration: underline !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid currentColor !important;
     font-weight: normal !important;
     display: inline;
+    padding-bottom: 1px;
   }
 
   /* 4. STYL CYTATU O MĄDROŚCI */
@@ -56,7 +59,7 @@ author_profile: true
       „Całe złoto w porównaniu z [mądrością] jest garścią piasku, a srebro przy niej ma wartość błota.”
     </div>
     <div style="font-style: italic; margin-top: 2px; margin-bottom: 0; color: var(--global-text-color); opacity: 0.75;">
-      "All gold, in view of [wisdom], is a bit of sand, and before her, silver is to be accounted as clay."
+      "In comparison with her [Wisdom] all gold is but a little sand, and before her silver shall be accounted as clay."
     </div>
     <div style="font-weight: bold; margin-top: 2px; color: var(--global-text-color); opacity: 0.55;">
       — Mdr 7, 9 / Wis 7, 9
@@ -75,24 +78,26 @@ author_profile: true
         </span>
         
         <div style="flex: 1;">
-          <!-- Linia 1: Autorzy -->
           <div style="margin-bottom: 2px; color: var(--global-text-color);">
             {% capture raw_authors %}
-              {% if post.citation %}
-                {{ post.citation }}
-              {% elsif post.authors %}
-                {{ post.authors }}
-              {% else %}
+              {% if post.citation %}{{ post.citation }}
+              {% elsif post.authors %}{{ post.authors }}
 
-                {{ post.content | strip_html | truncatewords: 20 }}
-              {% endif %}
+              {% else %}{{ post.content | strip_html | truncatewords: 20 }}{% endif %}
             {% endcapture %}
 
+            {% comment %} 
+               Używamy dokładnie tych samych fraz co w .md, zamieniając je na wersję z borderem.
+               Zwróć uwagę, by w replace tekst po lewej zgadzał się co do joty z .md
+            {% endcomment %}
+            {{ raw_authors 
 
-            {{ raw_authors | replace: "R. A. Bogaczewicz", "<span class='my-name-underlined'>Twoje Nazwisko</span>" | replace: "T.Frepla Nazwisko", "<span class='my-name-underlined'>T. Nazwisko</span>" }}
+               | replace: "R. A. Bogaczewicz", "<span class='my-name-underlined'>R. A. Bogaczewicz</span>" 
+
+               | replace: "T. Bogaczewicz", "<span class='my-name-underlined'>T. Bogaczewicz</span>" 
+            }}
           </div>
 
-          <!-- Linia 2: Tytuł i Hiperłącze -->
           <div>
             <span style="color: var(--global-text-color);">{{ post.title }},</span>
 
