@@ -7,64 +7,58 @@ author_profile: true
 
 {% include base_path %}
 
-<!-- UNIKALNY KONTENER DLA TEJ PODSTRONY -->
-<div class="page-publications">
-  
 <style>
-  /* --- TRYB JASNY (Default) --- */
-  /* TRYB JASNY */
-  /* Dodajemy więcej selektorów, aby mieć pewność, że trafimy w tytuł */
-  .page-publications h1,
-  .page-publications .page__title,
-  .page-publications .archive__title {
+  /* WYMUSZENIE KOLORÓW TYTUŁU (Globalnie dla tej podstrony) */
+  /* Używamy selektorów, które Jekyll generuje NAD Twoim kontenerem */
+  .page__title, .archive__title, h1 {
     color: #2980b9 !important;
   }
 
-  /* Linki: stan normalny i wszystko w środku */
-  .page-publications .publications-list a, 
-  .page-publications .publications-list a * {
-    color: #258ad8 !important; 
-    text-decoration: underline !important;
-  }
-
-  /* Linki: po najechaniu kursoarem */
-  .page-publications .publications-list a:hover, 
-  .page-publications .publications-list a:hover * {
-    color: #1a5a8a !important;
-  }
-
-  /* --- TRYB CIEMNY (Automatyczne wykrywanie) --- */
-  /* TRYB CIEMNY */
+  /* --- TRYB CIEMNY DLA TYTUŁU --- */
   @media (prefers-color-scheme: dark) {
-    .page-publications h1,
-    .page-publications .page__title,
-    .page-publications .archive__title {
+    .page__title, .archive__title, h1 {
       color: #5dade2 !important;
     }
-     /* Linki w trybie ciemnym */
-    .page-publications .publications-list a, 
-    .page-publications .publications-list a * {
-      color: #85c1e9 !important; 
-    }
-
-    /* Linki po najechaniu w trybie ciemnym */
-    .page-publications .publications-list a:hover, 
-    .page-publications .publications-list a:hover * {
-      color: #ffffff !important; /* Biały przy najechaniu dla kontrastu */
-    }
-  }
-
-  /* Izolacja stylu cytatu */
-  .page-publications .values-header {
-    font-size: 0.8em; 
-    margin-bottom: 35px; 
-    border-left: 2px solid var(--global-text-color); 
-    padding-left: 15px; 
-    line-height: 1.3;
   }
 </style>
+
+<!-- UNIKALNY KONTENER DLA TEJ PODSTRONY -->
+<div class="page-publications">
   
-  <!-- Sekcja z cytatem o Mądrości -->
+  <style>
+    /* STYLE DLA LINKÓW WEWNĄTRZ LISTY */
+    .page-publications .publications-list a, 
+    .page-publications .publications-list a * {
+      color: #258ad8 !important; 
+      text-decoration: underline !important;
+    }
+
+    .page-publications .publications-list a:hover, 
+    .page-publications .publications-list a:hover * {
+      color: #1a5a8a !important;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .page-publications .publications-list a, 
+      .page-publications .publications-list a * {
+        color: #85c1e9 !important; 
+      }
+      .page-publications .publications-list a:hover, 
+      .page-publications .publications-list a:hover * {
+        color: #ffffff !important;
+      }
+    }
+
+    .page-publications .values-header {
+      font-size: 0.8em; 
+      margin-bottom: 35px; 
+      border-left: 2px solid var(--global-text-color); 
+      padding-left: 15px; 
+      line-height: 1.3;
+    }
+  </style>
+
+  <!-- Sekcja z cytatem -->
   <div class="values-header">
     <div style="font-style: italic; margin: 0; color: var(--global-text-color); opacity: 1;">
       „Całe złoto w porównaniu z [Mądrością] jest garścią piasku, a srebro przy niej ma wartość błota”.
@@ -94,4 +88,4 @@ author_profile: true
     {% endfor %}
   </div>
 
-</div> <!-- KONIEC .page-publications -->
+</div>
