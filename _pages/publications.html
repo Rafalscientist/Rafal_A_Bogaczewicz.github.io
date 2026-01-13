@@ -9,7 +9,6 @@ author_profile: true
 {% include base_path %}
 
 <style>
-  /* 1. NUKLEARNE WYMUSZENIE MORSKIEJ ZIELENI (IDENTYCZNE JAK W CONFERENCES) */
   :root, html, body, #main, [class*="page__inner"] {
     --primary-color: #16a085 !important;
     --title-color: #16a085 !important;
@@ -23,7 +22,6 @@ author_profile: true
     opacity: 1 !important;
   }
 
-  /* 2. STYLIZACJA LINKU BIBLIOGRAFICZNEGO (JOURNAL VOL, PAGE (YEAR)) */
   .page-publications .pub-link {
     color: #16a085 !important;
     text-decoration: none !important;
@@ -35,20 +33,17 @@ author_profile: true
     text-decoration: underline !important;
   }
 
-  /* 3. PODKREŚLENIE TWOJEGO NAZWISKA */
   .my-name-underlined {
     text-decoration: underline !important;
     font-weight: 500;
   }
 
-  /* 4. OCHRONA TEKSTU (AUTORZY I TYTUŁ) */
   .page-publications .list__item,
   .page-publications .list__item span,
   .page-publications .list__item div {
     color: var(--global-text-color);
   }
 
-  /* 5. STYL CYTATU O MĄDROŚCI */
   .page-publications .values-header {
     font-size: 0.8em; 
     margin-bottom: 35px; 
@@ -79,23 +74,29 @@ author_profile: true
   <div class="publications-list" style="font-size: 0.85em; clear: both;"> 
     {% for post in posts %}
       <div class="list__item" style="display: flex; align-items: baseline; margin-bottom: 20px; line-height: 1.4;">
-        <!-- Wysokość numeru -->
         <span style="color: var(--global-text-color); min-width: 40px; font-weight: bold; opacity: 0.7;">
           ({{ count }})
         </span>
         
         <div style="flex: 1;">
-          <!-- Linia 1: Autorzy (na wysokości numeru) -->
+          <!-- Linia 1: Próba wyciągnięcia autorów z różnych pól .md -->
           <div style="margin-bottom: 2px;">
-            {% if post.content %}
+            {% capture raw_authors %}
+              {% if post.citation %}
+                {{ post.citation }}
+              {% elsif post.authors %}
+                {{ post.authors }}
+              {% else %}
 
-              {% capture authors_raw %}{{ post.content | strip_html | truncatewords: 25 }}{% endcapture %}
+                {{ post.content | strip_html | truncatewords: 20 }}
+              {% endif %}
+            {% endcapture %}
 
-              {{ authors_raw | replace: "R. A. Bogaczewicz", "<span class='my-name-underlined'>R. A. Bogaczewicz</span>" | replace: "R.A. Bogaczewicz", "<span class='my-name-underlined'>R.A. Bogaczewicz</span>" }}
-            {% endif %}
+
+            {{ raw_authors | replace: "R. A. Bogaczewicz", "<span class='my-name-underlined'>R. A. Bogaczewicz</span>" | replace: "R.A. Bogaczewicz", "<span class='my-name-underlined'>R.A. Bogaczewicz</span>" }}
           </div>
 
-          <!-- Linia 2: Tytuł (nie-link) i Bibliografia (hiperłącze) -->
+          <!-- Linia 2: Tytuł i Hiperłącze bibliograficzne -->
           <div>
             <span>{{ post.title }},</span>
 
@@ -110,5 +111,4 @@ author_profile: true
       {% assign count = count | minus: 1 %}
     {% endfor %}
   </div>
-
 </div>
