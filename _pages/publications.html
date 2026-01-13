@@ -8,46 +8,30 @@ author_profile: true
 {% include base_path %}
 
 <style>
-  /* 1. NUKLEARNE WYMUSZENIE JEDNEJ MORSKIEJ ZIELENI DLA TYTUŁU (UNIWERSALNY 2026) */
+  /* 1. NUKLEARNE WYMUSZENIE MORSKIEJ ZIELENI DLA TYTUŁU STRONY */
   :root, html, body, #main, [class*="page__inner"] {
     --primary-color: #16a085 !important;
     --title-color: #16a085 !important;
-    --link-color: #16a085 !important;
   }
 
-  h1, .page__title, .archive__title, #page-title, [class*="page__inner"] h1 {
+  h1, .page__title, .archive__title, #page-title {
     color: #16a085 !important;
     -webkit-text-fill-color: #16a085 !important;
-    filter: none !important;
-    opacity: 1 !important;
   }
 
-  /* 2. LISTA PUBLIKACJI - UNIWERSALNE KOLORY LINKÓW */
-  .page-publications .publications-list a,
-  .page-publications .publications-list a * {
+  /* 2. STYLIZACJA LINKU BIBLIOGRAFICZNEGO */
+  .page-publications .pub-link {
     color: #16a085 !important;
     text-decoration: none !important;
-    border-bottom: 1px solid transparent !important;
-    transition: border-color 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
 
-  /* 3. EFEKT HOVER - JASNA ZIELEŃ DLA OBU TRYBÓW */
-  .page-publications .publications-list a:hover,
-  .page-publications .publications-list a:hover * {
+  .page-publications .pub-link:hover {
     color: #2ecc71 !important;
     border-bottom: 1px solid #2ecc71 !important;
   }
 
-  /* 4. OCHRONA TEKSTU METADANYCH */
-  .page-publications .list__item,
-  .page-publications .list__item span,
-  .page-publications .list__item div {
-    color: var(--global-text-color);
-    text-decoration: none !important;
-    border-bottom: none !important;
-  }
-
-  /* 5. STYL CYTATU O MĄDROŚCI */
+  /* 3. STYL CYTATU O MĄDROŚCI */
   .page-publications .values-header {
     font-size: 0.8em; 
     margin-bottom: 35px; 
@@ -59,7 +43,6 @@ author_profile: true
 
 <div class="page-publications">
   
-  <!-- Sekcja dwujęzyczna: Księga Mądrości -->
   <div class="values-header">
     <div style="font-style: italic; margin: 0; color: var(--global-text-color); opacity: 1;">
       „W porównaniu z nią [Mądrością] złoto jest tylko piaskiem, a srebro przy niej ma wartość błota.”
@@ -77,19 +60,25 @@ author_profile: true
 
   <div class="publications-list" style="font-size: 0.85em; clear: both;"> 
     {% for post in posts %}
-      <div class="list__item" style="display: flex; align-items: baseline; margin-bottom: 12px; line-height: 1.4;">
+      <div class="list__item" style="display: flex; align-items: baseline; margin-bottom: 15px; line-height: 1.4;">
         <span style="color: var(--global-text-color); min-width: 40px; font-weight: bold; opacity: 0.7;">
           ({{ count }})
         </span>
         <div style="flex: 1;">
-          <h2 style="font-size: 1.1em; margin: 0; display: inline; font-weight: normal;">
-            <a href="{{ post.url }}">
-              {{ post.title }}
-            </a>
-          </h2>
-          <div style="font-size: 1em; margin-top: 2px; color: var(--global-text-color); opacity: 0.8;">
+          <!-- Tytuł artykułu jako zwykły tekst -->
+          <div style="font-size: 1.1em; margin: 0; font-weight: normal; color: var(--global-text-color);">
+            {{ post.title }}
+          </div>
+          
+          <div style="font-size: 1em; margin-top: 3px; color: var(--global-text-color); opacity: 0.9;">
             {% if post.authors %}{{ post.authors }} | {% endif %}
-            <i>{{ post.venue }}</i> | {{ post.date | date: "%Y" }}
+            
+            <!-- Hiperłącze obejmujące Journal, Volume, Pages, Year -->
+            <a href="{{ post.url }}" class="pub-link">
+              <i>{{ post.venue }}</i> 
+              {% if post.volume %}<b>{{ post.volume }}</b>{% endif %}{% if post.pages %}, {{ post.pages }}{% endif %} 
+              ({{ post.date | date: "%Y" }})
+            </a>
           </div>
         </div>
       </div>
