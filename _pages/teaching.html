@@ -9,7 +9,7 @@ author_profile: true
 
 
 <style>
-  /* 1. KOREKTA MENU - SPÓJNE POGRUBIENIE DLA AKTYWNEJ ZAKŁADKI */
+  /* 1. KOREKTA MENU - SPÓJNE POGRUBIENIE */
   .masthead__menu-item a[href="/teaching/"] {
     font-weight: 700 !important; 
     color: inherit !important;
@@ -17,22 +17,13 @@ author_profile: true
     opacity: 1 !important;
   }
 
-  /* 2. UNIWERSALNA ZIELEŃ DLA TYTUŁU STRONY */
-  :root, html, body, #main, [class*="page__inner"] {
-    --primary-color: #16a085 !important;
-    --title-color: #16a085 !important;
-  }
-
+  /* 2. ZIELEŃ DLA TYTUŁU STRONY */
   h1, .page__title, .archive__title, #page-title {
     color: #16a085 !important;
     -webkit-text-fill-color: #16a085 !important;
   }
 
-  /* 3. STYLIZACJA LISTY DYDAKTYKI */
-  .page-teaching .teaching-list {
-    font-size: 0.85em;
-  }
-
+  /* 3. STYLIZACJA CYTATU */
   .page-teaching .values-header {
     font-size: 0.8em; 
     margin-bottom: 35px; 
@@ -41,8 +32,13 @@ author_profile: true
     line-height: 1.3;
   }
 
+  /* 4. LISTA DYDAKTYKI */
+  .page-teaching .teaching-list {
+    font-size: 0.85em;
+  }
+
   .page-teaching .list__item {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     line-height: 1.4;
     color: var(--global-text-color);
   }
@@ -58,7 +54,6 @@ author_profile: true
 
 <div class="page-teaching">
   
-  <!-- Sekcja dwujęzyczna: Cytat JP2 -->
   <div class="values-header">
     <div style="font-style: italic; margin: 0; color: var(--global-text-color);">
       „Musicie od siebie wymagać, nawet gdyby inni od was nie wymagali”.
@@ -80,22 +75,26 @@ author_profile: true
       {% for post in teaching_posts %}
         <div class="list__item">
           <span class="semester-title">{{ post.title }}</span>
-          <div style="color: var(--global-text-color);">
+          <div style="color: var(--global-text-color); font-weight: 500;">
+            {% if post.type %}{{ post.type }}{% endif %}
 
-            {% if post.type %}{{ post.type }} | {% endif %}
-            {{ post.venue }} 
+            {% if post.venue %} | {{ post.venue }}{% endif %}
 
-            {% if post.date %}({{ post.date | date: "%Y" }}){% endif %}
+            {% if post.date %} ({{ post.date | date: "%Y" }}){% endif %}
           </div>
-          {% if post.description %}
-            <div style="margin-top: 5px; opacity: 0.8; font-style: italic;">
+          
+          {% comment %} Wyświetlamy opis z Front Matter lub treść pod kreskami, jeśli istnieją {% endcomment %}
+          <div style="margin-top: 10px; opacity: 0.9; text-align: justify;">
+            {% if post.description %}
               {{ post.description }}
-            </div>
-          {% endif %}
+            {% else %}
+
+              {{ post.content | strip_html }}
+            {% endif %}
+          </div>
         </div>
       {% endfor %}
     {% else %}
-      <!-- OPCJA: AKTYWNA PAUZA (Status: Fizyk Teoretyk 2026) -->
       <div class="list__item">
         <span class="semester-title">Semestr zimowy 2025/2026</span>
         <div style="opacity: 0.9; text-align: justify; line-height: 1.6;"> 
@@ -103,6 +102,5 @@ author_profile: true
         </div>
       </div>
     {% endif %}
-
   </div>
 </div>
