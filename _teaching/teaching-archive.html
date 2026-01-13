@@ -24,24 +24,43 @@ author_profile: true
       color: #ffffff !important;
       border-bottom-color: #ffffff !important;
     }
-  }
+  }  /* 2. NUKLEARNE WYMUSZENIE JASNEJ ZIELENI DLA TYTUŁU - OPCJA TOTALNA */
 
-  /* 2. NUKLEARNE WYMUSZENIE ZIELENI DLA TYTUŁU */
-  :root { --primary-color: #0e7a3a; }
-  h1, .page__title, .archive__title, [class*="page__inner"] h1 {
+  /* Jasny tryb - standard */
+  h1, .page__title, .archive__title, #page-title {
     color: #0e7a3a !important;
   }
 
+  /* Bezlitosny tryb ciemny - uderzamy w ID i zmienne globalne */
   @media (prefers-color-scheme: dark) {
-    html, body, #main, [class*="page__inner"] {
+    /* Nadpisujemy zmienne na każdym możliwym poziomie */
+    :root, html, body, #main, article {
       --primary-color: #11ee4a !important;
       --title-color: #11ee4a !important;
+      --main-color: #11ee4a !important;
     }
-    h1, .page__title, .archive__title, [class*="page__inner"] h1, #main h1 {
+
+    /* Celujemy bezpośrednio w ID tytułu i każdą możliwą klasę nagłówkową */
+    #page-title, 
+    .page__title, 
+    .archive__title, 
+    h1[itemprop="headline"],
+    header h1,
+    .page__inner-wrap h1 {
       color: #11ee4a !important;
       -webkit-text-fill-color: #11ee4a !important;
+      text-shadow: none !important;
       filter: none !important;
+      opacity: 1 !important;
     }
+  }
+
+  /* Wymuszenie dla ręcznych przełączników trybu (klasa .dark) */
+  html.dark #page-title,
+  html.dark .page__title,
+  [data-theme='dark'] #page-title,
+  [data-theme='dark'] .page__title {
+    color: #11ee4a !important;
   }
 
   /* 3. LINKI W TREŚCI - ZIELONE */
