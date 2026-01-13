@@ -30,7 +30,7 @@ author_profile: true
     transition: border-color 0.2s ease-in-out;
   }
 
-  /* TRYB CIEMNY DLA LINKÓW (Pełna ochrona przed Jekyllem) */
+  /* TRYB CIEMNY DLA LINKÓW */
   @media (prefers-color-scheme: dark) {
     .page-teaching .teaching-list a,
     .page-teaching .teaching-list a * { color: #11ee4a !important; }
@@ -43,15 +43,13 @@ author_profile: true
     color: #11ee4a !important;
   }
 
-  /* 3. EFEKT HOVER (Po najechaniu myszką) */
-  /* Tryb Jasny */
+  /* 3. EFEKT HOVER */
   .page-teaching .teaching-list a:hover,
   .page-teaching .teaching-list a:hover * {
     color: #0eab3a !important;
     border-bottom: 1px solid #0eab3a !important;
   }
 
-  /* Tryb Ciemny - Wymuszenie jasnej zieleni #11ee88 */
   @media (prefers-color-scheme: dark) {
     .page-teaching .teaching-list a:hover,
     .page-teaching .teaching-list a:hover * { 
@@ -67,7 +65,7 @@ author_profile: true
     border-bottom: 1px solid #11ee88 !important;
   }
 
-  /* 4. OCHRONA TEKSTU (Nagłówki semestrów) */
+  /* 4. OCHRONA TEKSTU */
   .page-teaching .semester-title {
     font-size: 1.3em; 
     color: var(--global-text-color); 
@@ -75,7 +73,6 @@ author_profile: true
     margin-bottom: 5px;
   }
 
-  /* Styl cytatu */
   .page-teaching .values-header {
     font-size: 0.8em; 
     margin-bottom: 35px; 
@@ -108,10 +105,10 @@ author_profile: true
       </div>
     </div>
 
-    <!-- LINK DO ARCHIWUM -->
+    <!-- LINK DO ARCHIWUM (Zabezpieczony permalink) -->
     <div class="list__item">
       <h2 style="font-size: 1.1em; font-weight: normal; margin: 0;">
-        <a href="/teaching/archive/">
+        <a href="/teaching-archive/">
           Poprzednie semestry / Past semesters
         </a>
       </h2>
