@@ -9,7 +9,7 @@ author_profile: true
 {% include base_path %}
 
 <style>
-  /* 1. NUKLEARNE WYMUSZENIE MORSKIEJ ZIELENI DLA TYTUŁU STRONY */
+  /* 1. NUKLEARNE WYMUSZENIE MORSKIEJ ZIELENI DLA TYTUŁU */
   :root, html, body, #main, [class*="page__inner"] {
     --primary-color: #16a085 !important;
     --title-color: #16a085 !important;
@@ -20,23 +20,22 @@ author_profile: true
     -webkit-text-fill-color: #16a085 !important;
   }
 
-  /* 2. STYLIZACJA LINKU BIBLIOGRAFICZNEGO (JOURNAL, VOL, PAGES, YEAR) */
+  /* 2. STYLIZACJA LINKU ZEWNĘTRZNEGO (JOURNAL / ARXIV) */
   .page-publications .pub-link {
     color: #16a085 !important;
     text-decoration: none !important;
     transition: all 0.2s ease-in-out;
-    display: inline-block;
   }
 
   .page-publications .pub-link:hover {
     color: #2ecc71 !important;
-    border-bottom: 1px solid #2ecc71 !important;
+    text-decoration: underline !important; /* Podkreślenie przy najechaniu */
   }
 
   /* 3. PODKREŚLENIE TWOJEGO NAZWISKA */
   .my-name-underlined {
     text-decoration: underline !important;
-    font-weight: 600 !important;
+    font-weight: 500;
   }
 
   /* 4. STYL CYTATU O MĄDROŚCI */
@@ -51,13 +50,12 @@ author_profile: true
 
 <div class="page-publications">
   
-  <!-- Sekcja mądrości -->
   <div class="values-header">
     <div style="font-style: italic; margin: 0; color: var(--global-text-color); opacity: 1;">
       „Całe złoto w porównaniu z [mądrością] jest garścią piasku, a srebro przy niej ma wartość błota.”
     </div>
     <div style="font-style: italic; margin-top: 2px; margin-bottom: 0; color: var(--global-text-color); opacity: 0.75;">
-      "All gold, in view of [wisdom], is a bit of sand, and before her, silver is to be accounted as clay."
+      "In comparison with her [Wisdom] all gold is but a little sand, and before her silver shall be accounted as clay."
     </div>
     <div style="font-weight: bold; margin-top: 2px; color: var(--global-text-color); opacity: 0.55;">
       — Mdr 7, 9 / Wis 7, 9
@@ -70,42 +68,38 @@ author_profile: true
 
   <div class="publications-list" style="font-size: 0.85em; clear: both;"> 
     {% for post in posts %}
-      <div class="list__item" style="display: flex; align-items: baseline; margin-bottom: 25px; line-height: 1.4;">
-        <!-- Numeracja (count) -->
-        <span style="color: var(--global-text-color); min-width: 40px; font-weight: bold; opacity: 0.7;">
-          ({{ count }})
-        </span>
+      <div class="list__item" style="margin-bottom: 12px; line-height: 1.5;">
         
-        <div style="flex: 1;">
-          <!-- Linia 1: Autorzy (Twoje nazwisko podkreślone) -->
-          <div style="font-weight: normal; color: var(--global-text-color); opacity: 0.95;">
-            {% if post.content %}
-
-              {% capture authors_raw %}{{ post.content | strip_html | truncatewords: 25 }}{% endcapture %}
-              {% comment %} PODMIEŃ PONIŻEJ "Twoje Nazwisko" NA SWOJE DANE Z PLIKÓW .MD {% endcomment %}
-
-              {{ authors_raw | replace: "R. A. Bogaczewicz", "<span class='my-name-underlined'>Twoje Nazwisko</span>" }}
-            {% endif %}
-          </div>
-
-          <!-- Linia 2: Tytuł pracy (Wytłuszczony) -->
-          <div style="font-size: 1.1em; margin-top: 2px; font-weight: bold; color: var(--global-text-color);">
-            {{ post.title }}
-          </div>
+        <span style="color: var(--global-text-color);">
+          <!-- Numeracja -->
+          <span style="font-weight: bold; opacity: 0.7; margin-right: 5px;">({{ count }})</span>
           
-          <!-- Linia 3: Hiperłącze bibliograficzne (Morska zieleń) -->
-          <div style="margin-top: 2px;">
+          <!-- Autorzy z podkreśleniem Twojego nazwiska -->
+          {% if post.content %}
 
-            <a href="{{ post.url | default: post.paperurl }}" class="pub-link">
+            {% capture authors_raw %}{{ post.content | strip_html | truncatewords: 25 }}{% endcapture %}
 
-              <i>{{ post.venue }}</i>{% if post.volume %} <b>{{ post.volume }}</b>{% endif %}{% if post.pages %}, {{ post.pages }}{% endif %} ({{ post.date | date: "%Y" }})
-            </a>
-          </div>
-        </div>
+            {{ authors_raw | replace: "R. A. Bogaczewicz", "<span class='my-name-underlined'>R. A. Bogaczewicz</span>" }}
+          {% endif %}
+          
+          <!-- Tytuł pracy -->
+          <span style="margin-left: 5px;">{{ post.title }},</span>
+        </span>
+
+        <!-- Hiperłącze zewnętrzne (Journal / arXiv) -->
+        {% if post.paperurl or post.link %}
+
+          <a href="{{ post.paperurl | default: post.link }}" class="pub-link" target="_blank" rel="noopener noreferrer">
+
+            <i>{{ post.venue }}</i>{% if post.volume %} <b>{{ post.volume }}</b>{% endif %}{% if post.pages %}, {{ post.pages }}{% endif %} ({{ post.date | date: "%Y" }})
+          </a>
+        {% else %}
+          <span class="pub-link"><i>{{ post.venue }}</i>...</span>
+        {% endif %}
+
       </div>
 
       {% assign count = count | minus: 1 %}
     {% endfor %}
   </div>
-
 </div>
