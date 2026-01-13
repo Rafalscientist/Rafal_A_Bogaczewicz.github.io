@@ -20,7 +20,7 @@ author_profile: true
     color: #11ee4a !important;
   }
 
-  /* 2. LINKI I HOVER (Identyczne jak w poprzednich zakładkach) */
+  /* 2. LINKI I HOVER */
   .page-teaching .teaching-list a,
   .page-teaching .teaching-list a * {
     color: #0e7a3a !important;
@@ -43,17 +43,17 @@ author_profile: true
     }
   }
 
-  /* 3. STYLE TEKSTU */
+  /* 3. STYLE TEKSTU I HIERARCHIA */
   .page-teaching .semester-title {
     font-size: 1.3em; 
     color: var(--global-text-color); 
-    font-weight: bold; 
+    font-weight: normal; 
     margin-bottom: 5px;
   }
-  .page-teaching .course-list {
-    opacity: 0.9;
-    font-size: 1em;
-    color: var(--global-text-color);
+  .page-teaching .archive-link-header {
+    font-size: 1.1em; /* Zmniejszono, by nie dominowało nad tytułem semestru */
+    font-weight: normal;
+    margin: 0;
   }
 </style>
 
@@ -78,24 +78,25 @@ author_profile: true
       <div class="list__item" style="margin-bottom: 30px; line-height: 1.5;">
         
         {% if post.title contains "doktoranckich" or post.title contains "Archive" %}
-          <!-- LINK DO ARCHIWUM (tylko na głównej stronie Dydaktyka) -->
-          <h2 style="margin: 0; font-weight: normal;">
-            <a href="{{ post.url }}" style="font-size: 1.3em;">
+          <!-- LINK DO ARCHIWUM -->
+          <h2 class="archive-link-header">
+            <a href="{{ post.url }}">
               Poprzednie semestry / Past semesters
             </a>
           </h2>
         {% else %}
-          <!-- SEMESTR I PRZEDMIOTY -->
+          <!-- SEMESTR -->
           <div class="semester-title">{{ post.title }}</div>
           
-          <div class="course-list">
+          <div style="opacity: 0.9; font-size: 1em; color: var(--global-text-color);">
             {% if post.type == "current" %}
-              W obecnym semestrze nie prowadzę zajęć dydaktycznych. / No teaching assignments this semester.
+              W obecnym semestrze nie prowadzę zajęć dydaktycznych.
             {% else %}
-              <!-- Tutaj Jekyll wyświetli treść z pliku Markdown danego semestru -->
-              {{ post.content | strip_html | truncatewords: 50 }}
-              <br>
-              <a href="{{ post.url }}">Szczegóły przedmiotu / Course details</a>
+              <!-- Tutaj pojawi się lista przedmiotów z plików .md z przeszłości -->
+              {{ post.content }}
+              <div style="margin-top: 5px;">
+                <a href="{{ post.url }}" style="font-size: 0.9em;">Szczegóły przedmiotów</a>
+              </div>
             {% endif %}
           </div>
         {% endif %}
