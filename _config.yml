@@ -22,19 +22,10 @@ repository               : "rafal-a-bogaczewicz/rafal-a-bogaczewicz.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 
 author:
-  name   : "Twój Imię i Nazwisko"
-  avatar : "/images/profilowe.jpg"
-  bio    : "Fizyk teoretyk" # Możesz tu wpisać specjalizację
-  location: "Wrocław, Poland"
-  
-  # 1. Politechnika Wrocławska zamiast Red Brick
+  name   : "Rafał A. Bogaczewicz"
+  avatar : "assets/images/profilowe.jpg" # lub "/images/profilowe.jpg" jeśli folder jest w głównym katalogu
+  bio    : "Fizyk teoretyk z pasjami"
   employer: "Politechnika Wrocławska"
-  
-  # 2. Usuwamy zbędne (skasuj te linie lub zostaw puste cudzysłowy)
-  uri:       # tu był earth/strona www
-  email:     # usuwamy, by nie być na każde zawołanie
-  
-  # 3. Naukowe (zostawiamy i uzupełniamy linki)
   orcid:         "https://orcid.org/0000-0001-7148-5250"
   researchgate:  "https://www.researchgate.net/profile/Rafal_Bogaczewicz?ev=hdr_xprf"
   academia: "https://pwr-wroc.academia.edu/Rafa%C5%82Bogaczewicz/edit"
