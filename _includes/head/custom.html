@@ -1,29 +1,47 @@
 {% include base_path %}
 
 <style>
-  /* 1. ABSOLUTNE WYMUSZENIE WAGI DLA AKTYWNEJ ZAKŁADKI */
-  /* Dodajemy więcej klas, aby zwiększyć specyficzność selektora */
+  /* 1. GLOBALNY HOVER DLA MENU GÓRNEGO */
+  .masthead__menu-item a:hover {
+    color: #16a085 !important;
+    opacity: 1 !important;
+  }
+
+  /* 2. SYMRETRIA I WAGA MENU (Twoja wybrana opcja) */
   .masthead__menu-item--active a,
-  .masthead__menu-item.active a,
-  header .masthead__menu-item--active a,
-  nav.visible_links .masthead__menu-item--active a {
+  .masthead__menu-item.active a {
     font-weight: 900 !important;
     color: #16a085 !important;
     border-bottom: 3px solid #16a085 !important;
     opacity: 1 !important;
-    /* Dodatkowy trick: text-shadow symuluje pogrubienie, jeśli czcionka stawia opór */
-    text-shadow: 0.5px 0 0 currentColor, -0.5px 0 0 currentColor !important;
+    /* Subtelna kalibracja optyczna */
+    text-shadow: 0.25px 0 0.1px #16a085 !important;
+    letter-spacing: 0.3px;
   }
 
-  /* 2. WYMUSZENIE DLA WSZYSTKICH LINKÓW W MENU (DLA PEWNOŚCI) */
-  .masthead__menu-item a {
+  /* 3. LEWA KOLUMNA (Sidebar: Earth, Email, Scholar, ORCID, GitHub itd.) */
+  .sidebar .author__urls-wrapper a:hover,
+  .sidebar .author__urls-wrapper a:hover i,
+  .sidebar .author__urls-wrapper a:hover span {
+    color: #16a085 !important;
+    opacity: 1 !important;
+    text-decoration: none !important;
+  }
+
+  /* 4. IKONA SŁOŃCA/KSIĘŻYCA (Toggle trybu) */
+  #theme-toggle:hover, .greedy-nav__toggle:hover {
+    color: #16a085 !important;
+  }
+
+  /* 5. PŁYNNOŚĆ PRZEJŚCIA (High-Value Polish) */
+  a, .author__urls i, .author__urls span, .masthead__menu-item a {
     transition: all 0.2s ease-in-out !important;
   }
 </style>
 
 <!-- start custom head snippets -->
 <link rel="stylesheet" href="{{ base_path }}/assets/css/academicons.css"/>
-<!-- favicon i reszta Twoich snippetów bez zmian poniżej... -->
+<!-- favicony i reszta Twoich metadanych poniżej zostaje bez zmian -->
 
 <!-- start custom head snippets -->
 
