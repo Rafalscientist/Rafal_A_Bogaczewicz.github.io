@@ -7,65 +7,59 @@ author_profile: true
 
 {% include base_path %}
 
+
 <style>
-  /* 1. ATOMOWE WYMUSZENIE MENU - POGRUBIENIE I PODKREŚLENIE (KOLOR STANDARD) */
-  .masthead__menu-item a[href*="/teaching"],
-  .masthead__menu-item.active a,
-  .masthead__menu-item--active a {
-    font-weight: 900 !important;
+  /* 1. KOREKTA MENU - SPÓJNE POGRUBIENIE DLA AKTYWNEJ ZAKŁADKI */
+  /* Zmieniamy wagę z 900 na 700 i doprecyzowujemy selektor, by nie psuć innych */
+  .masthead__menu-item a[href="/teaching/"] {
+    font-weight: 700 !important; 
     color: inherit !important;
-    border-bottom: 3px solid currentColor !important;
+    border-bottom: 2px solid #16a085 !important;
     opacity: 1 !important;
   }
 
-  /* 2. UNIWERSALNA ZIELEŃ DLA TYTUŁU (DLA OBU TRYBÓW) */
+  /* 2. UNIWERSALNA ZIELEŃ DLA TYTUŁU */
   :root, html, body, #main, [class*="page__inner"] {
     --primary-color: #16a085 !important;
     --title-color: #16a085 !important;
   }
 
-  h1, .page__title, .archive__title, #page-title, [class*="page__inner"] h1 {
+  h1, .page__title, .archive__title, #page-title {
     color: #16a085 !important;
     -webkit-text-fill-color: #16a085 !important;
-    filter: none !important;
-    opacity: 1 !important;
   }
 
-  /* 3. LISTA DYDAKTYKI - UNIWERSALNE KOLORY LINKÓW */
-  .page-teaching .teaching-list a,
-  .page-teaching .teaching-list a * {
-    color: #16a085 !important;
-    text-decoration: none !important;
-    border-bottom: 1px solid transparent !important;
-    transition: border-color 0.2s ease-in-out;
-  }
-
-  /* 4. UNIWERSALNY HOVER - JASNA ZIELEŃ DLA OBU TRYBÓW */
-  .page-teaching .teaching-list a:hover,
-  .page-teaching .teaching-list a:hover * {
-    color: #2ecc71 !important;
-    border-bottom: 1px solid #2ecc71 !important;
-  }
-
-  /* 5. OCHRONA TEKSTU */
-  .page-teaching .semester-title {
-    font-size: 1.3em; 
-    color: var(--global-text-color); 
-    font-weight: normal; 
-    margin-bottom: 5px;
+  /* 3. STYLIZACJA LISTY DYDAKTYKI */
+  .page-teaching .teaching-list {
+    font-size: 0.85em;
   }
 
   .page-teaching .values-header {
     font-size: 0.8em; 
     margin-bottom: 35px; 
-    border-left: 2px solid var(--global-text-color); 
+    border-left: 3px solid #16a085;
     padding-left: 15px; 
     line-height: 1.3;
+  }
+
+  .page-teaching .list__item {
+    margin-bottom: 25px;
+    line-height: 1.4;
+    color: var(--global-text-color);
+  }
+
+  .page-teaching .semester-title {
+    font-weight: bold;
+    color: #16a085;
+    margin-bottom: 5px;
+    display: block;
+    font-size: 1.2em;
   }
 </style>
 
 <div class="page-teaching">
   
+  <!-- Sekcja dwujęzyczna: Cytat -->
   <div class="values-header">
     <div style="font-style: italic; margin: 0; color: var(--global-text-color);">
       „Musicie od siebie wymagać, nawet gdyby inni od was nie wymagali”.
@@ -79,22 +73,39 @@ author_profile: true
   </div>
 
   <div class="teaching-list"> 
-    <!-- AKTUALNY SEMESTR -->
-    <div class="list__item" style="margin-bottom: 30px; line-height: 1.5;">
-      <div class="semester-title">Semestr zimowy 2025/2026</div>
-      <div style="opacity: 0.9; font-size: 1em; color: var(--global-text-color);">
-        W obecnym semestrze nie prowadzę zajęć dydaktycznych.
+
+
+    {% assign teaching_posts = site.teaching | sort: 'date' | reverse %}
+    
+    {% if teaching_posts.size > 0 %}
+      {% for post in teaching_posts %}
+        <div class="list__item">
+          <span class="semester-title">{{ post.title }}</span>
+          
+          <div style="color: var(--global-text-color);">
+
+            {% if post.type %}{{ post.type }} | {% endif %}
+            {{ post.venue }} 
+
+            {% if post.date %}({{ post.date | date: "%Y" }}){% endif %}
+          </div>
+          
+          {% if post.description %}
+            <div style="margin-top: 5px; opacity: 0.8; font-style: italic;">
+              {{ post.description }}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    {% else %}
+      <!-- Widok awaryjny na 2026, gdy pętla nie znajdzie plików -->
+      <div class="list__item">
+        <span class="semester-title">Semestr zimowy 2025/2026</span>
+        <div style="opacity: 0.9;">
+          W obecnym semestrze nie prowadzę zajęć dydaktycznych.
+        </div>
       </div>
-    </div>
+    {% endif %}
 
-    <!-- LINK DO ARCHIWUM (Zabezpieczony permalink) -->
-    <div class="list__item">
-      <h2 style="font-size: 1.1em; font-weight: normal; margin: 0;">
-        <a href="/teaching-archive/">
-          Poprzednie semestry
-        </a>
-      </h2>
-    </div>
   </div>
-
 </div>
