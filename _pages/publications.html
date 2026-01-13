@@ -77,7 +77,7 @@ author_profile: true
           <div style="font-weight: normal; color: var(--global-text-color); opacity: 0.95;">
             {% if post.content %}
               {% capture authors_raw %}{{ post.content | strip_html | truncatewords: 25 }}{% endcapture %}
-              {{ authors_raw | replace: "Twoje Imię Nazwisko", "<span class='my-name-underlined'>Twoje Imię Nazwisko</span>" }}
+              {{ authors_raw | replace: "R. A. Bogaczewicz", "<span class='my-name-underlined'>Twoje Imię Nazwisko</span>" }}
             {% endif %}
           </div>
 
