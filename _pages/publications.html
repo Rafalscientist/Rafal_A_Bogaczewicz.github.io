@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Publikacje"
+title: "Publikacje / Publications"
 permalink: /publications/
 author_profile: true
 ---
@@ -8,98 +8,93 @@ author_profile: true
 {% include base_path %}
 
 <style>
-  :root {
-    --accent-sea: #16a085;
-    --accent-hover: #2ecc71;
+  /* 1. NUKLEARNE WYMUSZENIE JEDNEJ MORSKIEJ ZIELENI DLA TYTUŁU (UNIWERSALNY 2026) */
+  :root, html, body, #main, [class*="page__inner"] {
+    --primary-color: #16a085 !important;
+    --title-color: #16a085 !important;
+    --link-color: #16a085 !important;
   }
 
-  /* 1. WYMUSZENIE AKTYWNEGO MENU */
-  .masthead__menu-item a[href*="/publications"],
-  .masthead__menu-item.active a {
-    font-weight: 900 !important;
-    color: inherit !important;
-    border-bottom: 3px solid var(--accent-sea) !important;
+  h1, .page__title, .archive__title, #page-title, [class*="page__inner"] h1 {
+    color: #16a085 !important;
+    -webkit-text-fill-color: #16a085 !important;
+    filter: none !important;
+    opacity: 1 !important;
   }
 
-  /* 2. TYTUŁ STRONY - MORSKA ZIELEŃ */
-  h1, .page__title, .archive__title {
-    color: var(--accent-sea) !important;
-    -webkit-text-fill-color: var(--accent-sea) !important;
-    font-weight: 800 !important;
-  }
-
-  /* 3. STYL LISTY PUBLIKACJI */
-  .pub-container {
-    margin-top: 30px;
-  }
-
-  .pub-item {
-    margin-bottom: 25px;
-    padding-left: 15px;
-    border-left: 2px solid rgba(22, 160, 133, 0.2);
-    transition: border-left 0.3s ease;
-  }
-
-  .pub-item:hover {
-    border-left: 2px solid var(--accent-sea);
-  }
-
-  /* 4. TYTUŁY PUBLIKACJI - LINKI */
-  .pub-title {
-    font-size: 1.15em;
-    font-weight: 700;
-    line-height: 1.3;
-    display: block;
-    margin-bottom: 5px;
-  }
-
-  .pub-title a {
-    color: var(--accent-sea) !important;
+  /* 2. LISTA PUBLIKACJI - UNIWERSALNE KOLORY LINKÓW */
+  .page-publications .publications-list a,
+  .page-publications .publications-list a * {
+    color: #16a085 !important;
     text-decoration: none !important;
-    transition: all 0.2s ease;
+    border-bottom: 1px solid transparent !important;
+    transition: border-color 0.2s ease-in-out;
   }
 
-  .pub-title a:hover {
-    color: var(--accent-hover) !important;
-    padding-left: 5px;
+  /* 3. EFEKT HOVER - JASNA ZIELEŃ DLA OBU TRYBÓW */
+  .page-publications .publications-list a:hover,
+  .page-publications .publications-list a:hover * {
+    color: #2ecc71 !important;
+    border-bottom: 1px solid #2ecc71 !important;
   }
 
-  /* 5. METADANE (Autorzy, Journal, Rok) */
-  .pub-meta {
-    font-size: 0.9em;
-    opacity: 0.85;
+  /* 4. OCHRONA TEKSTU METADANYCH */
+  .page-publications .list__item,
+  .page-publications .list__item span,
+  .page-publications .list__item div {
     color: var(--global-text-color);
+    text-decoration: none !important;
+    border-bottom: none !important;
   }
 
-  .pub-year {
-    font-weight: bold;
-    color: var(--accent-sea);
+  /* 5. STYL CYTATU O MĄDROŚCI */
+  .page-publications .values-header {
+    font-size: 0.8em; 
+    margin-bottom: 35px; 
+    border-left: 2px solid var(--global-text-color); 
+    padding-left: 15px; 
+    line-height: 1.3;
   }
 </style>
 
-<div class="pub-container">
-  {% assign publications = site.publications | sort: 'date' | reverse %}
+<div class="page-publications">
   
-  {% for post in publications %}
-    <div class="pub-item">
-      <span class="pub-title">
-        <a href="{{ post.url }}">{{ post.title }}</a>
-      </span>
-      
-      <div class="pub-meta">
-        {% if post.authors %}
-          {{ post.authors }}.
-        {% endif %}
-        
-        <i>{{ post.venue }}</i>, 
-        <span class="pub-year">{{ post.date | date: '%Y' }}</span>.
-      </div>
-
-      {% if post.excerpt %}
-        <div style="font-size: 0.85em; margin-top: 5px; opacity: 0.7; font-style: italic;">
-          {{ post.excerpt | strip_html | truncatewords: 25 }}
-        </div>
-      {% endif %}
+  <!-- Sekcja dwujęzyczna: Księga Mądrości -->
+  <div class="values-header">
+    <div style="font-style: italic; margin: 0; color: var(--global-text-color); opacity: 1;">
+      „W porównaniu z nią [Mądrością] złoto jest tylko piaskiem, a srebro przy niej ma wartość błota.”
     </div>
-  {% endfor %}
+    <div style="font-style: italic; margin-top: 2px; margin-bottom: 0; color: var(--global-text-color); opacity: 0.75;">
+      "In comparison with her [Wisdom] all gold is but a little sand, and before her silver shall be accounted as clay."
+    </div>
+    <div style="font-weight: bold; margin-top: 2px; color: var(--global-text-color); opacity: 0.55;">
+      — Mdr 7, 9 / Wis 7, 9
+    </div>
+  </div>
+
+  {% assign posts = site.publications | sort: 'date' | reverse %}
+  {% assign count = posts.size %}
+
+  <div class="publications-list" style="font-size: 0.85em; clear: both;"> 
+    {% for post in posts %}
+      <div class="list__item" style="display: flex; align-items: baseline; margin-bottom: 12px; line-height: 1.4;">
+        <span style="color: var(--global-text-color); min-width: 40px; font-weight: bold; opacity: 0.7;">
+          ({{ count }})
+        </span>
+        <div style="flex: 1;">
+          <h2 style="font-size: 1.1em; margin: 0; display: inline; font-weight: normal;">
+            <a href="{{ post.url }}">
+              {{ post.title }}
+            </a>
+          </h2>
+          <div style="font-size: 1em; margin-top: 2px; color: var(--global-text-color); opacity: 0.8;">
+            {% if post.authors %}{{ post.authors }} | {% endif %}
+            <i>{{ post.venue }}</i> | {{ post.date | date: "%Y" }}
+          </div>
+        </div>
+      </div>
+      {% assign count = count | minus: 1 %}
+    {% endfor %}
+  </div>
+
 </div>
