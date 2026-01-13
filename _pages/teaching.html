@@ -33,7 +33,6 @@ author_profile: true
     font-size: 0.85em;
   }
 
-  /* Przywrócenie standardowej kreski cytatu (var) */
   .page-teaching .values-header {
     font-size: 0.8em; 
     margin-bottom: 35px; 
@@ -48,7 +47,6 @@ author_profile: true
     color: var(--global-text-color);
   }
 
-  /* Usunięcie koloru z tytułów semestrów (zmiana na kolor bazowy tekstu) */
   .page-teaching .semester-title {
     font-weight: bold;
     color: var(--global-text-color); 
@@ -60,7 +58,7 @@ author_profile: true
 
 <div class="page-teaching">
   
-  <!-- Sekcja dwujęzyczna: Cytat (Z przywróconą standardową kreską) -->
+  <!-- Sekcja dwujęzyczna: Cytat -->
   <div class="values-header">
     <div style="font-style: italic; margin: 0; color: var(--global-text-color);">
       „Musicie od siebie wymagać, nawet gdyby inni od was nie wymagali”.
@@ -82,7 +80,6 @@ author_profile: true
       {% for post in teaching_posts %}
         <div class="list__item">
           <span class="semester-title">{{ post.title }}</span>
-          
           <div style="color: var(--global-text-color);">
 
             {% if post.type %}{{ post.type }} | {% endif %}
@@ -90,7 +87,6 @@ author_profile: true
 
             {% if post.date %}({{ post.date | date: "%Y" }}){% endif %}
           </div>
-          
           {% if post.description %}
             <div style="margin-top: 5px; opacity: 0.8; font-style: italic;">
               {{ post.description }}
@@ -99,11 +95,11 @@ author_profile: true
         </div>
       {% endfor %}
     {% else %}
-      <!-- Widok domyślny 2026 -->
+      <!-- Komunikat spójny z etosem pracy i cytatem JP2 -->
       <div class="list__item">
         <span class="semester-title">Semestr zimowy 2025/2026</span>
-        <div style="opacity: 0.9;">
-          W obecnym semestrze nie prowadzę zajęć dydaktycznych.
+        <div style="opacity: 0.9; text-align: justify;"> 
+          Bieżący semestr poświęcony jest pracy badawczej. Aktualnie nie prowadzę zajęć dydaktycznych.
         </div>
       </div>
     {% endif %}
