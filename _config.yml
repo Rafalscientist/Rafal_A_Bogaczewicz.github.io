@@ -17,7 +17,7 @@ repository               : "rafal-a-bogaczewicz/rafal-a-bogaczewicz.github.io"
 # Site Author
 author:
   name   : "Rafał A. Bogaczewicz"
-  avatar : "/images/themes/profilowe.jpg"
+  avatar : "/themes/profilowe.jpg"
   bio    : "Fizyk teoretyk z pasjami"
   employer: "Politechnika Wrocławska"
   
