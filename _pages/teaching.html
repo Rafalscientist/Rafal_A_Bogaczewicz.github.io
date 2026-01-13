@@ -43,17 +43,11 @@ author_profile: true
     }
   }
 
-  /* 3. STYLE TEKSTU I HIERARCHIA */
   .page-teaching .semester-title {
     font-size: 1.3em; 
     color: var(--global-text-color); 
     font-weight: normal; 
     margin-bottom: 5px;
-  }
-  .page-teaching .archive-link-header {
-    font-size: 1.1em; /* Zmniejszono, by nie dominowało nad tytułem semestru */
-    font-weight: normal;
-    margin: 0;
   }
 </style>
 
@@ -72,37 +66,22 @@ author_profile: true
   </div>
 
   <div class="teaching-list"> 
-    {% assign posts = site.teaching | sort: 'date' | reverse %}
-    
-    {% for post in posts %}
-      <div class="list__item" style="margin-bottom: 30px; line-height: 1.5;">
-        
-        {% if post.title contains "doktoranckich" or post.title contains "Archive" %}
-          <!-- LINK DO ARCHIWUM -->
-          <h2 class="archive-link-header">
-            <a href="{{ post.url }}">
-              Poprzednie semestry / Past semesters
-            </a>
-          </h2>
-        {% else %}
-          <!-- SEMESTR -->
-          <div class="semester-title">{{ post.title }}</div>
-          
-          <div style="opacity: 0.9; font-size: 1em; color: var(--global-text-color);">
-            {% if post.type == "current" %}
-              W obecnym semestrze nie prowadzę zajęć dydaktycznych.
-            {% else %}
-              <!-- Tutaj pojawi się lista przedmiotów z plików .md z przeszłości -->
-              {{ post.content }}
-              <div style="margin-top: 5px;">
-                <a href="{{ post.url }}" style="font-size: 0.9em;">Szczegóły przedmiotów</a>
-              </div>
-            {% endif %}
-          </div>
-        {% endif %}
-        
+    <!-- 1. POKAZUJEMY TYLKO AKTUALNY SEMESTR -->
+    <div class="list__item" style="margin-bottom: 30px; line-height: 1.5;">
+      <div class="semester-title">Semestr zimowy 2025/2026</div>
+      <div style="opacity: 0.9; font-size: 1em; color: var(--global-text-color);">
+        W obecnym semestrze nie prowadzę zajęć dydaktycznych. / No teaching assignments this semester.
       </div>
-    {% endfor %}
+    </div>
+
+    <!-- 2. LINK DO ARCHIWUM -->
+    <div class="list__item">
+      <h2 style="font-size: 1.1em; font-weight: normal; margin: 0;">
+        <a href="/teaching/archive/">
+          Poprzednie semestry / Past semesters
+        </a>
+      </h2>
+    </div>
   </div>
 
 </div>
