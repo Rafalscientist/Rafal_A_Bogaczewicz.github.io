@@ -63,13 +63,14 @@
       {% if author.zotero %}
         <li><a href="{{ author.zotero }}"><i class="ai ai-zotero ai-fw icon-pad-right"></i>Zotero</a></li>
       {% endif %}
-      <!-- Academia -->
+      <!-- Academia - Wersja z inteligentnym filtrem nocnym -->
       {% if author.academia %}
         <li>
-         <a href="{{ author.academia }}" target="_blank" rel="noopener noreferrer">
-           <img src="{{ '/images/logoac.svg' | relative_url }}" 
-                style="width: 17px; height: 17px; margin-right: 8px; vertical-align: middle; filter: none !important;">Academia
-         </a>
+          <a href="{{ author.academia }}" target="_blank" rel="noopener noreferrer">
+            <img src="{{ '/images/logoac.svg' | relative_url }}" 
+                 class="logo-academia" 
+                 style="width:16px; height:16px; margin-right:8px; vertical-align:middle;">Academia
+          </a>
         </li>
       {% endif %}
       <!-- ORCID -->
