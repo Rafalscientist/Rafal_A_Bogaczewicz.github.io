@@ -27,8 +27,26 @@
       {% if author.location %}
         <li class="author__desktop"><i class="fas fa-fw fa-location-dot icon-pad-right" aria-hidden="true"></i>{{ author.location }}</li>
       {% endif %}
+      <!-- Instytut Fizyki Teoretycznej (IFT) - Wersja z wysokim kontrastem -->
       {% if author.employer %}
-        <li class="author__desktop"><i class="fas fa-fw fa-building-columns icon-pad-right" aria-hidden="true"></i>{{ author.employer }}</li>
+        <li class="author__desktop">
+          <style>
+            /* WERSJA ATOMOWA DLA IFT: Cień widoczny tylko w jasnym trybie */
+            .img-ift {
+              /* Podwójny filtr: jeden ciemny do obrysu liter, drugi szary do głębi */
+              filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.8)) 
+                      drop-shadow(0px 0px 2px rgba(0,0,0,0.3)) !important;
+              background-color: transparent !important;
+            }
+            /* W trybie ciemnym wyłączamy obrys, bo białe elementy same świecą na czarnym tle */
+            html[data-theme='dark'] .img-ift {
+              filter: none !important;
+            }
+          </style>
+          <img src="{{ '/images/logoift.png' | relative_url }}" 
+               class="img-ift"
+               style="width:18px; height:18px; margin-right:8px; vertical-align:middle;">{{ author.employer }}
+        </li>
       {% endif %}
       {% if author.uri %}
         <li><a href="{{ author.uri }}"><i class="fas fa-fw fa-link icon-pad-right" aria-hidden="true"></i>{{ site.data.ui-text[site.locale].website_label | default: "Website" }}</a></li>
