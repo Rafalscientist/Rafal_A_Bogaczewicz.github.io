@@ -26,6 +26,10 @@
     margin-left: 0 !important;   // MAX DO LEWEJ KRAWĘDZI
     padding-right: 20px;
     opacity: 1;
+    /* DODAJ TE TRZY LINIE PONIŻEJ: */
+    margin-top: 0 !important;    // Usuwa odstęp nad zdjęciem
+    padding-top: 0 !important;   // Usuwa wewnętrzny odstęp
+    vertical-align: top;         // Wyrównuje do góry
   }
 
   @include breakpoint($x-large) {
