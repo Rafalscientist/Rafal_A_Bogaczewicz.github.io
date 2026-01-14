@@ -37,7 +37,7 @@
     transition: all 0.2s ease-in-out !important;
   }
 
-  /* 6. ŚRODKOWANIE PROFILU (LEWA KOLUMNA - SIDEBAR) */
+  /* 6. ŚRODKOWANIE PROFILU I NAPRAWA WCIĘCIA LISTY */
   .sidebar .author__profile {
     text-align: center !important;
   }
@@ -58,21 +58,28 @@
   }
 
   .author__urls {
-    text-align: left !important; /* Tekst linków wewnątrz listy zostaje od lewej */
-    display: inline-block !important; /* Ale cała lista jest wyśrodkowana względem zdjęcia */
+    display: inline-block !important; /* Lista jako zwarty blok na środku */
+    text-align: left !important;     /* Ale treść wewnątrz bloku od lewej */
+    padding-left: 0 !important;      /* KLUCZ: Usuwamy domyślne wcięcie kropkowe */
+    margin-left: 0 !important;
+    list-style-type: none !important;
   }
 
-  /* 7. WYRÓWNANIE TREŚCI (PRAWA KOLUMNA) - POWRÓT DO LEWEJ */
+  .author__urls li {
+    margin-bottom: 5px;
+  }
+
+  /* 7. WYRÓWNANIE TREŚCI (PRAWA KOLUMNA) */
   .page__title {
-    text-align: left !important; /* Tytuł strony do lewej */
+    text-align: left !important;
   }
 
   .page__content p, .page__content li {
-    text-align: left !important; /* Akapity i listy do lewej */
+    text-align: left !important;
   }
 
   .page__content {
-    margin-left: 0 !important; /* Brak wymuszonego marginesu lewego */
+    margin-left: 0 !important;
   }
 </style>
 
