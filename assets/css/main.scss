@@ -3,7 +3,7 @@
 
 /*
  * Jekyll Main SCSS - Rafał A. Bogaczewicz (2026)
- * WERSJA FINALNA: CZERWONY ORZEŁEK + POPRAWNE IFT
+ * WERSJA FINALNA: CZERWONY ORZEŁEK + DWUKOLOROWE IFT Z KONTRASTEM
  */
 
 @import
@@ -55,7 +55,7 @@ html[data-theme='dark'] {
   background: transparent !important;
 }
 
-/* 2. OCHRONA IKON AKADEMICKICH PRZED ZMIANĄ KOLORU */
+/* 2. OCHRONA IKON AKADEMICKICH */
 .author__urls-wrapper a:hover i.ai,
 .author__urls-wrapper a:hover i.fab,
 .author__urls-wrapper a:hover i.fas {
@@ -63,13 +63,11 @@ html[data-theme='dark'] {
   opacity: 1 !important;
 }
 
-/* Sztywne kolory marek */
 i.ai-orcid { color: #A6CE39 !important; }
 i.fa-researchgate { color: #00CCBB !important; }
 i.ai-academia { color: #212429 !important; }
 
 /* 3. WSTRZYKIWANIE LOGOTYPÓW (PWr i IFT) */
-/* Używamy bardzo precyzyjnego selektora, aby wygrać z motywem */
 .author__urls li i.fa-location-dot::before,
 .author__urls li i.fa-building-columns::before {
   content: "" !important;
@@ -87,33 +85,34 @@ i.ai-academia { color: #212429 !important; }
   background-image: url("/images/logopwr.png") !important;
 }
 
-/* Logo IFT z poświatą (widoczne w dzień) */
+/* Logo IFT - Tryb Jasny (Kontrast dla różu i czerni) */
 .author__urls li i.fa-building-columns::before {
   background-image: url("/images/logoift.png") !important;
-  filter: drop-shadow(0px 0px 2px white) drop-shadow(0px 0px 1px gray) !important;
+  filter: drop-shadow(0px 0px 2px white) drop-shadow(0px 0px 1px rgba(0,0,0,0.3)) !important;
 }
 
-/* 4. TRYB CIEMNY - KLUCZOWA NAPRAWA KWADRATU */
+/* 4. TRYB CIEMNY - ROZWIĄZANIE ATOMOWE DLA LOGOTYPÓW */
 html[data-theme='dark'] {
-  /* Academia na biało */
   i.ai-academia { color: #ffffff !important; }
 
-  /* LOGO IFT: w nocy robimy białe */
+  /* LOGO IFT: Przywrócenie różu + kontrast w nocy */
   .author__urls li i.fa-building-columns::before {
-    filter: brightness(0) invert(1) !important;
+    /* invert(1) robi czarne białym, hue-rotate(180deg) przywraca róż kropki */
+    filter: invert(1) hue-rotate(180deg) brightness(1.2) 
+            drop-shadow(0px 0px 1px rgba(255,255,255,0.8)) !important;
+    mix-blend-mode: normal !important;
   }
 
-  /* LOGO PWR: TU BLOKUJEMY BIAŁY KWADRAT */
+  /* LOGO PWR: Czerwony orzełek bez kwadratu */
   .author__urls li i.fa-location-dot::before {
-    filter: none !important; /* Wyłączamy odwracanie kolorów */
+    filter: none !important;
     background-color: transparent !important;
-    /* Jeśli PNG ma białe tło, multiply je ukryje na ciemnym tle strony */
     mix-blend-mode: multiply !important;
-    opacity: 0.9; /* Delikatnie tonujemy, by nie "świecił" zbyt mocno */
+    opacity: 0.95;
   }
 }
 
-/* 5. PUBLIKACJE I CV - OCHRONA TWOICH USTALEOŃ */
+/* 5. PUBLIKACJE I CV - TWOJE USTALENIA */
 .publication-link, .publication-link:visited {
   color: var(--moj-zielony) !important;
   text-decoration: none !important;
