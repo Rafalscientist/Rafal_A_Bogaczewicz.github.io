@@ -3,7 +3,7 @@
 
 /*
  * Jekyll Main SCSS - Rafał A. Bogaczewicz (2026)
- * Ścieżka: assets/css/main.scss
+ * Finalna kalibracja sidebara: PWr + IFT + Sociale
  */
 
 @import
@@ -37,18 +37,18 @@
    PERSONALIZACJA RAFAŁ A. BOGACZEWICZ - 2026
    ========================================================================== */
 
-/* 1. TWOJA ZIELEŃ DLA CAŁEJ STRONY */
+/* 1. KOLORY */
 :root {
-  --moj-zielony: #2d4f1e;       /* Leśna zieleń (Dzień) */
-  --moj-hover: #006400;         /* Ciemna zieleń (Dzień) */
+  --moj-zielony: #2d4f1e;
+  --moj-hover: #006400;
 }
 
 html[data-theme='dark'] {
-  --moj-zielony: #90EE90;       /* Jasna zieleń (Noc) */
-  --moj-hover: #00FFAB;         /* Neon miętowy (Noc) */
+  --moj-zielony: #90EE90;
+  --moj-hover: #00FFAB;
 }
 
-/* 2. NAPRAWA NAWIGACJI (Talks, Imię, Ikony Social Media) */
+/* 2. NAWIGACJA */
 .greedy-nav a:hover,
 .site-title:hover,
 .masthead__menu-item a:hover,
@@ -60,13 +60,12 @@ html[data-theme='dark'] {
   text-decoration: none !important;
 }
 
-/* Kolor aktywnej zakładki */
 .masthead__menu-item--active a {
   color: var(--moj-zielony) !important;
   font-weight: bold !important;
 }
 
-/* 3. NAPRAWA PUBLIKACJI (Linki bibliograficzne) */
+/* 3. PUBLIKACJE */
 .publication-link, 
 .publication-link:visited,
 .publication-link i, 
@@ -83,7 +82,7 @@ html[data-theme='dark'] {
   text-decoration: underline !important;
 }
 
-/* 4. BLOKADA PODKREŚLANIA TYTUŁÓW PUBLIKACJI */
+/* 4. BLOKADA PODKREŚLEŃ */
 .archive__item-title, 
 .title-static {
   color: var(--global-text-color) !important;
@@ -92,17 +91,36 @@ html[data-theme='dark'] {
   pointer-events: none; 
 }
 
-/* 5. PODMIANA IKON SIDEBARA NA LOGOTYPY (PWr & IFT) */
+/* 5. LOGOTYPY I SKALOWANIE IKON SIDEBARA */
 
-/* Wspólne ustawienia ukrywające stare ikony i wstawiające obrazki */
+/* Ujednolicenie wszystkich kontenerów dla równego startu tekstu */
+.author__urls-wrapper i, 
+.author__urls-wrapper span.ai,
+.author__urls-wrapper .fab,
+.author__urls-wrapper .fas,
+.author__urls-wrapper .ai {
+  width: 24px !important;        /* Stała szerokość kontenera ikony */
+  margin-right: 12px !important;  /* Stały odstęp od tekstu */
+  text-align: center !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
+
+/* Powiększenie ikon społecznościowych (z 13.5px do 18px) */
+.author__urls-wrapper i:not(.fa-map-marker-alt):not(.fa-location-dot):not(.fa-university):not(.fa-building-columns),
+.author__urls-wrapper .ai, 
+.author__urls-wrapper .fab {
+  font-size: 18px !important;
+  line-height: 1 !important;
+}
+
+/* Podmiana ikon PWr i IFT na PNG */
 .author__urls-wrapper i.fa-map-marker-alt,
 .author__urls-wrapper i.fa-location-dot,
 .author__urls-wrapper i.fa-university,
 .author__urls-wrapper i.fa-building-columns {
-  visibility: hidden !important; /* Ukrywa starą pinezkę i dach */
+  visibility: hidden !important;
   position: relative;
-  width: 18px !important;
-  margin-right: 8px !important;
 }
 
 .author__urls-wrapper i.fa-map-marker-alt::before,
@@ -110,40 +128,36 @@ html[data-theme='dark'] {
 .author__urls-wrapper i.fa-university::before,
 .author__urls-wrapper i.fa-building-columns::before {
   content: "" !important;
-  visibility: visible !important; /* Pokazuje logotyp */
+  visibility: visible !important;
   display: inline-block;
   position: absolute;
   left: 0;
-  top: 50%;
+  top: 52%; /* Subtelna korekta pionowa dla logotypów */
   transform: translateY(-50%);
-  width: 18px;
-  height: 18px;
+  width: 21px; 
+  height: 21px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-/* Ścieżka do Orzełka PWr - bez tagów Liquid dla bezpieczeństwa */
-.author__urls-wrapper i.fa-map-marker-alt::before,
+/* Ścieżki do plików graficznych w /images/ */
+.author__urls-wrapper i.fa-map-marker-alt::before, 
 .author__urls-wrapper i.fa-location-dot::before {
   background-image: url("/images/logopwr.png") !important;
 }
 
-/* Ścieżka do Logo IFT */
-.author__urls-wrapper i.fa-university::before,
+.author__urls-wrapper i.fa-university::before, 
 .author__urls-wrapper i.fa-building-columns::before {
-  background-image: url("/images/logoift.png") !important;
-  filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.8)); /* Widoczność białego logo na jasnym tle */
+  background-image: url("/images/logoitp.png") !important;
+  filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.7));
 }
 
-/* Automatyczne dostosowanie do trybu ciemnego */
+/* Dostosowanie do trybu ciemnego */
 html[data-theme='dark'] {
-  /* Jeśli logotypy są czarne, odwracamy na białe */
   .author__urls-wrapper i.fa-map-marker-alt::before {
     filter: brightness(0) invert(1);
   }
-  
-  /* W trybie ciemnym usuwamy cień dla logo IFT */
   .author__urls-wrapper i.fa-university::before {
     filter: none !important;
   }
