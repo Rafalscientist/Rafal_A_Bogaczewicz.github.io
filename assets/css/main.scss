@@ -3,7 +3,7 @@
 
 /*
  * Jekyll Main SCSS - Rafał A. Bogaczewicz (2026)
- * Pełna naprawa: PWr, IFT, Sociale + Interaktywne efekty hover
+ * Pełna spójność sidebara: Blokada zmiany kolorów + Jednolity efekt Hover (Aura)
  */
 
 @import
@@ -37,11 +37,11 @@
    PERSONALIZACJA RAFAŁ A. BOGACZEWICZ - 2026
    ========================================================================== */
 
-/* 1. KOLORY TWOJEJ ZIELENI */
+/* 1. KOLORY */
 :root {
   --moj-zielony: #2d4f1e;
   --moj-hover: #006400;
-  --moj-seledyn: #68d391; /* Do efektu najechania na PNG */
+  --moj-seledyn: #68d391; 
 }
 
 html[data-theme='dark'] {
@@ -50,34 +50,21 @@ html[data-theme='dark'] {
   --moj-seledyn: #00FFAB;
 }
 
-/* 2. NAPRAWA NAWIGACJI I HOVERÓW */
+/* 2. NAPRAWA NAWIGACJI GÓRNEJ */
 .greedy-nav a:hover,
 .site-title:hover,
-.masthead__menu-item a:hover,
-.author__urls-wrapper a:hover,
-.author__urls-wrapper a:hover * {
+.masthead__menu-item a:hover {
   color: var(--moj-hover) !important;
   background: transparent !important;
-  opacity: 1 !important;
+}
+
+/* 3. LOGOTYPY I IKONY SIDEBARA - SPÓJNY EFEKT HOVER */
+
+/* Wyłączenie zmiany koloru fontu dla wszystkich linków w sidebarze przy najechaniu */
+.author__urls-wrapper a:hover {
+  color: inherit !important; /* Tekst nie zmienia koloru na zielony */
   text-decoration: none !important;
 }
-
-.masthead__menu-item--active a {
-  color: var(--moj-zielony) !important;
-  font-weight: bold !important;
-}
-
-/* 3. LINKI W PUBLIKACJACH */
-.publication-link, 
-.publication-link:visited,
-.publication-link i, 
-.publication-link b {
-  color: var(--moj-zielony) !important;
-  text-decoration: none !important;
-  border-bottom: none !important;
-}
-
-/* 4. LOGOTYPY PWr I IFT ORAZ SKALOWANIE IKON */
 
 /* Standaryzacja kontenerów ikon */
 .author__urls-wrapper i, 
@@ -87,15 +74,17 @@ html[data-theme='dark'] {
   text-align: center !important;
   display: inline-block !important;
   vertical-align: middle !important;
+  transition: all 0.2s ease-in-out !important;
+  color: inherit !important; /* Blokada zmiany koloru ikon-fontów */
 }
 
-/* Powiększenie sociali (Orcid, ResearchGate, Academia) */
+/* Powiększenie sociali */
 .author__urls-wrapper i:not(.fa-map-marker-alt):not(.fa-location-dot):not(.fa-university):not(.fa-building-columns):not(.fa-landmark),
 .author__urls-wrapper .ai {
   font-size: 18px !important;
 }
 
-/* Ukrycie standardowych ikon pod PNG */
+/* Ukrycie standardowych ikon PWr/IFT pod PNG */
 .author__urls-wrapper i.fa-map-marker-alt,
 .author__urls-wrapper i.fa-location-dot,
 .author__urls-wrapper i.fa-university,
@@ -105,7 +94,7 @@ html[data-theme='dark'] {
   position: relative;
 }
 
-/* Wstawienie logotypów PNG */
+/* Wstawienie logotypów PNG i ustawienie efektu Hover */
 .author__urls-wrapper i.fa-map-marker-alt::before,
 .author__urls-wrapper i.fa-location-dot::before,
 .author__urls-wrapper i.fa-university::before,
@@ -126,38 +115,26 @@ html[data-theme='dark'] {
   transition: filter 0.2s ease-in-out;
 }
 
-/* Ścieżka do Orzełka PWr */
-.author__urls-wrapper i.fa-map-marker-alt::before, 
-.author__urls-wrapper i.fa-location-dot::before {
+/* Ścieżki do obrazków */
+.author__urls-wrapper i.fa-map-marker-alt::before, .author__urls-wrapper i.fa-location-dot::before {
   background-image: url("/images/logopwr.png") !important;
 }
-
-/* Ścieżka do Logo IFT */
-.author__urls-wrapper i.fa-university::before, 
-.author__urls-wrapper i.fa-building-columns::before,
-.author__urls-wrapper i.fa-landmark::before {
+.author__urls-wrapper i.fa-university::before, .author__urls-wrapper i.fa-landmark::before {
   background-image: url("/images/logoift.png") !important;
-  filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.7));
 }
 
-/* EFEKT HOVER DLA LOGOTYPÓW PNG (Seledynowa aura) */
-.author__urls-wrapper a:hover i.fa-map-marker-alt::before,
-.author__urls-wrapper a:hover i.fa-location-dot::before,
-.author__urls-wrapper a:hover i.fa-university::before,
-.author__urls-wrapper a:hover i.fa-landmark::before {
+/* JEDNOLITY EFEKT HOVER (AURA) DLA WSZYSTKICH IKON W SIDEBARZE */
+/* Dotyczy zarówno PNG, jak i ikon fontowych (Orcid itp.) */
+.author__urls-wrapper a:hover i::before,
+.author__urls-wrapper a:hover i,
+.author__urls-wrapper a:hover span.ai {
   filter: drop-shadow(0 0 5px var(--moj-seledyn)) brightness(1.2) !important;
+  color: inherit !important; /* Zapewnienie, że fonty nie zmienią koloru */
 }
 
-/* 5. DOSTOSOWANIE DO TRYBU CIEMNEGO */
+/* Tryb Ciemny */
 html[data-theme='dark'] {
   .author__urls-wrapper i.fa-map-marker-alt::before {
     filter: brightness(0) invert(1);
-  }
-  .author__urls-wrapper a:hover i.fa-map-marker-alt::before {
-    filter: brightness(0) invert(1) drop-shadow(0 0 5px var(--moj-seledyn)) !important;
-  }
-  .author__urls-wrapper i.fa-university::before,
-  .author__urls-wrapper i.fa-landmark::before {
-    filter: none !important;
   }
 }
