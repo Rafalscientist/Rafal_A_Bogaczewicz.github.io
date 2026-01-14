@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SIDEBAR - Rafał A. Bogaczewicz - Version 2026.01.14 (Fixed Centering)
+   SIDEBAR - Rafał A. Bogaczewicz - Version 2026.01.14 (Nuklearne Centrowanie)
    ========================================================================== */
 
 .sidebar {
@@ -97,8 +97,8 @@
   font-size: $type-size-5;
   text-align: left; 
 
-  /* SYNCHRONIZACJA: 1200px wymusza środek przy zoomie 133% */
-  @media screen and (max-width: 1200px) {
+  /* Próg 1440px wymusza środek przy zoomie 133% */
+  @media screen and (max-width: 1440px) {
     text-align: center !important; 
     display: block !important;
     width: 100% !important;
@@ -110,8 +110,8 @@
   font-size: $type-size-6;
   text-align: left; 
 
-  /* SYNCHRONIZACJA: 1200px wymusza środek przy zoomie 133% */
-  @media screen and (max-width: 1200px) {
+  /* Próg 1440px wymusza środek przy zoomie 133% */
+  @media screen and (max-width: 1440px) {
     text-align: center !important; 
     display: block !important;
     width: 100% !important;
@@ -178,10 +178,10 @@
 }
 
 /* ==========================================================================
-   FINALNA POPRAWKA CENTROWANIA DLA ZOOMU 133% (THRESHOLD: 1200px)
+   FINALNA POPRAWKA CENTROWANIA DLA ZOOMU 133% (THRESHOLD: 1440px)
    ========================================================================== */
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1440px) {
   .author__avatar {
     text-align: center !important;
     img {
