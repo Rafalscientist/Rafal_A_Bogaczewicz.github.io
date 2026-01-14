@@ -1,45 +1,43 @@
-{% include base_path %}
-
 {% if page.author and site.data.authors[page.author] %}
   {% assign author = site.data.authors[page.author] %}
 {% else %}
   {% assign author = site.author %}
 {% endif %}
 
-<style>
-  /* ATOMOWE WYMUSZENIE LINII DLA PWR I IFT */
-  .author__urls .author__desktop {
-    display: flex !important;
-    align-items: center !important; /* Środkuje pionowo obrazek i tekst */
-    flex-wrap: nowrap !important; /* Zabrania spadania tekstu pod obrazek */
-    line-height: 1.2 !important;
-    margin-bottom: 5px !important;
-  }
-
-  /* Styl dla obrazków w sidebarze */
-  .sidebar-icon-img {
-    width: 18px !important;
-    height: 18px !important;
-    margin-right: 8px !important;
-    flex-shrink: 0 !important; /* Obrazek nie zostanie ściśnięty */
-    filter: none !important;
-  }
-
-  /* Specyficzna inwersja dla loga Academia w trybie ciemnym */
-  html[data-theme='dark'] .img-ac-atom {
-    filter: invert(1) brightness(2) !important;
-  }
-
-  /* Kontrast dla IFT w trybie jasnym */
-  .img-ift-atom {
-    filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.8)) !important;
-  }
-  html[data-theme='dark'] .img-ift-atom {
-    filter: none !important;
-  }
-</style>
-
 <div itemscope itemtype="http://schema.org/Person">
+
+  <style>
+    /* ATOMOWE WYMUSZENIE LINII DLA PWR I IFT */
+    .author__urls .author__desktop {
+      display: flex !important;
+      align-items: center !important; /* Środkuje pionowo obrazek i tekst */
+      flex-wrap: nowrap !important; /* Zabrania spadania tekstu pod obrazek */
+      line-height: 1.2 !important;
+      margin-bottom: 5px !important;
+    }
+
+    /* Styl dla obrazków w sidebarze */
+    .sidebar-icon-img {
+      width: 18px !important;
+      height: 18px !important;
+      margin-right: 8px !important;
+      flex-shrink: 0 !important; /* Obrazek nie zostanie ściśnięty */
+      filter: none !important;
+    }
+
+    /* Specyficzna inwersja dla loga Academia w trybie ciemnym */
+    html[data-theme='dark'] .img-ac-atom {
+      filter: invert(1) brightness(2) !important;
+    }
+
+    /* Kontrast dla IFT w trybie jasnym */
+    .img-ift-atom {
+      filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.8)) !important;
+    }
+    html[data-theme='dark'] .img-ift-atom {
+      filter: none !important;
+    }
+  </style>
 
   <div class="author__avatar">
     {% if author.avatar contains "://" %}
