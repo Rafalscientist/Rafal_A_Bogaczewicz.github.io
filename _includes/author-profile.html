@@ -26,7 +26,7 @@
     <button class="btn btn--inverse">Follow</button>
     <ul class="author__urls social-icons">
       
-      <!-- 1. LOKALIZACJA (PWr) - WYMUSZENIE LINII -->
+      <!-- 1. LOKALIZACJA (PWr) -->
       {% if author.location %}
         <li class="author__desktop" style="display: flex !important; align-items: center !important; margin-bottom: 8px !important;">
           <img src="{{ '/images/logopwr.png' | relative_url }}" 
@@ -35,13 +35,9 @@
         </li>
       {% endif %}
 
-      <!-- 2. PRACODAWCA (IFT) - WYMUSZENIE LINII + KONTRAST -->
+      <!-- 2. PRACODAWCA (IFT) -->
       {% if author.employer %}
         <li class="author__desktop" style="display: flex !important; align-items: center !important; margin-bottom: 8px !important;">
-          <style>
-            .img-ift-atom { filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.8)) drop-shadow(0px 0px 2px rgba(0,0,0,0.3)) !important; }
-            html[data-theme='dark'] .img-ift-atom { filter: none !important; }
-          </style>
           <img src="{{ '/images/logoift.png' | relative_url }}" 
                class="img-ift-atom"
                style="width: 18px; height: 18px; margin-right: 10px; flex-shrink: 0;">
@@ -49,13 +45,10 @@
         </li>
       {% endif %}
 
-      <!-- 3. ACADEMIA - INTELIGENTNY FILTR NOCNY -->
+      <!-- 3. ACADEMIA -->
       {% if author.academia %}
         <li style="display: flex !important; align-items: center !important;">
           <a href="{{ author.academia }}" target="_blank" rel="noopener noreferrer" style="display: flex !important; align-items: center !important; color: inherit; text-decoration: none;">
-            <style>
-              html[data-theme='dark'] .img-ac-atom { filter: invert(1) brightness(2) !important; }
-            </style>
             <img src="{{ '/images/logoac.svg' | relative_url }}" 
                  class="img-ac-atom"
                  style="width: 17px; height: 17px; margin-right: 10px; filter: none !important;">
@@ -91,14 +84,28 @@
 </div>
 
 <style>
-  /* GLOBALNA NAPRAWA HOVERA DLA SIDEBARA */
+  /* KONSOLIDACJA STYLI - SIDEBAR RAFAŁ B. 2026 */
+  
+  /* IFT Kontrast */
+  .img-ift-atom { 
+    filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.8)) drop-shadow(0px 0px 2px rgba(0,0,0,0.3)) !important; 
+  }
+  html[data-theme='dark'] .img-ift-atom { 
+    filter: none !important; 
+  }
+
+  /* Academia Dark Mode */
+  html[data-theme='dark'] .img-ac-atom { 
+    filter: invert(1) brightness(2) !important; 
+  }
+
+  /* Hover efekty dla linków */
   .author__urls-wrapper a:hover { 
     color: #16a085 !important; 
   }
   .author__urls-wrapper a:hover span { 
     color: #16a085 !important; 
   }
-  /* Blokada zmiany koloru dla obrazków przy najechaniu */
   .author__urls-wrapper a:hover img { 
     filter: inherit !important; 
     opacity: 1 !important; 
