@@ -1,18 +1,22 @@
 ---
-layout: archive
-title: "Fizyka"
-permalink: /
+layout: single
 author_profile: true
-redirect_from: 
-  - /about/
-  - /about.html
+title: "O mnie"
 ---
 
-# 🏗️ Strona w budowie / Under construction
+Witaj! Jestem doktorantem w **Instytucie Fizyki Teoretycznej PWr**. 
 
-Witaj 👋 Obecnie przygotowuję swoją witrynę akademicką.
-
-Zapraszam wkrótce – znajdą się tu informacje o moich badaniach i nie tylko ;)
+### Zainteresowania naukowe
+*   **Optyka kwantowa ciała stałego**
+*   **Fonony oddziałujące z emiterem**
+*   **Kwantowe układy otwarte**
+### Kontakt
+*   **E-mail:** rafal.bogaczewicz@pwr.edu.pl
+*   **Adres:** Instytut Fizyki Teoretycznej, ul. [Ulica], [Miasto]
+*   **Godziny konsultacji:** [Dla studentów - to pokazuje Twoją dyscyplinę]
+*   **Adres:** Instytut Fizyki Teoretycznej, ul. [Ulica], [Miasto]
+*   **Godziny konsultacji:** [Dla studentów - to pokazuje Twoją dyscyplinę]
 
 ---
-*„Najpiękniejszą rzeczą, jakiej możemy doświadczyć, jest oczarowanie tajemnicą.”* — Albert Einstein
+
+> "Wszystko złoto w zestawieniu z mądrością jest piaskiem marnym." (Mdr 7,9)
