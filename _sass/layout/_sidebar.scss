@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SIDEBAR - Rafał A. Bogaczewicz - Version 2026.01
+   SIDEBAR - Rafał A. Bogaczewicz - Version 2026.01.14
    ========================================================================== */
 
 .sidebar {
@@ -26,7 +26,6 @@
     margin-left: 0 !important;   // MAX DO LEWEJ KRAWĘDZI
     padding-right: 20px;
     opacity: 1;
-    /* DODAJ TE TRZY LINIE PONIŻEJ: */
     margin-top: 0 !important;    // Usuwa odstęp nad zdjęciem
     padding-top: 0 !important;   // Usuwa wewnętrzny odstęp
     vertical-align: top;         // Wyrównuje do góry
@@ -51,12 +50,16 @@
     font-size: $type-size-6;
     line-height: 1.5;
   }
+
+  img {
+    width: 100%;
+  }
 }
 
 /* --- PROFIL AUTORA --- */
 
 .author__avatar {
-  display: block !important; // Zapobiega spłaszczaniu zdjęcia przy zoomie
+  display: block !important; 
   width: auto;
   
   @include breakpoint($large) {
@@ -66,10 +69,10 @@
   }
 
   img {
-    max-width: 175px !important; // STAŁY ROZMIAR ZDJĘCIA
+    max-width: 175px !important; 
     width: 175px !important;
     border-radius: 50%;
-    margin-left: 0 !important;   // ZDJĘCIE DO LEWEJ
+    margin-left: 0 !important;   
     border: 1px solid var(--global-border-color);
     padding: 5px;
   }
@@ -78,7 +81,7 @@
 .author__content {
   display: block !important;
   vertical-align: top;
-  padding-left: 0 !important; // USUWA WCIĘCIE
+  padding-left: 0 !important; 
   line-height: 1.2;
 
   @include breakpoint($large) {
@@ -101,7 +104,7 @@
   text-align: left;
 }
 
-/* --- LINKI I IKONY (POZIOME PRZY ZOOMIE/MOBILE) --- */
+/* --- LINKI I IKONY --- */
 
 .author__urls-wrapper {
   position: relative;
@@ -116,19 +119,19 @@
 }
 
 .author__urls {
-  display: flex !important;      // DOMYŚLNIE POZIOMO (Dla mobile i zoom)
-  flex-wrap: wrap !important;    // PRZECHODZENIE DO NOWEJ LINII
+  display: flex !important;      
+  flex-wrap: wrap !important;    
   list-style: none !important;
   margin: 0 !important;
   padding: 0 !important;
 
   @include breakpoint($large) {
-    display: block !important;   // WRACA DO LISTY PIONOWEJ NA DESKTOPIE
+    display: block !important;   
   }
 
   li {
     white-space: nowrap;
-    margin-right: 15px;          // ODSTĘP MIĘDZY IKONAMI POZIOMO
+    margin-right: 15px;          
     
     @include breakpoint($large) {
       margin-right: 0;
@@ -158,4 +161,33 @@
 /* Ukrywanie przycisku "Follow" na desktopie */
 .author__urls-wrapper button {
   display: none;
+}
+
+/* ==========================================================================
+   POPRAWKA CENTROWANIA DLA ZOOMU 133% / MOBILE
+   ========================================================================== */
+
+@media screen and (max-width: 1024px) {
+  .author__avatar {
+    text-align: center !important;
+    img {
+      margin: 0 auto 15px auto !important; // Środkuje zdjęcie
+    }
+  }
+
+  .author__content {
+    text-align: center !important; // Środkuje Imię i Bio
+  }
+
+  .author__name {
+    text-align: center !important;
+  }
+
+  .author__bio {
+    text-align: center !important;
+  }
+
+  .author__urls {
+    justify-content: center !important; // Środkuje poziome linki
+  }
 }
