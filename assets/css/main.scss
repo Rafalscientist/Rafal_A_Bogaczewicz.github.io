@@ -3,7 +3,7 @@
 
 /*
  * Jekyll Main SCSS - Rafał A. Bogaczewicz (2026)
- * POWRÓT DO WERSJI SUKCESU - PWr i IFT WIDOCZNE
+ * KOMPLETNA WERSJA FINALNA: LOGOTYPY + OCHRONA IKON
  */
 
 @import
@@ -37,7 +37,7 @@
    PERSONALIZACJA RAFAŁ A. BOGACZEWICZ - 2026
    ========================================================================== */
 
-/* 1. TWOJA ZIELEŃ DLA CAŁEJ STRONY */
+/* 1. ZMIENNE KOLORYSTYCZNE */
 :root {
   --moj-zielony: #2d4f1e;       /* Leśna zieleń (Dzień) */
   --moj-hover: #006400;         /* Ciemna zieleń (Dzień) */
@@ -58,23 +58,25 @@ html[data-theme='dark'] {
   text-decoration: none !important;
 }
 
-/* OCHRONA IKON W SIDEBARZE PRZED ZMIANĄ KOLORU */
-/* Wykluczamy ikony marek (Orcid, Academia, RG) oraz nasze logotypy PWr/IFT */
+/* OCHRONA IKON W SIDEBARZE PRZED ZMIANĄ KOLORU NA ZIELONY */
 .author__urls-wrapper a:hover i.fab, 
 .author__urls-wrapper a:hover i.fa-brands,
 .author__urls-wrapper a:hover i.fa-map-marker-alt,
-.author__urls-wrapper a:hover i.fa-university {
-  color: inherit !important; /* Zachowuje oryginalny kolor ikony */
+.author__urls-wrapper a:hover i.fa-university,
+.author__urls-wrapper a:hover i.fa-building-columns {
+  color: inherit !important; 
   opacity: 1 !important;
 }
 
-/* Specyficzne kolory dla marek (opcjonalnie, jeśli chcesz by były kolorowe) */
+/* Kolory ikon marek */
 .fa-orcid { color: #A6CE39 !important; }
 .fa-researchgate { color: #00CCBB !important; }
 .fa-academia { color: #212429 !important; }
 
-html[data-theme='dark'] {
-  .fa-academia { color: #ffffff !important; } /* Widoczność na ciemnym tle */
+/* Kolor aktywnej zakładki w menu */
+.masthead__menu-item--active a {
+  color: var(--moj-zielony) !important;
+  font-weight: bold !important;
 }
 
 /* 3. NAPRAWA PUBLIKACJI (Linki bibliograficzne) */
@@ -96,9 +98,9 @@ html[data-theme='dark'] {
   pointer-events: none; 
 }
 
-/* 5. PODMIANA IKON SIDEBARA NA LOGOTYPY */
+/* 5. PODMIANA IKON SIDEBARA NA LOGOTYPY (PWr & IFT) */
 
-/* Ukrywamy standardowe ikony */
+/* Ukrywamy standardowe ikony FontAwesome */
 .author__urls-wrapper i.fa-map-marker-alt,
 .author__urls-wrapper i.fa-location-dot,
 .author__urls-wrapper i.fa-university,
@@ -109,7 +111,7 @@ html[data-theme='dark'] {
   margin-right: 8px !important;
 }
 
-/* Wstawiamy nasze logotypy PNG */
+/* Przygotowanie miejsca pod PNG */
 .author__urls-wrapper i.fa-map-marker-alt::before,
 .author__urls-wrapper i.fa-location-dot::before,
 .author__urls-wrapper i.fa-university::before,
@@ -128,22 +130,28 @@ html[data-theme='dark'] {
   background-position: center;
 }
 
-/* Ścieżka do Orzełka PWr */
+/* Ścieżka do logotypu PWr */
 .author__urls-wrapper i.fa-map-marker-alt::before,
 .author__urls-wrapper i.fa-location-dot::before {
   background-image: url("/images/logopwr.png") !important;
 }
 
-/* Ścieżka do Logo IFT */
+/* Ścieżka do logotypu IFT */
 .author__urls-wrapper i.fa-university::before,
 .author__urls-wrapper i.fa-building-columns::before {
   background-image: url("/images/logoift.png") !important;
-  filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.7));
 }
 
-/* Dostosowanie do trybu ciemnego */
+/* DOSTOSOWANIE DO TRYBU CIEMNEGO (DARK MODE) */
 html[data-theme='dark'] {
-  .author__urls-wrapper i.fa-map-marker-alt::before {
-    filter: brightness(0) invert(1);
+  /* Ikona Academia na biało */
+  .fa-academia { color: #ffffff !important; }
+
+  /* Logotypy PNG na biało (inwersja) */
+  .author__urls-wrapper i.fa-map-marker-alt::before,
+  .author__urls-wrapper i.fa-location-dot::before,
+  .author__urls-wrapper i.fa-university::before,
+  .author__urls-wrapper i.fa-building-columns::before {
+    filter: brightness(0) invert(1) !important;
   }
 }
