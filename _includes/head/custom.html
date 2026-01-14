@@ -37,7 +37,7 @@
     transition: all 0.2s ease-in-out !important;
   }
 
-  /* 6. ŚRODKOWANIE PROFILU (LEWA KOLUMNA) */
+  /* 6. ŚRODKOWANIE PROFILU (LEWA KOLUMNA - SIDEBAR) */
   .sidebar .author__profile {
     text-align: center !important;
   }
@@ -58,23 +58,21 @@
   }
 
   .author__urls {
-    text-align: left !important; /* Ikony z tekstem wewnątrz listy lepiej wyglądają od lewej */
-    display: inline-block !important; /* Ale sama lista jest wyśrodkowana */
+    text-align: left !important; /* Tekst linków wewnątrz listy zostaje od lewej */
+    display: inline-block !important; /* Ale cała lista jest wyśrodkowana względem zdjęcia */
   }
 
-  /* 7. ŚRODKOWANIE I ESTETYKA TREŚCI (PRAWA KOLUMNA) */
+  /* 7. WYRÓWNANIE TREŚCI (PRAWA KOLUMNA) - POWRÓT DO LEWEJ */
   .page__title {
-    text-align: center !important;
+    text-align: left !important; /* Tytuł strony do lewej */
   }
 
-  .page__content p {
-    text-align: justify !important; /* Wygląd jak w artykule naukowym */
-    hyphens: auto; /* Automatyczne dzielenie wyrazów dla lepszego justify */
+  .page__content p, .page__content li {
+    text-align: left !important; /* Akapity i listy do lewej */
   }
 
   .page__content {
-    margin-left: auto !important;
-    margin-right: auto !important;
+    margin-left: 0 !important; /* Brak wymuszonego marginesu lewego */
   }
 </style>
 
