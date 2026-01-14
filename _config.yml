@@ -18,7 +18,7 @@ author:
   avatar : "rafal.jpg"
   bio    : "Fizyk teoretyk z pasjami"
   # Instytut - wymuszamy wyświetlanie w jednej linii
-  employer: '<a href="www.kft.pwr.edu.pl" target="_blank" style="color: inherit; text-decoration: none; display: inline;">Instytut Fizyki Teoretycznej PWr</a>'
+  employer: '<a href="www.kft.pwr.edu.pl" target="_blank" style="color: inherit; text-decoration: none;">Instytut Fizyki Teoretycznej PWr</a>'
   # PWr - logo i tekst zablokowane przed łamaniem linii
   location: '<span style="display: inline-flex; align-items: center; white-space: nowrap;"><img src="pwr.edu.pl" style="width: 15px; height: 15px; margin-right: 5px; display: inline-block; vertical-align: middle;"><a href="pwr.edu.pl" target="_blank" style="color: inherit; text-decoration: none; display: inline;">Politechnika Wrocławska</a></span>'
   orcid:         "orcid.org"
