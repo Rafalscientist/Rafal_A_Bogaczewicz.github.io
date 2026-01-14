@@ -43,7 +43,7 @@
 ;
 
 /* ==========================================================================
-   SYSTEMOWA NAPRAWA KOLORÓW I NAWIGACJI - 2026
+   PERSONALIZACJA RAFAŁ A. BOGACZEWICZ - 2026
    ========================================================================== */
 
 /* 1. TWOJA ZIELEŃ DLA CAŁEJ STRONY */
@@ -99,4 +99,56 @@ html[data-theme='dark'] {
   text-decoration: none !important;
   border-bottom: none !important;
   pointer-events: none; 
+}
+
+/* 5. PODMIANA IKON SIDEBARA NA LOGOTYPY (PWr & IFT) */
+
+/* Ustawienia wspólne dla nowych ikon */
+.author__urls-wrapper i.fa-map-marker-alt,
+.author__urls-wrapper i.fa-location-dot,
+.author__urls-wrapper i.fa-university,
+.author__urls-wrapper i.fa-building-columns {
+  visibility: hidden; /* Ukrywamy standardową ikonę FontAwesome */
+  position: relative;
+  width: 20px;
+  margin-right: 8px;
+}
+
+.author__urls-wrapper i.fa-map-marker-alt::before,
+.author__urls-wrapper i.fa-location-dot::before,
+.author__urls-wrapper i.fa-university::before,
+.author__urls-wrapper i.fa-building-columns::before {
+  visibility: visible; /* Pokazujemy nasz logotyp */
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Podmiana lokalizacji na Orzełka PWr */
+.author__urls-wrapper i.fa-map-marker-alt::before,
+.author__urls-wrapper i.fa-location-dot::before {
+  background-image: url('{{ "/assets/images/logo-pwr.svg" | relative_url }}');
+}
+
+/* Podmiana pracodawcy na logo IFT */
+.author__urls-wrapper i.fa-university::before,
+.author__urls-wrapper i.fa-building-columns::before {
+  background-image: url('{{ "/assets/images/logo-ift.svg" | relative_url }}');
+}
+
+/* Inwersja kolorów dla trybu ciemnego (jeśli logotypy są czarne) */
+html[data-theme='dark'] {
+  .author__urls-wrapper i.fa-map-marker-alt::before,
+  .author__urls-wrapper i.fa-location-dot::before,
+  .author__urls-wrapper i.fa-university::before,
+  .author__urls-wrapper i.fa-building-columns::before {
+    filter: brightness(0) invert(1);
+  }
 }
