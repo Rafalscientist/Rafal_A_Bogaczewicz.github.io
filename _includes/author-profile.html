@@ -1,5 +1,11 @@
 {% include base_path %}
 
+{% if page.author and site.data.authors[page.author] %}
+  {% assign author = site.data.authors[page.author] %}
+{% else %}
+  {% assign author = site.author %}
+{% endif %}
+
 <style>
   /* ATOMOWE WYMUSZENIE LINII DLA PWR I IFT */
   .author__urls .author__desktop {
@@ -32,12 +38,6 @@
     filter: none !important;
   }
 </style>
-
-{% if page.author and site.data.authors[page.author] %}
-  {% assign author = site.data.authors[page.author] %}
-{% else %}
-  {% assign author = site.author %}
-{% endif %}
 
 <div itemscope itemtype="http://schema.org/Person">
 
