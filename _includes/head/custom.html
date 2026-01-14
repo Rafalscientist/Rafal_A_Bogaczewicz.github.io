@@ -7,7 +7,7 @@
     opacity: 1 !important;
   }
 
-  /* 2. SYMRETRIA I WAGA MENU */
+  /* 2. SYMRETRIA I WAGA MENU GÓRNEGO */
   .masthead__menu-item--active a,
   .masthead__menu-item.active a {
     font-weight: 900 !important;
@@ -32,13 +32,12 @@
     color: #16a085 !important;
   }
 
-  /* 5. PŁYNNOŚĆ PRZEJŚCIA */
+  /* 5. PŁYNNOŚĆ PRZEJŚĆ */
   a, .author__urls i, .author__urls span, .masthead__menu-item a {
     transition: all 0.2s ease-in-out !important;
   }
 
-  /* 6. ŚRODKOWANIE PROFILU I OSTATECZNA NAPRAWA PIONOWEJ LINII */
-  /* Dodajemy klasy .author__bio i .p-org, bo tam często siedzi Politechnika */
+  /* 6. ŚRODKOWANIE PROFILU I DEFINITYWNA NAPRAWA PIONOWEJ LINII */
   .sidebar .author__profile {
     text-align: center !important;
   }
@@ -53,7 +52,8 @@
     text-align: center !important;
   }
 
-  .author__urls, .author__bio {
+  /* Kontener na listę linków i biogram */
+  .author__urls, .author__bio, .author__location {
     display: inline-flex !important;
     flex-direction: column !important;
     text-align: left !important;
@@ -62,48 +62,47 @@
     list-style-type: none !important;
   }
 
-  /* UNIFIKACJA WIERSZY - Politechnika, Instytut, Academia itd. */
-  .author__urls li a, .author__bio, .author__urls li {
+  /* Ujednolicenie struktury każdego wiersza w sidebarze */
+  .author__urls li, .author__urls li a, .author__bio, .author__location {
     display: flex !important;
-    align-items: center !important;
+    align-items: center !important; /* Środkowanie pionowe ikony i tekstu */
     justify-content: flex-start !important;
     padding: 3px 0 !important;
     text-decoration: none !important;
+    border: none !important;
   }
 
-  /* UKRYWANIE STARYCH IKON (DUCHÓW) */
-  .author__urls li a i, .author__bio i, .author__urls li i {
+  /* UKRYWANIE STARYCH IKON FONT AWESOME (Duchy, które spychały tekst) */
+  .sidebar i, .sidebar .fas, .sidebar .fab, .sidebar .ai {
     display: none !important;
-    width: 0 !important;
-    margin: 0 !important;
   }
 
-  /* TWOJE IKONKI PNG/SVG - SZTYWNA RAMA 20x20px + MARGINES 12px */
-  .author__urls li img, .author__bio img {
-    width: 20px !important;
-    height: 20px !important;
-    min-width: 20px !important;
-    margin-right: 12px !important; /* TO TWORZY IDEALNĄ LINIĘ PIONOWĄ */
-    object-fit: contain !important;
-    display: block !important;
+  /* TWOJE IKONKI PNG/SVG - SZTYWNE WYMIARY I IDEALNA LINIA */
+  .sidebar img:not(.author__avatar img) {
+    display: inline-block !important;
+    width: 20px !important;         /* Stała szerokość każdej ikonki */
+    height: 20px !important;        /* Stała wysokość każdej ikonki */
+    min-width: 20px !important;     /* Blokada przed ściskaniem */
+    margin-right: 12px !important;  /* STAŁY ODSTĘP - TO ON TWORZY LINIĘ PIONOWĄ */
+    object-fit: contain !important; /* Zachowanie proporcji ikon */
     flex-shrink: 0 !important;
+    border: none !important;
   }
 
-  /* WYRÓWNANIE TEKSTU */
-  .author__urls li a span, .author__bio {
+  /* WYRÓWNANIE TEKSTU LINKÓW I AFILIACJI */
+  .author__urls li a span, .author__bio, .author__location {
     line-height: 1.3 !important;
     margin: 0 !important;
+    display: inline-block !important;
   }
 
   /* 7. WYRÓWNANIE TREŚCI (PRAWA KOLUMNA) */
   .page__title {
     text-align: left !important;
   }
-
   .page__content p, .page__content li {
     text-align: left !important;
   }
-
   .page__content {
     margin-left: 0 !important;
   }
