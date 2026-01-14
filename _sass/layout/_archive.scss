@@ -10,9 +10,9 @@
   }
 
   @include breakpoint($large) {
-    @include span(7.5 of 12 last); /* Zmiana z 10 na 7.5 */
-    @include prefix(1.0 of 12);  /* Bez zmian */
-    @include suffix(0.5 of 12);  /* Dodajemy suffix dla symetrii */
+    @include span(8.75 of 12 last); /* Zmiana z 10 na 7.5 */
+    @include prefix(0.25 of 12);  /* Bez zmian */
+    @include suffix(0 of 12);  /* Dodajemy suffix dla symetrii */
   }
 
   a {
@@ -191,9 +191,9 @@
       }
 
       .archive__item-body {
-        @include span(8 of 12 last);
-        @include prefix(0.5 of 12);
-        @include suffix(0.5 of 12);
+        @include span(8.75 of 12 last);
+        @include prefix(0.25 of 12);
+        @include suffix(0 of 12);
       }
     }
   }
@@ -214,9 +214,9 @@
       }
 
       .archive__item-body {
-        @include span(8 of 12 last rtl);
-        @include prefix(0.5 of 12);
-        @include suffix(0.5 of 12);
+        @include span(8.75 of 12 last rtl);
+        @include prefix(0.25 of 12);
+        @include suffix(0 of 12);
       }
     }
   }
