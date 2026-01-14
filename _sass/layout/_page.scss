@@ -18,9 +18,9 @@
 
 .page {
   @include breakpoint($large) {
-    @include span(7.5 of 12 last); /* Zmienione z 10 na 7.5 */
-    @include prefix(1.0 of 12);  /* Zostawiamy mały margines od sidebaru */
-    @include suffix(0.5 of 12);  /* Zmniejszyłem suffix z 2 na 0.5, żeby tekst był szerszy */
+    @include span(8.75 of 12 last); /* Zmienione z 10 na 8.75 */
+    @include prefix(0.25 of 12);  /* Zostawiamy mały margines od sidebaru */
+    @include suffix(0.0 of 12);  /* Zmniejszyłem suffix z 2 na 0.5, żeby tekst był szerszy */
   }
 
   .page__inner-wrap {
@@ -385,7 +385,7 @@
   float: left;
 
   @include breakpoint($large) {
-    @include pre(4 of 12);
+    @include pre(3.25 of 12);
   }
 
   a {
