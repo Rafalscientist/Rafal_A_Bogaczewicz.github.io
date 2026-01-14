@@ -252,3 +252,14 @@
     }
   }
 }
+
+/* --- ATOMOWE WYRÓWNANIE TYTUŁU DO ZDJĘCIA --- */
+.archive__title, 
+.page__title {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.archive {
+  margin-top: 0 !important;
+}
