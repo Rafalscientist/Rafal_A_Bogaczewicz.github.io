@@ -3,7 +3,7 @@
 
 /*
  * Jekyll Main SCSS - Rafał A. Bogaczewicz (2026)
- * WERSJA IDENTYCZNA: LOGOTYPY NIEZMIENNE W OBU TRYBACH
+ * WERSJA FINALNA: LOGOTYPY NIEZMIENNE + SEPARACJA HOVERA (IKONA/TEKST)
  */
 
 @import
@@ -55,17 +55,25 @@ html[data-theme='dark'] {
   background: transparent !important;
 }
 
-/* 2. OCHRONA IKON AKADEMICKICH */
-.author__urls-wrapper a:hover i.ai,
-.author__urls-wrapper a:hover i.fab,
-.author__urls-wrapper a:hover i.fas {
+/* 2. HOVER W SIDEBARZE: ROZDZIELENIE IKONY OD TEKSTU */
+/* Tekst linku (Academia, ResearchGate, ORCID) robi się zielony */
+.author__urls-wrapper a:hover {
+  color: var(--moj-hover) !important;
+  text-decoration: none !important;
+}
+
+/* Ikony zachowują swoje stałe kolory i NIE przejmują zieleni tekstu */
+.author__urls-wrapper a:hover i,
+.author__urls-wrapper a:hover span.ai {
   color: inherit !important;
   opacity: 1 !important;
 }
 
+/* Stałe kolory ikon marek */
 i.ai-orcid { color: #A6CE39 !important; }
 i.fa-researchgate { color: #00CCBB !important; }
 i.ai-academia { color: #212429 !important; }
+html[data-theme='dark'] i.ai-academia { color: #ffffff !important; }
 
 /* 3. LOGOTYPY PNG (PWr i IFT) - DEFINICJA BAZOWA */
 .author__urls li i.fa-location-dot::before,
@@ -80,43 +88,38 @@ i.ai-academia { color: #212429 !important; }
   background-position: center !important;
 }
 
-/* Orzełek PWr - Zawsze taki sam */
+/* Orzełek PWr - Czerwony */
 .author__urls li i.fa-location-dot::before {
   background-image: url("/images/logopwr.png") !important;
 }
 
-/* Logo IFT - Zawsze takie samo (Różowe I + Białe TP) */
+/* Logo IFT - Różowe I + Białe TP */
 .author__urls li i.fa-building-columns::before {
   background-image: url("/images/logoift.png") !important;
-  /* Delikatny cień dla widoczności na jasnym tle */
   filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.3)) !important;
 }
 
-/* 4. TRYB CIEMNY - CAŁKOWITA BLOKADA ZMIAN DLA LOGO */
+/* 4. TRYB CIEMNY - BLOKADA ZMIAN DLA LOGO I PWR */
 html[data-theme='dark'] {
-  i.ai-academia { color: #ffffff !important; }
-
-  /* WYMUSZAMY IDENTYCZNY WYGLĄD IFT I PWR W NOCY */
-  .author__urls li i.fa-building-columns::before,
-  .author__urls li i.fa-location-dot::before {
-    filter: none !important;            /* Żadnego odwracania kolorów! */
-    -webkit-filter: none !important;
-    background-color: transparent !important;
-    opacity: 1 !important;
+  /* Blokujemy zielony hover dla lokalizacji i pracodawcy, by nie "mrugały" */
+  .author__urls li:hover {
+    color: inherit !important;
   }
 
-  /* Specjalnie dla PWr, by zniknęło białe tło (jeśli jest) */
+  /* LOGO IFT I PWR W NOCY - BEZ INWERSJI */
+  .author__urls li i.fa-building-columns::before,
+  .author__urls li i.fa-location-dot::before {
+    filter: none !important;
+    background-color: transparent !important;
+  }
+
+  /* PWr: multiply wycina ewentualne białe tło */
   .author__urls li i.fa-location-dot::before {
     mix-blend-mode: multiply !important;
   }
-  
-  /* Specjalnie dla IFT, by zachować białe elementy na ciemnym tle */
-  .author__urls li i.fa-building-columns::before {
-    mix-blend-mode: normal !important;
-  }
 }
 
-/* 5. PUBLIKACJE I CV */
+/* 5. PUBLIKACJE I CV - OCHRONA USTALEŃ */
 .publication-link, .publication-link:visited {
   color: var(--moj-zielony) !important;
   text-decoration: none !important;
