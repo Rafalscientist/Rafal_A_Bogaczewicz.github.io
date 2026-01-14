@@ -95,13 +95,27 @@
   margin: 10px 0 !important;
   font-family: $sans-serif;
   font-size: $type-size-5;
-  text-align: left;
+  text-align: left; /* Domyślnie na komputerze: do lewej */
+
+  /* WARUNEK DLA ZOOMU 133%+ / SMARTFONÓW */
+  @media screen and (max-width: 1024px) {
+    text-align: center !important; /* Tutaj wymuszamy środek */
+    display: block !important;
+    width: 100% !important;
+  }
 }
 
 .author__bio {
   margin: 10px 0 20px 0;
   font-size: $type-size-6;
-  text-align: left;
+  text-align: left; /* Domyślnie na komputerze: do lewej */
+
+  /* WARUNEK DLA ZOOMU 133%+ / SMARTFONÓW */
+  @media screen and (max-width: 1024px) {
+    text-align: center !important; /* Tutaj wymuszamy środek */
+    display: block !important;
+    width: 100% !important;
+  }
 }
 
 /* --- LINKI I IKONY --- */
@@ -177,14 +191,6 @@
 
   .author__content {
     text-align: center !important; // Środkuje Imię i Bio
-  }
-
-  .author__name {
-    text-align: center !important;
-  }
-
-  .author__bio {
-    text-align: center !important;
   }
 
   .author__urls {
