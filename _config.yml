@@ -17,11 +17,10 @@ author:
   name   : "Rafał A. Bogaczewicz"
   avatar : "rafal.jpg"
   bio    : "Fizyk teoretyk z pasjami"
-  location: "Politechnika Wrocławska"
-  location_url: "https://pwr.edu.pl/"
-  employer: "Instytut Fizyki Teoretycznej PWR" 
-  employer_url: "https://www.kft.pwr.edu.pl/"
-  # Linki naukowe
+  # Wyżej: Instytut (obok ikony dachu) - wstawiamy czysty link HTML
+  employer: '<a href="https://www.kft.pwr.edu.pl/" target="_blank" style="color: inherit; text-decoration: none;">Instytut Fizyki Teoretycznej PWr</a>'
+  # Niżej: PWr (obok ikony lokalizacji) - wstawiamy logo + link HTML
+  location: '<img src="pwr.edu.pl" style="width: 15px; height: 15px; vertical-align: middle; margin-right: 3px;"><a href="https://pwr.edu.pl/" target="_blank" style="color: inherit; text-decoration: none;">Politechnika Wrocławska</a>'  # Linki naukowe
   orcid:         "orcid.org"
   researchgate:  "www.researchgate.net"
   academia:      "pwr-wroc.academia.edu"
