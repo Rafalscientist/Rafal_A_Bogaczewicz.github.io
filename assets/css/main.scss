@@ -3,7 +3,7 @@
 
 /*
  * Jekyll Main SCSS - Rafał A. Bogaczewicz (2026)
- * WERSJA ATOMOWA V2: CZERWONY ORZEŁEK W NOCY + NAPRAWA IFT
+ * WERSJA FINALNA: CZERWONY ORZEŁEK + POPRAWNE IFT
  */
 
 @import
@@ -37,7 +37,6 @@
    PERSONALIZACJA RAFAŁ A. BOGACZEWICZ - 2026
    ========================================================================== */
 
-/* 1. KOLORYSTYKA */
 :root {
   --moj-zielony: #2d4f1e;
   --moj-hover: #006400;
@@ -48,7 +47,7 @@ html[data-theme='dark'] {
   --moj-hover: #00FFAB;
 }
 
-/* 2. NAWIGACJA GÓRNA */
+/* 1. NAWIGACJA GÓRNA */
 .greedy-nav a:hover,
 .site-title:hover,
 .masthead__menu-item a:hover {
@@ -56,26 +55,26 @@ html[data-theme='dark'] {
   background: transparent !important;
 }
 
-/* 3. BLOKADA HOVERÓW W SIDEBARZE (ORCID, RESEARCHGATE, ACADEMIA) */
-.author__urls-wrapper a:hover,
-.author__urls-wrapper a:hover i,
-.author__urls-wrapper a:hover span {
+/* 2. OCHRONA IKON AKADEMICKICH PRZED ZMIANĄ KOLORU */
+.author__urls-wrapper a:hover i.ai,
+.author__urls-wrapper a:hover i.fab,
+.author__urls-wrapper a:hover i.fas {
   color: inherit !important;
   opacity: 1 !important;
-  text-decoration: none !important;
 }
 
-/* Stałe kolory dla ikon akademickich */
+/* Sztywne kolory marek */
 i.ai-orcid { color: #A6CE39 !important; }
 i.fa-researchgate { color: #00CCBB !important; }
 i.ai-academia { color: #212429 !important; }
 
-/* 4. LOGOTYPY PNG (PWr i IFT) */
-.author__urls i.fa-location-dot::before,
-.author__urls i.fa-building-columns::before {
+/* 3. WSTRZYKIWANIE LOGOTYPÓW (PWr i IFT) */
+/* Używamy bardzo precyzyjnego selektora, aby wygrać z motywem */
+.author__urls li i.fa-location-dot::before,
+.author__urls li i.fa-building-columns::before {
   content: "" !important;
   visibility: visible !important;
-  display: inline-block;
+  display: inline-block !important;
   width: 18px !important;
   height: 18px !important;
   background-size: contain !important;
@@ -83,36 +82,38 @@ i.ai-academia { color: #212429 !important; }
   background-position: center !important;
 }
 
-/* Orzełek PWr - Ustawienia podstawowe */
-.author__urls i.fa-location-dot::before {
+/* Orzełek PWr */
+.author__urls li i.fa-location-dot::before {
   background-image: url("/images/logopwr.png") !important;
 }
 
-/* Logo IFT - Podwójna poświata dla widoczności detali w trybie jasnym */
-.author__urls i.fa-building-columns::before {
+/* Logo IFT z poświatą (widoczne w dzień) */
+.author__urls li i.fa-building-columns::before {
   background-image: url("/images/logoift.png") !important;
-  filter: drop-shadow(0px 0px 2px white) drop-shadow(0px 0px 1px rgba(0,0,0,0.5)) !important;
+  filter: drop-shadow(0px 0px 2px white) drop-shadow(0px 0px 1px gray) !important;
 }
 
-/* 5. SPECJALNE USTAWIENIA DLA TRYBU CIEMNEGO (DARK MODE) */
+/* 4. TRYB CIEMNY - KLUCZOWA NAPRAWA KWADRATU */
 html[data-theme='dark'] {
-  /* Academia staje się biała */
+  /* Academia na biało */
   i.ai-academia { color: #ffffff !important; }
 
-  /* LOGO IFT: Zamieniamy na białe, żeby litery były widoczne */
-  .author__urls i.fa-building-columns::before {
+  /* LOGO IFT: w nocy robimy białe */
+  .author__urls li i.fa-building-columns::before {
     filter: brightness(0) invert(1) !important;
   }
 
-  /* LOGO PWR: Blokujemy inwersję, żeby orzełek został CZERWONY */
-  .author__urls i.fa-location-dot::before {
-    filter: none !important;
-    /* Multiply usunie białe tło, jeśli plik PNG nie jest przezroczysty */
-    mix-blend-mode: multiply !important; 
+  /* LOGO PWR: TU BLOKUJEMY BIAŁY KWADRAT */
+  .author__urls li i.fa-location-dot::before {
+    filter: none !important; /* Wyłączamy odwracanie kolorów */
+    background-color: transparent !important;
+    /* Jeśli PNG ma białe tło, multiply je ukryje na ciemnym tle strony */
+    mix-blend-mode: multiply !important;
+    opacity: 0.9; /* Delikatnie tonujemy, by nie "świecił" zbyt mocno */
   }
 }
 
-/* 6. DODATKI I NAPRAWY */
+/* 5. PUBLIKACJE I CV - OCHRONA TWOICH USTALEOŃ */
 .publication-link, .publication-link:visited {
   color: var(--moj-zielony) !important;
   text-decoration: none !important;
