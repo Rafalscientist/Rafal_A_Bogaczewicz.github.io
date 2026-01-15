@@ -7,13 +7,22 @@
 <div itemscope itemtype="http://schema.org/Person">
 
   <style>
-    /* ATOMOWE WYMUSZENIE LINII DLA PWR I IFT */
+    /* UNIFIKACJA ODSTĘPÓW I WYRÓWNANIA */
     .author__urls .author__desktop {
       display: flex !important;
-      align-items: center !important; /* Środkuje pionowo obrazek i tekst */
-      flex-wrap: nowrap !important; /* Zabrania spadania tekstu pod obrazek */
+      align-items: center !important; 
+      flex-wrap: nowrap !important;
       line-height: 1.2 !important;
-      margin-bottom: 5px !important;
+      margin-bottom: 10px !important; /* Jednolity odstęp pionowy dla wszystkich */
+    }
+
+    /* Usunięcie domyślnych marginesów z linków wewnątrz listy */
+    .author__urls .author__desktop a {
+      display: flex !important;
+      align-items: center !important;
+      text-decoration: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
     }
 
     /* Styl dla obrazków w sidebarze */
@@ -21,20 +30,20 @@
       width: 18px !important;
       height: 18px !important;
       margin-right: 8px !important;
-      flex-shrink: 0 !important; /* Obrazek nie zostanie ściśnięty */
+      flex-shrink: 0 !important;
       filter: none !important;
     }
 
-    /* Specyficzna inwersja dla loga Academia w trybie ciemnym */
-    html[data-theme='dark'] .img-ac-atom {
-      filter: invert(1) brightness(2) !important;
+    /* Filtry dla konkretnych logotypów */
+    html[data-theme='dark'] .img-ac { 
+      filter: invert(1) brightness(2) !important; 
     }
 
-    /* Kontrast dla IFT w trybie jasnym */
-    .img-ift-atom {
-      filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.8)) !important;
+    .img-ift {
+      filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.8)) 
+              drop-shadow(0px 0px 2px rgba(0,0,0,0.3)) !important;
     }
-    html[data-theme='dark'] .img-ift-atom {
+    html[data-theme='dark'] .img-ift {
       filter: none !important;
     }
   </style>
@@ -56,71 +65,53 @@
   <div class="author__urls-wrapper">
     <button class="btn btn--inverse">Follow</button>
     <ul class="author__urls social-icons">
-      <!-- Font Awesome icons / Biographic information  -->
-      <!-- Lokalizacja: Politechnika Wrocławska (Zamiast pinezki) -->
+      
+      <!-- 1. Lokalizacja: PWr -->
       {% if author.location %}
         <li class="author__desktop">
-          <img src="{{ '/images/logopwr.png' | relative_url }}" 
-               class="sidebar-icon-img" 
-               alt="PWr Logo">
+          <img src="{{ '/images/logopwr.png' | relative_url }}" class="sidebar-icon-img" alt="PWr Logo">
           {{ author.location }}
         </li>
       {% endif %}
-      <!-- Instytut Fizyki Teoretycznej (IFT) - Wersja z wysokim kontrastem -->
+
+      <!-- 2. Pracodawca: IFT -->
       {% if author.employer %}
         <li class="author__desktop">
-          <style>
-            /* WERSJA ATOMOWA DLA IFT: Cień widoczny tylko w jasnym trybie */
-            .img-ift {
-              /* Podwójny filtr: jeden ciemny do obrysu liter, drugi szary do głębi */
-              filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.8)) 
-                      drop-shadow(0px 0px 2px rgba(0,0,0,0.3)) !important;
-              background-color: transparent !important;
-            }
-            /* W trybie ciemnym wyłączamy obrys, bo białe elementy same świecą na czarnym tle */
-            html[data-theme='dark'] .img-ift {
-              filter: none !important;
-            }
-          </style>
-          <img src="{{ '/images/logoift.png' | relative_url }}" 
-               class="img-ift"
-               style="width:18px; height:18px; margin-right:8px; vertical-align:middle;">{{ author.employer }}
+          <img src="{{ '/images/logoift.png' | relative_url }}" class="sidebar-icon-img img-ift" alt="IFT Logo">
+          {{ author.employer }}
         </li>
       {% endif %}
-      <!-- Academia - Wersja z inteligentnym filtrem nocnym -->
+
+      <!-- 3. Academia -->
       {% if author.academia %}
-        <li>
+        <li class="author__desktop">
           <a href="{{ author.academia }}" target="_blank" rel="noopener noreferrer">
-            <style>
-              /* Ten styl lokalny wymusi biały kolor tylko w trybie ciemnym */
-              html[data-theme='dark'] .img-ac { 
-                filter: invert(1) brightness(2) !important; 
-              }
-            </style>
-            <img src="{{ '/images/logoac.svg' | relative_url }}" 
-                 class="img-ac"
-                 style="width:16px; height:16px; margin-right:8px; vertical-align:middle; filter:none;">Academia
+            <img src="{{ '/images/logoac.svg' | relative_url }}" class="sidebar-icon-img img-ac" alt="Academia Logo">
+            Academia
           </a>
         </li>
       {% endif %}
-      <!-- ORCID -->
+
+      <!-- 4. ORCID -->
       {% if author.orcid %}
-        <li>
+        <li class="author__desktop">
           <a href="{{ author.orcid }}" target="_blank" rel="noopener noreferrer">
-            <img src="{{ '/images/logoorcid.svg' | relative_url }}" 
-                 style="width: 17px; height: 17px; margin-right: 8px; vertical-align: middle; filter: none !important;">ORCID
+            <img src="{{ '/images/logoorcid.svg' | relative_url }}" class="sidebar-icon-img" alt="ORCID Logo">
+            ORCID
           </a>
         </li>
       {% endif %}
-      <!-- ResearchGate -->
+
+      <!-- 5. ResearchGate -->
       {% if author.researchgate %}
-        <li>
+        <li class="author__desktop">
           <a href="{{ author.researchgate }}" target="_blank" rel="noopener noreferrer">
-            <img src="{{ '/images/logorg.svg' | relative_url }}" 
-                 style="width: 17px; height: 17px; margin-right: 8px; vertical-align: middle; filter: none !important;">ResearchGate
+            <img src="{{ '/images/logorg.svg' | relative_url }}" class="sidebar-icon-img" alt="RG Logo">
+            ResearchGate
           </a>
         </li>
       {% endif %}    
+
     </ul>
   </div>
 </div>
