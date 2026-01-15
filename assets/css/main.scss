@@ -76,15 +76,23 @@ i.fa-researchgate { color: #00CCBB !important; }
 i.ai-academia { color: #212429 !important; }
 html[data-theme='dark'] i.ai-academia { color: #ffffff !important; }
 
-/* UKRYCIE PRZYCISKU FOLLOW W SIDEBARZE */
-.author__urls-wrapper button {
+/* ABSOLUTNE USUNIĘCIE PRZYCISKU FOLLOW / MENU MOBILNEGO */
+.author__urls-wrapper button, 
+.author__urls-wrapper .btn {
   display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-/* Usunięcie zbędnych marginesów, które zostają po przycisku */
-.author__urls.social-icons {
-  display: flex !important;
-  margin-top: 0 !important;
+/* Wymuszenie, by lista linków była zawsze widoczna, nawet po ukryciu przycisku */
+.author__urls {
+  display: flex !important; /* Na mobile chcemy flex (ikony obok siebie) */
+  
+  @media screen and (min-width: 1024px) {
+    display: block !important; /* Na desktopie lista w pionie */
+  }
 }
 
 /* 3. LOGOTYPY PNG (PWr i IFT) - ROZMIAR DOPASOWANY DO NOWYCH IKON */
