@@ -19,12 +19,12 @@
 .page {
   @include breakpoint($large) {
     /* 
-       KOREKTA GEOMETRII: 
-       8.25 of 12 last - daje więcej miejsca dla sidebara (poprzednio 8.75)
-       prefix(0.75) - zwiększa szczelinę bezpieczeństwa (poprzednio 0.25)
+       KOREKTA GEOMETRII (WERSJA ZBLIŻONA): 
+       8.5 of 12 last - prawa kolumna jest szersza (bliżej lewej)
+       prefix(0.5) - mniejsza szczelina, by kolumny były bliżej siebie
     */
-    @include span(8.25 of 12 last); 
-    @include prefix(0.75 of 12);  
+    @include span(8.5 of 12 last); 
+    @include prefix(0.5 of 12);  
     @include suffix(0.0 of 12); 
     float: right !important; // Gwarantuje, że treść trzyma się prawej strony
   }
@@ -39,6 +39,7 @@
     }
   }
 }
+
 
 .page__title {
   margin-top: 0 !important;
@@ -411,13 +412,5 @@
 .page__inner-wrap {
   overflow-wrap: break-word; /* Chroni przed wyjeżdżaniem długich słów poza kartę */
   word-wrap: break-word;
-}
-
-@media screen and (max-width: 1024px) {
-  .page {
-    width: 100% !important;
-    padding: 0 !important; /* Na mobile rezygnujemy z prefixów, by mieć więcej miejsca */
-    margin: 0 !important;
-  }
 }
 
