@@ -1,71 +1,27 @@
-{% include base_path %}
-
 <style>
-  /* 1. GLOBALNY HOVER DLA MENU GÓRNEGO - MORSKA ZIELEŃ */
+  /* GLOBALNA MORSKA ZIELEŃ DLA TYTUŁÓW I MENU */
+  h1, .page__title, .archive__title, .masthead__menu-item--active a {
+    color: #16a085 !important;
+  }
+
   .masthead__menu-item a:hover {
     color: #16a085 !important;
-    opacity: 1 !important;
   }
 
-  /* 2. SYMETRIA I WAGA AKTYWNEJ ZAKŁADKI */
-  .masthead__menu-item--active a,
-  .masthead__menu-item.active a {
-    font-weight: 900 !important;
-    color: #16a085 !important;
-    border-bottom: 3px solid #16a085 !important;
-    opacity: 1 !important;
-    text-shadow: 0.25px 0 0.1px #16a085 !important;
-    letter-spacing: 0.3px;
-  }
-
-  /* 3. WYMUSZENIE LEWEJ STRONY DLA ZDJĘCIA I PROFILU */
-  /* Kasujemy stare centrowanie, które psuło pionową linię */
-  .sidebar .author__profile, 
-  .author__avatar {
+  /* SIDEBAR ALIGNMENT */
+  .sidebar .author__profile, .author__avatar {
     text-align: left !important;
   }
 
   .author__avatar img {
     margin-left: 0 !important;
-    margin-right: auto !important;
     display: block !important;
-  }
-
-  /* 4. PRZYWRÓCENIE WIDOCZNOŚCI IKON (ORCID, RG, ACADEMIA) */
-  /* Usunięto display:none, który był tutaj wcześniej */
-  .sidebar i, .sidebar .ai {
-    display: inline-block !important;
-    margin-right: 10px !important;
-    visibility: visible !important;
-  }
-
-  /* 5. STYLIZACJA TEKSTU W SIDEBARZE - LEWA STRONA */
-  .author__urls, .author__bio, .author__location {
-    text-align: left !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-  }
-
-  /* 6. PŁYNNOŚĆ PRZEJŚĆ */
-  a, .author__urls i, .author__urls span, .masthead__menu-item a {
-    transition: all 0.2s ease-in-out !important;
-  }
-
-  /* 7. WYRÓWNANIE TREŚCI PRAWEJ KOLUMNY */
-  .page__title, .page__content p, .page__content li {
-    text-align: left !important;
   }
 </style>
 
-<!-- start custom head snippets -->
-<link rel="stylesheet" href="{{ base_path }}/assets/css/academicons.css"/>
-<link rel="apple-touch-icon" sizes="180x180" href="{{ base_path }}/images/apple-touch-icon-180x180.png"/>
-<link rel="icon" type="image/svg+xml" href="{{ base_path }}/images/favicon.svg"/>
-<link rel="icon" type="image/png" href="{{ base_path }}/images/favicon-32x32.png" sizes="32x32"/>
-<link rel="icon" type="image/png" href="{{ base_path }}/images/favicon-192x192.png" sizes="192x192"/>
-<link rel="manifest" href="{{ base_path }}/images/manifest.json"/>
-<link rel="icon" href="/images/favicon.ico"/>
+<!-- Ścieżki ikon z filtrem relative_url dla stabilności 2026 -->
+<link rel="stylesheet" href="{{ '/assets/css/academicons.css' | relative_url }}"/>
+<link rel="icon" type="image/png" href="{{ '/images/favicon-32x32.png' | relative_url }}" sizes="32x32"/>
+<link rel="icon" type="image/svg+xml" href="{{ '/images/favicon.svg' | relative_url }}"/>
+<link rel="manifest" href="{{ '/images/manifest.json' | relative_url }}"/>
 <meta name="theme-color" content="#ffffff"/>
-<meta name="google" content="notranslate">
-<!-- end custom head snippets -->
