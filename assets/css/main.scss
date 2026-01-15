@@ -6,7 +6,7 @@
 
 /*
  * Jekyll Main SCSS - Rafał A. Bogaczewicz - 2026
- * WERSJA: POWIĘKSZONE IKONY + KOLOROWY BRANDING + CZARNO/BIAŁE NAPISY
+ * WERSJA: FINALNA STABILIZACJA + WYRÓWNANIE DO LEWEJ + FIX MENU
  */
 
 @import
@@ -50,7 +50,22 @@ html[data-theme='dark'] {
   --moj-hover: #00FFAB;
 }
 
-/* 1. NAWIGACJA GÓRNA */
+/* 1. STABILIZACJA WYSOKOŚCI MENU (GREEDY NAV FIX) */
+.masthead {
+  z-index: 10;
+  border-bottom: 1px solid var(--global-border-color);
+  min-height: 2.85rem !important; 
+}
+
+.masthead__inner-wrap {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  min-height: 2.85rem !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* 2. NAWIGACJA GÓRNA - HOVER */
 .greedy-nav a:hover,
 .site-title:hover,
 .masthead__menu-item a:hover {
@@ -58,51 +73,30 @@ html[data-theme='dark'] {
   background: transparent !important;
 }
 
-/* 2. KOLORY W SIDEBARZE: NAPISY CZARNO/BIAŁE, IKONY KOLOROWE */
+/* 3. KOLORY I LINKI W SIDEBARZE */
 .author__urls-wrapper a {
-  color: var(--global-text-color) !important; /* Wymusza czarny/biały dla tekstu linków */
+  color: var(--global-text-color) !important;
   text-decoration: none !important;
 }
 
 .author__urls-wrapper a:hover {
-  color: var(--moj-hover) !important; /* Kolor przy najechaniu dla całego wiersza */
+  color: var(--moj-hover) !important;
 }
 
-/* Stałe kolory ikon brandingowych */
+/* Ikony brandingowe */
 i.ai-orcid { color: #A6CE39 !important; }
 i.fa-researchgate { color: #00CCBB !important; }
-
-/* Academia: czarna w trybie jasnym, biała w ciemnym */
 i.ai-academia { color: #212429 !important; }
 html[data-theme='dark'] i.ai-academia { color: #ffffff !important; }
 
-/* ABSOLUTNE USUNIĘCIE PRZYCISKU FOLLOW / MENU MOBILNEGO */
-.author__urls-wrapper button, 
-.author__urls-wrapper .btn {
-  display: none !important;
-  visibility: hidden !important;
-  height: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-/* Wymuszenie, by lista linków była zawsze widoczna, nawet po ukryciu przycisku */
-.author__urls {
-  display: flex !important; /* Na mobile chcemy flex (ikony obok siebie) */
-  
-  @media screen and (min-width: 1024px) {
-    display: block !important; /* Na desktopie lista w pionie */
-  }
-}
-
-/* 3. LOGOTYPY PNG (PWr i IFT) - ROZMIAR DOPASOWANY DO NOWYCH IKON */
+/* 4. LOGOTYPY PNG (PWr i IFT) */
 .author__urls li i.fa-location-dot::before,
 .author__urls li i.fa-building-columns::before {
   content: "" !important;
   visibility: visible !important;
   display: inline-block !important;
-  width: 22px !important;  /* Zwiększone z 18px */
-  height: 22px !important; /* Zwiększone z 18px */
+  width: 22px !important;
+  height: 22px !important;
   background-size: contain !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
@@ -117,7 +111,7 @@ html[data-theme='dark'] i.ai-academia { color: #ffffff !important; }
   filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.3)) !important;
 }
 
-/* 4. TRYB CIEMNY DLA LOGOTYPÓW */
+/* 5. TRYB CIEMNY DLA LOGO */
 html[data-theme='dark'] {
   .author__urls li i.fa-building-columns::before,
   .author__urls li i.fa-location-dot::before {
@@ -126,77 +120,71 @@ html[data-theme='dark'] {
   }
 }
 
-/* 5. PUBLIKACJE I CV */
-.publication-link, .publication-link:visited {
-  color: var(--moj-zielony) !important;
-  text-decoration: none !important;
+/* 6. USUNIĘCIE PRZYCISKU FOLLOW */
+.author__urls-wrapper button, 
+.author__urls-wrapper .btn {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-.archive__item-title {
-  color: var(--global-text-color) !important;
-  pointer-events: none; 
+.author__urls {
+  display: flex !important;
+  @media screen and (min-width: 1024px) {
+    display: block !important;
+  }
 }
 
 /* ==========================================================================
-   6. STABILIZACJA SIDEBARU (BIURKO & ZOOM) - FINALNA KOREKTA RAFAŁA
+   7. GEOMETRIA I WYRÓWNANIE (SIDEBAR & MAIN)
    ========================================================================== */
-/* WYRÓWNANIE SIDEBARU DO SZCZYTU TREŚCI */
+
+/* WYRÓWNANIE DO SZCZYTU TREŚCI I DO LEWEJ */
 .sidebar {
-  margin-top: 0 !important;
+  margin-top: -5px !important; /* Podciągnięcie do linii tekstu po prawej */
   padding-top: 0 !important;
 }
 
 .author__avatar {
   margin-top: 0 !important;
+  text-align: left !important; /* Kontener do lewej */
 }
 
-/* Usunięcie marginesu dla #main, który może odpychać całość */
+.author__avatar img {
+  margin-left: 0 !important;   /* Zdjęcie do lewej */
+  margin-right: auto !important;
+}
+
+/* Blokada rozjeżdżania się przy zoom < 100% */
 #main {
-  margin-top: 1em !important; /* Zmniejszone z domyślnych 2em */
+  margin-top: 1em !important;
+  max-width: 1280px !important; 
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
-/* STABILIZACJA WYSOKOŚCI MENU (GREEDY NAV FIX) */
-.masthead {
-  z-index: 10;
-  border-bottom: 1px solid var(--global-border-color);
-  /* Wymuszamy stałą wysokość, by sidebar nie skakał podczas ładowania menu */
-  min-height: 2.85rem !important; 
-}
-
-.masthead__inner-wrap {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  min-height: 2.85rem !important;
-  display: flex !important;
-  align-items: center !important;
-}
-
-/* Podciągnięcie sidebaru, by ignorował ewentualne marginesy po ładowaniu JS */
-.sidebar {
-  margin-top: -10px !important; /* Lekka korekta "pod prąd" */
-  position: relative;
-  z-index: 5;
-}
-
-@media screen and (max-width: 1440px) {
-  .author__avatar {
-    text-align: left !important; /* Zdjęcie do lewej przy 133% */
-    img { margin: 0 0 15px 0 !important; }
+@media screen and (max-width: 1280px) {
+  #main {
+    max-width: 100% !important;
   }
+}
 
+/* 8. RESPONSYWNOŚĆ I ZOOM (133%+) */
+@media screen and (max-width: 1440px) {
   .author__content {
     display: flex !important;
     flex-direction: column !important;
-    align-items: flex-start !important; 
+    align-items: flex-start !important; /* Wszystko pod zdjęciem do lewej */
     width: 100% !important;
     padding-left: 0 !important;
   }
 
   .author__name {
-    display: block !important;
-    white-space: nowrap !important;
     text-align: left !important;
     margin: 10px 0 !important;
+    white-space: nowrap !important;
   }
 
   .author__bio {
@@ -204,74 +192,53 @@ html[data-theme='dark'] {
     text-align: left !important;
     margin: 10px 0 !important;
     line-height: 1.4 !important;
-    margin-left: 0 !important;
-    margin-right: auto !important;
 
-    /* TRYB KOLUMNOWY (100-120%) - Blokujemy szerokość, by nie najeżdżać na treść */
     @media (min-width: 1024px) {
-      max-width: 250px !important; /* Zmniejszone z 300, by nie wchodzić na prawą kolumnę */
-      white-space: normal !important; 
-      text-wrap: pretty !important; /* Emotka spadnie do 2. linii przy 100% */
+      max-width: 250px !important; /* Chroni przed wjazdem na prawą kolumnę */
+      white-space: normal !important;
     }
 
-    /* TRYB GÓRNY (133%+) - Wszystko w jednej linii */
     @media (max-width: 1023px) {
       max-width: none !important;
-      white-space: nowrap !important;
+      white-space: nowrap !important; /* Jedna linia w trybie górnym */
     }
   }
 
   .author__urls-wrapper {
-    width: 100% !important;
-    display: flex !important;
-    justify-content: flex-start !important; 
+    justify-content: flex-start !important;
     padding-left: 0 !important;
   }
 }
 
-/* BLOKADA ROZJEŻDŻANIA SIĘ KOLUMN (DLA ZOOM < 100%) */
-#main {
-  /* Ta wartość zablokuje kolumny w pozycji, którą lubisz przy 100% */
-  max-width: 1280px !important; 
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-/* Na mniejszych ekranach i dużym zoomie wracamy do elastyczności */
-@media screen and (max-width: 1280px) {
-  #main {
-    max-width: 100% !important;
-  }
-}
-
-/* ==========================================================================
-   7. PANCERNA RESPONSYWNOŚĆ (SMARTFON) - PONIŻEJ 1024px
-   ========================================================================== */
+/* 9. PANCERNA RESPONSYWNOŚĆ (SMARTFON) */
 @media screen and (max-width: 1024px) {
   #main {
     width: 100% !important;
-    max-width: 100vw !important;
     padding: 10px !important;
     margin: 0 !important;
-    display: block !important;
     overflow-x: hidden !important;
   }
 
   .sidebar {
     width: 100% !important;
     float: none !important;
-    position: relative !important;
-    top: 0 !important;
     margin-bottom: 20px !important;
-    padding: 0 !important;
   }
 
   .page, .archive {
     width: 100% !important;
     float: none !important;
-    margin: 0 !important;
     padding: 0 !important;
-    margin-left: 0 !important; 
-    left: 0 !important;
+    margin: 0 !important;
   }
+}
+
+/* 10. PUBLIKACJE */
+.publication-link, .publication-link:visited {
+  color: var(--moj-zielony) !important;
+}
+
+.archive__item-title {
+  color: var(--global-text-color) !important;
+  pointer-events: none; 
 }
