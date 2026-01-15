@@ -8,13 +8,13 @@ permalink: /
 {% include base_path %}
 
 <style>
-  /* 1. TYTUŁ GŁÓWNY - NUKLEARNA MORSKA ZIELEŃ */
+  /* 1. TYTUŁ GŁÓWNY - MORSKA ZIELEŃ */
   h1.page__title { 
     color: #16a085 !important; 
     margin-bottom: 30px !important;
   }
 
-  /* 2. ADAPTACYJNE NAGŁÓWKI SEKCJI (Mniejsza czcionka, Czarny/Biały) */
+  /* 2. ADAPTACYJNE NAGŁÓWKI SEKCJI (Czarny/Biały, mniejsza czcionka) */
   .cv-style-header {
     color: var(--global-text-color) !important;
     border-bottom: 1px solid #ccc;
@@ -28,7 +28,7 @@ permalink: /
     letter-spacing: 0.5px;
   }
 
-  /* 3. SIATKA TREŚCI DWUJĘZYCZNEJ */
+  /* 3. SIATKA TREŚCI */
   .cv-content-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -36,7 +36,7 @@ permalink: /
     margin-bottom: 20px;
   }
 
-  /* RWD: Na telefonach jedna kolumna */
+  /* RWD dla urządzeń mobilnych */
   @media (max-width: 600px) {
     .cv-content-grid { grid-template-columns: 1fr; }
   }
@@ -50,52 +50,63 @@ permalink: /
     border-left: 1px solid #eee; 
     padding-left: 15px; 
   }
-
-  ul.cv-list { list-style-type: none; padding-left: 0; margin: 0; }
-  ul.cv-list li { margin-bottom: 8px; position: relative; padding-left: 15px; }
-  ul.cv-list li::before { content: "•"; color: #16a085; position: absolute; left: 0; }
 </style>
 
 <div class="page-home">
 
-  <span class="cv-style-header">O mnie / About Me</span>
-  <div class="cv-content-grid">
+  <!-- WSTĘP BEZ NAGŁÓWKA -->
+  <div class="cv-content-grid" style="margin-top: 10px;">
     <div class="lang-pl">
-      Jestem fizykiem teoretykiem i doktorantem na <b>Politechnice Wrocławskiej</b>. W badaniach dążę do matematycznej precyzji w opisie świata kwantowego, wierząc, że rzetelność jest fundamentem charakteru.
+      Jestem fizykiem teoretykiem i doktorantem w <b>Instytucie Fizyki Teoretycznej Politechniki Wrocławskiej</b>. Moja praca koncentruje się na poszukiwaniu matematycznego piękna i precyzji w fundamentalnych prawach świata kwantowego.
     </div>
     <div class="lang-en">
-      Theoretical physicist and PhD student at <b>Wrocław University of Science and Technology</b>. I strive for mathematical precision in describing the quantum world, believing that integrity is the foundation of character.
+      I am a theoretical physicist and a PhD student at the <b>Institute of Theoretical Physics (WUST)</b>. My work focuses on seeking mathematical beauty and precision within the fundamental laws of the quantum world.
     </div>
   </div>
 
-  <span class="cv-style-header">Edukacja / Education</span>
-  <div class="cv-content-grid">
-    <div>
-      <ul class="cv-list lang-pl">
-        <li><b>Doktorat (w trakcie)</b>, Fizyka Teoretyczna, PWr</li>
-        <li><b>Magister Inżynier</b>, Fizyka Techniczna, PWr</li>
-      </ul>
-    </div>
-    <div>
-      <ul class="cv-list lang-en">
-        <li><b>Ph.D. Candidate</b>, Theoretical Physics, WUST</li>
-        <li><b>M.Sc. Eng.</b>, Technical Physics, WUST</li>
-      </ul>
-    </div>
-  </div>
-
+  <!-- SEKCJA: BADANIA -->
   <span class="cv-style-header">Badania / Research</span>
   <div class="cv-content-grid">
     <div class="lang-pl">
-      Moja praca koncentruje się na optyce kwantowej ciała stałego, dynamice fononów oraz modelowaniu kwantowych układów otwartych.
+      Główne obszary moich zainteresowań naukowych to:
+      <ul style="margin-top: 10px; padding-left: 18px;">
+        <li>Optyka kwantowa ciała stałego</li>
+        <li>Dynamika fononów i emitery kwantowe</li>
+        <li>Modelowanie kwantowych układów otwartych</li>
+      </ul>
     </div>
     <div class="lang-en">
-      My work focuses on solid-state quantum optics, phonon dynamics, and modeling of open quantum systems.
+      My primary research interests include:
+      <ul style="margin-top: 10px; padding-left: 18px;">
+        <li>Solid-state quantum optics</li>
+        <li>Phonon dynamics and quantum emitters</li>
+        <li>Open quantum systems modeling</li>
+      </ul>
     </div>
   </div>
 
-  <div style="margin-top: 50px; text-align: center; opacity: 0.6; font-style: italic; font-size: 0.85em;">
-    <hr style="width: 30%; margin: 20px auto; border-top: 1px solid #eee;">
+  <!-- SEKCJA: KONTAKT -->
+  <span class="cv-style-header">Kontakt / Contact</span>
+  <div class="cv-content-grid">
+    <div class="lang-pl">
+      Zapraszam do kontaktu w sprawach naukowych i dydaktycznych:
+      <p style="margin-top: 10px;">
+        <b>E-mail:</b> rafal.bogaczewicz@pwr.edu.pl<br>
+        <b>Miejsce:</b> Politechnika Wrocławska, bud. A-1
+      </p>
+    </div>
+    <div class="lang-en">
+      Feel free to contact me regarding research or teaching:
+      <p style="margin-top: 10px;">
+        <b>E-mail:</b> rafal.bogaczewicz@pwr.edu.pl<br>
+        <b>Location:</b> Wrocław University of Science and Technology
+      </p>
+    </div>
+  </div>
+
+  <!-- DYSKRETNY PODPIS NA DOLE (HACZYK) -->
+  <div style="margin-top: 60px; text-align: center; opacity: 0.6; font-style: italic; font-size: 0.85em;">
+    <hr style="width: 25%; margin: 20px auto; border-top: 1px solid #eee;">
     "Pasjonat odkrywania świata, zarówno w równaniach, jak i dosłownie ;)"
   </div>
 
