@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SIDEBAR - Rafał A. Bogaczewicz - Wersja 2026 (Powiększona + Stabilna)
+   SIDEBAR - Rafał A. Bogaczewicz - WERSJA SKORYGOWANA (LINIE I ODSTĘPY)
    ========================================================================== */
 
 .sidebar {
@@ -8,11 +8,6 @@
   @include clearfix();
   margin-bottom: 1em;
 
-  @media (orientation: portrait) {
-    margin-top: 1em;
-  }
-
-  /* Stabilizacja przy przewijaniu na dużych ekranach */
   @media screen and (min-width: 1200px) {
     position: -webkit-sticky;
     position: sticky;
@@ -24,55 +19,20 @@
     @include span(3 of 12);
     float: left !important;      
     margin-left: 0 !important;   
-    padding-right: 20px;
+    padding-right: 0 !important; /* USUNIĘTO 20px - kolumny będą bliżej */
     opacity: 1;
-    margin-top: 0 !important;    
-    padding-top: 0 !important;   
-    vertical-align: top;         
   }
 
-  @include breakpoint($x-large) {
-    max-width: $sidebar-link-max-width;
-    padding-right: 0;
-  }
-
-  h2, h3, h4, h5, h6 {
-    margin-bottom: 0;
-    font-family: $sans-serif-narrow;
-  }
-
-  h3, h4 {
-    font-size: $type-size-5;
-  }
-
-  p, li {
-    font-family: $sans-serif;
-    font-size: $type-size-6;
-    line-height: 1.5;
-  }
-
-  img {
-    width: 100%;
-  }
+  img { width: 100%; }
 }
-
-/* --- PROFIL AUTORA --- */
 
 .author__avatar {
   display: block !important; 
-  width: auto;
-  
-  @include breakpoint($large) {
-    display: block;
-    width: auto;
-    height: auto;
-  }
-
   img {
     max-width: 175px !important; 
     width: 175px !important;
     border-radius: 50%;
-    margin-left: 0 !important;   
+    margin: 0 !important; /* Zdjęcie do lewej */
     border: 1px solid var(--global-border-color);
     padding: 5px;
   }
@@ -80,62 +40,30 @@
 
 .author__content {
   display: block !important;
-  vertical-align: top;
   padding-left: 0 !important; 
-  line-height: 1.2;
-
-  @include breakpoint($large) {
-    display: block;
-    width: 100%;
-    padding-right: 0;
-  }
+  text-align: left !important; /* Wymuszenie lewej strony */
 }
 
 .author__name {
   margin: 10px 0 !important;
   font-family: $sans-serif;
   font-size: $type-size-5;
-  text-align: left; 
-
-  @media screen and (max-width: 1440px) {
-    text-align: center !important; 
-    display: block !important;
-    width: 100% !important;
-  }
+  text-align: left !important; 
 }
 
 .author__bio {
   margin: 10px 0 20px 0;
   font-size: $type-size-6;
-  text-align: left; 
+  text-align: left !important; 
   display: block;
-  width: fit-content;
-  max-width: 280px; /* Dopasowane do main.scss */
-  margin-left: auto;
-  margin-right: auto;
-
-  @media screen and (max-width: 1440px) {
-    text-align: left !important; 
-    display: block !important;
-    width: fit-content !important;
-    max-width: 280px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
+  max-width: 260px; /* Blokada dla 100% (emotka do 2. linii) */
+  margin-left: 0 !important; 
+  margin-right: 0 !important;
 }
-
-/* --- LINKI I IKONY - WERSJA POWIĘKSZONA --- */
 
 .author__urls-wrapper {
   position: relative;
-  font-family: $sans-serif;
-  z-index: 20;
-
-  button {
-    @include breakpoint($large) {
-      display: none;
-    }
-  }
+  button { display: none !important; }
 }
 
 .author__urls {
@@ -144,6 +72,7 @@
   list-style: none !important;
   margin: 0 !important;
   padding: 0 !important;
+  justify-content: flex-start !important; /* Linki do lewej */
 
   @include breakpoint($large) {
     display: block !important;   
@@ -152,69 +81,20 @@
   li {
     white-space: nowrap;
     margin-right: 15px;
-    margin-bottom: 12px; /* Odstęp pionowy dla czytelności */
-    
-    @include breakpoint($large) {
-      margin-right: 0;
-    }
+    margin-bottom: 12px;
+    @include breakpoint($large) { margin-right: 0; }
   }
 
   a {
     display: flex;
     align-items: center;
-    color: inherit; /* Kolor kontrolowany przez main.scss */
-    font-size: 1.1rem !important; /* Powiększony tekst */
+    font-size: 1.1rem !important;
     text-decoration: none;
-    line-height: 1.4;
-
-    &:hover {
-      text-decoration: underline;
-    }
-
-    /* Ikony FontAwesome i Academicons */
     i, span.ai {
-      font-size: 1.3rem !important; /* Powiększona ikona */
-      width: 1.5em !important;      /* Rezerwacja stałego miejsca */
+      font-size: 1.3rem !important;
+      width: 1.5em !important;
       text-align: center;
       margin-right: 10px !important;
     }
-
-    img {
-      width: 22px; 
-      height: 22px;
-      margin-right: 10px;
-    }
-  }
-}
-
-/* --- DOPASOWANIE DLA ZOOMU I MOBILES --- */
-
-@media screen and (max-width: 1440px) {
-  .author__avatar {
-    text-align: center !important;
-    img {
-      margin: 0 auto 15px auto !important; 
-    }
-  }
-
-  .author__content {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important; 
-  }
-
-  .author__name, 
-  .author__bio {
-    display: block !important;
-    width: fit-content !important; 
-    max-width: 280px !important;
-    text-align: left !important;   
-    margin-left: auto !important;  
-    margin-right: auto !important; 
-  }
-
-  .author__urls {
-    justify-content: center !important;
-    width: 100% !important;
   }
 }
