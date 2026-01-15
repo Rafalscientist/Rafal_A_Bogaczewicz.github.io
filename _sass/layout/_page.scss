@@ -406,3 +406,18 @@
   font-size: $type-size-6;
   text-transform: uppercase;
 }
+
+/* DODATKOWA STABILIZACJA KART TREŚCI */
+.page__inner-wrap {
+  overflow-wrap: break-word; /* Chroni przed wyjeżdżaniem długich słów poza kartę */
+  word-wrap: break-word;
+}
+
+@media screen and (max-width: 1024px) {
+  .page {
+    width: 100% !important;
+    padding: 0 !important; /* Na mobile rezygnujemy z prefixów, by mieć więcej miejsca */
+    margin: 0 !important;
+  }
+}
+
