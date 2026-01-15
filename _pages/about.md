@@ -1,20 +1,19 @@
 ---
 layout: single
 author_profile: true
-title: "mgr inż. / MSc. Rafał A. Bogaczewicz"
+title: "MSc Eng. Rafał&nbsp;A.&nbsp;Bogaczewicz"
 permalink: /
 ---
 
 {% include base_path %}
 
 <style>
-  /* 1. TYTUŁ GŁÓWNY - MORSKA ZIELEŃ */
+  /* ZACHOWANE TWOJE STYLE LOKALNE */
   h1.page__title { 
     color: #16a085 !important; 
     margin-bottom: 30px !important;
   }
 
-  /* 2. ADAPTACYJNE NAGŁÓWKI SEKCJI */
   .cv-style-header {
     color: var(--global-text-color) !important;
     border-bottom: 1px solid #ccc;
@@ -28,7 +27,6 @@ permalink: /
     letter-spacing: 0.5px;
   }
 
-  /* 3. SIATKA TREŚCI */
   .cv-content-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -36,35 +34,45 @@ permalink: /
     margin-bottom: 20px;
   }
 
-  /* RWD dla urządzeń mobilnych */
   @media (max-width: 600px) {
     .cv-content-grid { grid-template-columns: 1fr; }
   }
 
-  /* WSPÓLNY STYL DLA OBU JĘZYKÓW - UJEDNOLICONY */
   .lang-pl, .lang-en { 
     text-align: justify; 
-    font-size: 0.9em; 
-    line-height: 1.5; 
+    font-size: 0.95em; 
+    line-height: 1.6; 
+    overflow-wrap: break-word;
   }
 
-  /* RÓŻNICA TYLKO W KOLORZE/PRZEZROCZYSTOŚCI DLA EN */
   .lang-en { 
     opacity: 0.7; 
     border-left: 1px solid #eee; 
     padding-left: 15px; 
   }
+
+  /* TWOJA KLASA LINKU Z PUBLICATIONS */
+  .pub-link {
+    color: #16a085 !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .pub-link:hover {
+    color: #2ecc71 !important;
+    border-bottom: 1px solid #2ecc71 !important;
+  }
 </style>
 
 <div class="page-home">
 
-  <!-- WSTĘP -->
+  <!-- WSTĘP Z LINKAMI -->
   <div class="cv-content-grid" style="margin-top: 10px;">
     <div class="lang-pl">
-      Cześć, jestem fizykiem teoretykiem, doktorantem w&nbsp;<b>Instytucie Fizyki Teoretycznej PWr</b>. Pracuję w&nbsp;grupie naukowej <b>prof. Pawła Machnikowskiego</b>.
+      Cześć, jestem fizykiem teoretykiem, doktorantem w&nbsp;<a href="ift.pwr.edu.pl" class="pub-link" target="_blank"><b>Instytucie Fizyki Teoretycznej PWr</b></a>. Pracuję w&nbsp;grupie naukowej <a href="pwr.edu.pl" class="pub-link" target="_blank"><b>prof.&nbsp;Pawła Machnikowskiego</b></a>, zajmując się fluorescencją rezonansową z&nbsp;kwantowego emitera oddziałującego z&nbsp;zaszumionym otoczeniem.
     </div>
     <div class="lang-en">
-      Hey, I am a&nbsp;theoretical physicist, a&nbsp;PhD student at the <b>Institute of Theoretical Physics (WUST)</b>. I&nbsp;work in the scientific group of <b>prof. Paweł Machnikowski</b>.
+      Hey, I&nbsp;am a&nbsp;theoretical physicist, a&nbsp;PhD student at&nbsp;the <a href="ift.pwr.edu.plen/" class="pub-link" target="_blank"><b>Institute of&nbsp;Theoretical Physics (WUST)</b></a>. I&nbsp;work in&nbsp;the scientific group of&nbsp;<a href="pwr.edu.pl" class="pub-link" target="_blank"><b>prof.&nbsp;Paweł Machnikowski</b></a>, focusing on&nbsp;the resonance fluorescence of&nbsp;a&nbsp;quantum emitter interacting with a&nbsp;noisy environment.
     </div>
   </div>
 
@@ -75,7 +83,7 @@ permalink: /
       Główne obszary moich zainteresowań naukowych to:
       <ul style="margin-top: 10px; padding-left: 18px;">
         <li>Optyka kwantowa ciała stałego</li>
-        <li>Dynamika fononów i emitery kwantowe</li>
+        <li>Dynamika fononów i&nbsp;emitery kwantowe</li>
         <li>Modelowanie kwantowych układów otwartych</li>
       </ul>
     </div>
@@ -83,7 +91,7 @@ permalink: /
       My primary research interests include:
       <ul style="margin-top: 10px; padding-left: 18px;">
         <li>Solid-state quantum optics</li>
-        <li>Phonon dynamics and quantum emitters</li>
+        <li>Phonon dynamics and&nbsp;quantum emitters</li>
         <li>Open quantum systems modeling</li>
       </ul>
     </div>
@@ -93,25 +101,25 @@ permalink: /
   <span class="cv-style-header">Kontakt / Contact</span>
   <div class="cv-content-grid">
     <div class="lang-pl">
-      Zapraszam do kontaktu w sprawach naukowych i dydaktycznych:
+      Zapraszam do kontaktu w&nbsp;sprawach naukowych i&nbsp;dydaktycznych:
       <p style="margin-top: 10px;">
-        <b>E-mail:</b> rafal.bogaczewicz@pwr.edu.pl<br>
-        <b>Miejsce:</b> Politechnika Wrocławska, bud. A-1
+        <b>E-mail:</b> <a href="mailto:rafal.bogaczewicz@pwr.edu.pl" class="pub-link">rafal.bogaczewicz@pwr.edu.pl</a><br>
+        <b>Miejsce:</b> Politechnika Wrocławska, bud.&nbsp;A-1
       </p>
     </div>
     <div class="lang-en">
-      Feel free to contact me regarding research or teaching:
+      Feel free to&nbsp;contact me regarding research or&nbsp;teaching:
       <p style="margin-top: 10px;">
-        <b>E-mail:</b> rafal.bogaczewicz@pwr.edu.pl<br>
-        <b>Location:</b> Wrocław University of Science and Technology
+        <b>E-mail:</b> <a href="mailto:rafal.bogaczewicz@pwr.edu.pl" class="pub-link">rafal.bogaczewicz@pwr.edu.pl</a><br>
+        <b>Location:</b> Wrocław University of&nbsp;Science and&nbsp;Technology
       </p>
     </div>
   </div>
 
-  <!-- DYSKRETNY PODPIS NA DOLE -->
+  <!-- PODPIS -->
   <div style="margin-top: 60px; text-align: center; opacity: 0.6; font-style: italic; font-size: 0.85em;">
     <hr style="width: 25%; margin: 20px auto; border-top: 1px solid #eee;">
-    "Pasjonat odkrywania świata, zarówno w równaniach, jak i dosłownie ;)"
+    "Pasjonat odkrywania świata, zarówno w&nbsp;równaniach, jak i&nbsp;dosłownie&nbsp;;)"
   </div>
 
 </div>
