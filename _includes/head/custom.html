@@ -1,26 +1,24 @@
 <style>
-  /* 1. TOŻSAMOŚĆ WIZUALNA - MORSKA ZIELEŃ I SIDEBAR */
+  /* 1. TWOJA TOŻSAMOŚĆ - MORSKA ZIELEŃ I SIDEBAR */
   h1, .page__title, .archive__title, .masthead__menu-item--active a {
     color: #16a085 !important;
   }
-
   .masthead__menu-item a:hover {
     color: #16a085 !important;
   }
-
-  /* Wyrównanie Sidebaru - High Value Aesthetics */
   .sidebar .author__profile, .author__avatar {
     text-align: left !important;
   }
-
   .author__avatar img {
     margin-left: 0 !important;
     display: block !important;
   }
 
-  /* 2. GLOBALNA BLOKADA ZNIKANIA MENU (ROZWIĄZANIE 2026) */
-  /* Wymuszamy widoczność paska nawigacji na komputerach, blokując skrypt GreedyNav */
-  
+  /* 2. GLOBALNA BLOKADA ZNIKANIA MENU (STABILIZACJA 2026) */
+  /* Skrypt GreedyNav mierzy szerokość okna i chowa linki do hamburgera.
+     Dla długich nazw PL/EN zawsze uznaje, że jest "za ciasno".
+     Poniższy blok całkowicie neutralizuje to zachowanie na komputerach. */
+
   @media (min-width: 1025px) {
     /* Wymuszamy, by kontener linków był zawsze widoczny i w poziomie */
     .greedy-nav .visible-links {
@@ -31,7 +29,7 @@
     }
 
     /* KLUCZ: Wymuszamy widoczność KAŻDEGO elementu listy z osobna. 
-       To nadpisuje klasę .hidden, którą nadaje skrypt po ułamku sekundy. */
+       W ten sposób nadpisujemy klasę .hidden, którą nadaje skrypt po ułamku sekundy. */
     .greedy-nav .visible-links li, 
     .greedy-nav .visible-links li.hidden,
     .greedy-nav .visible-links li[hidden] {
@@ -40,18 +38,18 @@
       opacity: 1 !important;
     }
 
-    /* Ukrywamy hamburgera i listę rozwijaną na desktopie - nie są potrzebne */
+    /* Całkowicie ukrywamy przycisk hamburgera (3 kreski) na desktopie, 
+       aby nie "przejmował" Twoich linków. */
     .greedy-nav button, 
     .greedy-nav .hidden-links {
       display: none !important;
     }
 
-    /* Optymalizacja szerokości pod długie nazwy (Patriotyzm + Obycie) */
+    /* Optymalizacja pod bardzo długie nazwy (Patriotyzm + Obycie) */
     .greedy-nav a {
-      font-size: 0.82rem !important; /* Delikatnie mniejszy font, by wszystko zmieścić */
-      padding: 0.5rem 0.5rem !important;
+      font-size: 0.8rem !important; /* Minimalnie mniejszy font, by wszystko zmieścić */
+      padding: 0.5rem 0.4rem !important;
       white-space: nowrap !important;
-      transition: none !important; /* Blokujemy miganie przy ładowaniu */
     }
   }
 
@@ -63,9 +61,10 @@
     flex-wrap: nowrap !important; /* Gwarantuje jedną linię dla menu */
   }
 
+  /* Zapobiega spychaniu menu przez długi tytuł/nazwisko */
   .site-title {
-    flex-shrink: 0 !important; /* Home/Nazwisko nie może zostać wypchnięte */
-    margin-right: 20px !important;
+    flex-shrink: 0 !important;
+    margin-right: 15px !important;
   }
 </style>
 
