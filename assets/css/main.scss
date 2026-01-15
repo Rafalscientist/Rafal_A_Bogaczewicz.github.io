@@ -140,6 +140,21 @@ html[data-theme='dark'] {
 /* ==========================================================================
    6. STABILIZACJA SIDEBARU (BIURKO & ZOOM) - FINALNA KOREKTA RAFAŁA
    ========================================================================== */
+/* WYRÓWNANIE SIDEBARU DO SZCZYTU TREŚCI */
+.sidebar {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.author__avatar {
+  margin-top: 0 !important;
+}
+
+/* Usunięcie marginesu dla #main, który może odpychać całość */
+#main {
+  margin-top: 1em !important; /* Zmniejszone z domyślnych 2em */
+}
+
 @media screen and (max-width: 1440px) {
   .author__avatar {
     text-align: left !important; /* Zdjęcie do lewej przy 133% */
