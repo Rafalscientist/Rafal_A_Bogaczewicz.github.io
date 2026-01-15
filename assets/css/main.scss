@@ -150,15 +150,22 @@ html[data-theme='dark'] {
 
   .author__name, 
   .author__bio {
-    /* Pozwalamy tekstowi rosnąć, ale wewnątrz trzymamy wyrównanie do lewej */
-    display: block !important;
-    width: fit-content !important; // Kontener dopasuje się do długości tekstu
-    max-width: 90% !important;    // Ale nie wyjdzie poza ekran na smartfonie
-    text-align: left !important;   // PIONOWA LINIA STARTU ZACHOWANA
-    margin-left: auto !important;  // Te dwie linie centrują blok tekstu...
-    margin-right: auto !important; // ...zachowując wewnątrz wyrównanie do lewej.
+    display: table !important;    /* Dopasowuje szerokość bloku do tekstu */
+    margin-left: auto !important; /* Centruje cały blok pod zdjęciem */
+    margin-right: auto !important;/* Centruje cały blok pod zdjęciem */
+    text-align: left !important;  /* NOWA LINIA ZACZYNA SIĘ W TYM SAMYM PIONIE */
+    
+    /* ZAPOBIEGANIE PRZEDWCZESNEMU ZWIJANIU IMIENIA */
+    white-space: nowrap !important; /* Imię i nazwisko będą w jednej linii tak długo, jak się da */
+    max-width: 100% !important;
   }
 
+  .author__bio {
+    white-space: normal !important; /* Bio może się zwijać, imię niech trzyma linię */
+    text-wrap: balance !important;  /* Zapobiega sierotkom */
+    margin-top: 10px !important;
+  }
+    
   .author__urls-wrapper {
     width: 100% !important;
     display: flex !important;
