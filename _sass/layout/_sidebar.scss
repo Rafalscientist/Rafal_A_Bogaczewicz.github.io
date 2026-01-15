@@ -125,63 +125,32 @@
     margin-right: auto !important;
   }
 }
-
-/* --- LINKI I IKONY --- */
-
-.author__urls-wrapper {
-  position: relative;
-  font-family: $sans-serif;
-  z-index: 20;
-
-  button {
-    @include breakpoint($large) {
-      display: none;
-    }
-  }
-}
+/* --- POWIĘKSZENIE IKON I LINKÓW W SIDEBARZE --- */
 
 .author__urls {
-  display: flex !important;      
-  flex-wrap: wrap !important;    
-  list-style: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-
-  @include breakpoint($large) {
-    display: block !important;   
-  }
-
   li {
-    white-space: nowrap;
-    margin-right: 15px;          
+    margin-bottom: 8px; /* Większy odstęp między wierszami dla "oddechu" */
     
-    @include breakpoint($large) {
-      margin-right: 0;
+    a {
+      font-size: 1.1rem !important; /* Powiększenie tekstu (standardowo jest ok. 0.9rem) */
+      font-weight: 500; /* Lekkie pogrubienie, by tekst był wyraźniejszy */
+      
+      /* Celujemy w ikony Font Awesome i Academicons */
+      i, span.ai {
+        font-size: 1.3rem !important; /* Ikona będzie wyraźnie większa od tekstu */
+        width: 1.5em !important;     /* Rezerwujemy stałe miejsce na ikonę (zapobiega drganiom tekstu) */
+        text-align: center;
+        margin-right: 10px !important;
+      }
+      
+      /* Logotypy PNG (PWr i IFT), które zdefiniowałeś wcześniej */
+      i.fa-location-dot::before,
+      i.fa-building-columns::before {
+        width: 22px !important;  /* Zwiększamy z 18px na 22px */
+        height: 22px !important;
+      }
     }
   }
-
-  a {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-    color: inherit;
-    font-size: $type-size-6;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-
-    img {
-      width: 18px;
-      height: 18px;
-      margin-right: 8px;
-    }
-  }
-}
-
-.author__urls-wrapper button {
-  display: none;
 }
 
 /* ==========================================================================
