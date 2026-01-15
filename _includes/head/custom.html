@@ -1,58 +1,75 @@
 <style>
-  /* 1. TWOJE ZASADY I KOLORY */
+  /* 1. TOŻSAMOŚĆ WIZUALNA - MORSKA ZIELEŃ I SIDEBAR */
   h1, .page__title, .archive__title, .masthead__menu-item--active a {
     color: #16a085 !important;
   }
+
   .masthead__menu-item a:hover {
     color: #16a085 !important;
   }
+
+  /* Wyrównanie Sidebaru - High Value Aesthetics */
   .sidebar .author__profile, .author__avatar {
     text-align: left !important;
   }
+
   .author__avatar img {
     margin-left: 0 !important;
     display: block !important;
   }
 
-  /* 2. CAŁKOWITE WYŁĄCZENIE MECHANIZMU UKRYWANIA (GREEDY NAV) */
-  .greedy-nav {
-    overflow: visible !important; /* Pozwala linkom wystawać poza kontener */
-  }
-
-  .greedy-nav .visible-links {
-    display: flex !important;    /* Wymusza układ poziomy */
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-
-  /* KLUCZ: Ta reguła nadpisuje próby ukrycia konkretnych pozycji menu */
-  .greedy-nav .visible-links li, 
-  .greedy-nav .visible-links li.hidden {
-    display: inline-block !important; /* Wymusza widoczność nawet z klasą .hidden */
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-
-  /* Ukrywamy hamburgera na komputerach, by nie dublował menu */
+  /* 2. GLOBALNA BLOKADA ZNIKANIA MENU (ROZWIĄZANIE 2026) */
+  /* Wymuszamy widoczność paska nawigacji na komputerach, blokując skrypt GreedyNav */
+  
   @media (min-width: 1025px) {
-    .greedy-nav button {
+    /* Wymuszamy, by kontener linków był zawsze widoczny i w poziomie */
+    .greedy-nav .visible-links {
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      height: auto !important;
+    }
+
+    /* KLUCZ: Wymuszamy widoczność KAŻDEGO elementu listy z osobna. 
+       To nadpisuje klasę .hidden, którą nadaje skrypt po ułamku sekundy. */
+    .greedy-nav .visible-links li, 
+    .greedy-nav .visible-links li.hidden,
+    .greedy-nav .visible-links li[hidden] {
+      display: inline-block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
+    /* Ukrywamy hamburgera i listę rozwijaną na desktopie - nie są potrzebne */
+    .greedy-nav button, 
+    .greedy-nav .hidden-links {
       display: none !important;
     }
+
+    /* Optymalizacja szerokości pod długie nazwy (Patriotyzm + Obycie) */
     .greedy-nav a {
-      font-size: 0.82rem !important;
+      font-size: 0.82rem !important; /* Delikatnie mniejszy font, by wszystko zmieścić */
       padding: 0.5rem 0.5rem !important;
+      white-space: nowrap !important;
+      transition: none !important; /* Blokujemy miganie przy ładowaniu */
     }
   }
 
-  /* 3. STABILIZACJA NAGŁÓWKA */
+  /* 3. STABILIZACJA STRUKTURY NAGŁÓWKA */
   .masthead__inner-wrap {
     max-width: 100% !important;
     display: flex !important;
-    flex-wrap: nowrap !important; /* Zapobiega łamaniu menu na dwa rzędy */
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important; /* Gwarantuje jedną linię dla menu */
+  }
+
+  .site-title {
+    flex-shrink: 0 !important; /* Home/Nazwisko nie może zostać wypchnięte */
+    margin-right: 20px !important;
   }
 </style>
 
-<!-- Standardowe ikony i favicony -->
+<!-- Ścieżki ikon z filtrem relative_url dla stabilności 2026 -->
 <link rel="stylesheet" href="{{ '/assets/css/academicons.css' | relative_url }}"/>
 <link rel="icon" type="image/png" href="{{ '/images/favicon-32x32.png' | relative_url }}" sizes="32x32"/>
 <link rel="icon" type="image/svg+xml" href="{{ '/images/favicon.svg' | relative_url }}"/>
