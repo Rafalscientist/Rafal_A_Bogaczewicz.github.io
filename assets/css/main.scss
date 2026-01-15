@@ -6,7 +6,7 @@
 
 /*
  * Jekyll Main SCSS - Rafał A. Bogaczewicz - 2026
- * WERSJA: FINALNA STABILIZACJA + WYRÓWNANIE DO LEWEJ + FIX MENU
+ * WERSJA FINALNA: NAPRAWIONE MENU + KOLOROWE IKONY + ZDJĘCIE DO LEWEJ
  */
 
 @import
@@ -37,55 +37,73 @@
 ;
 
 /* ==========================================================================
-   PERSONALIZACJA RAFAŁ A. BOGACZEWICZ - 2026
+   1. FUNDAMENTY I STABILIZACJA MENU (GREEDY NAV)
    ========================================================================== */
 
-:root {
-  --moj-zielony: #2d4f1e;
-  --moj-hover: #006400;
+.masthead {
+  z-index: 20;
+  border-bottom: 1px solid var(--global-border-color);
+  min-height: 2.85rem !important; 
 }
 
-html[data-theme='dark'] {
-  --moj-zielony: #90EE90;
-  --moj-hover: #00FFAB;
+.masthead__inner-wrap {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  min-height: 2.85rem !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Przywrócenie działania menu i trzech kresek */
+.greedy-nav {
+  display: flex !important;
+  overflow: visible !important;
+}
+
+.greedy-nav .visible-links {
+  display: flex !important;
+}
+
+.greedy-nav button {
+  display: block !important;
+  visibility: visible !important;
 }
 
 /* ==========================================================================
-   OSTATECZNA STABILIZACJA - PRIORYTET NADRZĘDNY
+   2. SIDEBAR: ZDJĘCIE, BIO I KOLOROWE IKONY
    ========================================================================== */
 
-/* 1. ZDJĘCIE DO LEWEJ (Zgodnie z wizerunkiem High Value Man) */
+/* Zdjęcie profilowe do lewej krawędzi */
 .author__avatar {
+  display: block !important;
   text-align: left !important;
 }
+
 .author__avatar img {
-  margin-left: 0 !important; 
+  margin-left: 0 !important;
   margin-right: auto !important;
+  display: block !important;
 }
 
-/* 2. STOP "TRZEM KRESKOM" - ZAKŁADKI MAJĄ BYĆ WIDOCZNE */
-.greedy-nav .visible-links {
-  display: flex !important;
-  visibility: visible !important;
-}
-.greedy-nav button {
-  display: none !important; /* Usuwamy przycisk, który chowa menu */
-}
-.greedy-nav {
-  overflow: visible !important; 
+/* Wyrównanie treści sidebaru */
+.author__content, .author__urls {
+  text-align: left !important;
+  align-items: flex-start !important;
+  padding-left: 0 !important;
 }
 
-/* 3. FIX DLA KONTAKTU (ABOUT.MD) NA SMARTFONIE */
-@media (max-width: 600px) {
-  .lang-en {
-    border-left: none !important;
-    padding-left: 0 !important;
-    margin-top: 10px;
-    display: block !important;
-  }
+/* Kolory: Ikony kolorowe, napisy czarno-białe */
+.author__urls-wrapper a {
+  color: var(--global-text-color) !important; /* Napis bierze kolor z motywu */
+  text-decoration: none !important;
 }
 
-/* 4. LOGOTYPY PNG (PWr i IFT) */
+i.ai-orcid { color: #A6CE39 !important; }
+i.fa-researchgate { color: #00CCBB !important; }
+i.ai-academia { color: #212429 !important; }
+html[data-theme='dark'] i.ai-academia { color: #ffffff !important; }
+
+/* Logotypy PNG (PWr i IFT) */
 .author__urls li i.fa-location-dot::before,
 .author__urls li i.fa-building-columns::before {
   content: "" !important;
@@ -97,63 +115,14 @@ html[data-theme='dark'] {
   background-repeat: no-repeat !important;
   background-position: center !important;
 }
-
-.author__urls li i.fa-location-dot::before {
-  background-image: url("/images/logopwr.png") !important;
-}
-
-.author__urls li i.fa-building-columns::before {
-  background-image: url("/images/logoift.png") !important;
-  filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.3)) !important;
-}
-
-/* 5. TRYB CIEMNY DLA LOGO */
-html[data-theme='dark'] {
-  .author__urls li i.fa-building-columns::before,
-  .author__urls li i.fa-location-dot::before {
-    filter: none !important;
-    background-color: transparent !important;
-  }
-}
-
-/* 6. USUNIĘCIE PRZYCISKU FOLLOW */
-.author__urls-wrapper button, 
-.author__urls-wrapper .btn {
-  display: none !important;
-  visibility: hidden !important;
-  height: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.author__urls {
-  display: flex !important;
-  @media screen and (min-width: 1024px) {
-    display: block !important;
-  }
-}
+.author__urls li i.fa-location-dot::before { background-image: url("/images/logopwr.png") !important; }
+.author__urls li i.fa-building-columns::before { background-image: url("/images/logoift.png") !important; }
 
 /* ==========================================================================
-   7. GEOMETRIA I WYRÓWNANIE (SIDEBAR & MAIN)
+   3. GEOMETRIA GŁÓWNA (ZOOM I SMARTFON)
    ========================================================================== */
 
-/* WYRÓWNANIE DO SZCZYTU TREŚCI I DO LEWEJ */
-.sidebar {
-  margin-top: -5px !important; /* Podciągnięcie do linii tekstu po prawej */
-  padding-top: 0 !important;
-}
-
-.author__avatar {
-  margin-top: 0 !important;
-  text-align: left !important; /* Kontener do lewej */
-}
-
-.author__avatar img {
-  margin-left: 0 !important;   /* Zdjęcie do lewej */
-  margin-right: auto !important;
-}
-
-/* Blokada rozjeżdżania się przy zoom < 100% */
+/* Blokada rozjeżdżania się kolumn przy małym zoomie */
 #main {
   margin-top: 1em !important;
   max-width: 1280px !important; 
@@ -162,27 +131,11 @@ html[data-theme='dark'] {
 }
 
 @media screen and (max-width: 1280px) {
-  #main {
-    max-width: 100% !important;
-  }
+  #main { max-width: 100% !important; }
 }
 
-/* 8. RESPONSYWNOŚĆ I ZOOM (133%+) */
+/* Responsywność sidebaru */
 @media screen and (max-width: 1440px) {
-  .author__content {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important; /* Wszystko pod zdjęciem do lewej */
-    width: 100% !important;
-    padding-left: 0 !important;
-  }
-
-  .author__name {
-    text-align: left !important;
-    margin: 10px 0 !important;
-    white-space: nowrap !important;
-  }
-
   .author__bio {
     display: block !important;
     text-align: left !important;
@@ -190,23 +143,19 @@ html[data-theme='dark'] {
     line-height: 1.4 !important;
 
     @media (min-width: 1024px) {
-      max-width: 250px !important; /* Chroni przed wjazdem na prawą kolumnę */
+      max-width: 250px !important;
       white-space: normal !important;
+      text-wrap: pretty !important;
     }
 
     @media (max-width: 1023px) {
       max-width: none !important;
-      white-space: nowrap !important; /* Jedna linia w trybie górnym */
+      white-space: nowrap !important;
     }
-  }
-
-  .author__urls-wrapper {
-    justify-content: flex-start !important;
-    padding-left: 0 !important;
   }
 }
 
-/* 9. PANCERNA RESPONSYWNOŚĆ (SMARTFON) */
+/* Pancerna responsywność (Smartfon) */
 @media screen and (max-width: 1024px) {
   #main {
     width: 100% !important;
@@ -214,27 +163,29 @@ html[data-theme='dark'] {
     margin: 0 !important;
     overflow-x: hidden !important;
   }
-
-  .sidebar {
-    width: 100% !important;
-    float: none !important;
-    margin-bottom: 20px !important;
-  }
-
-  .page, .archive {
-    width: 100% !important;
-    float: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
+  .sidebar { width: 100% !important; float: none !important; margin-bottom: 20px !important; }
+  .page, .archive { width: 100% !important; float: none !important; padding: 0 !important; }
 }
 
-/* 10. PUBLIKACJE */
+/* ==========================================================================
+   4. INNE POPRAWKI (FOLLOW, LINKI, TRYB CIEMNY)
+   ========================================================================== */
+
+/* Usunięcie przycisku Follow */
+.author__urls-wrapper button, .author__urls-wrapper .btn {
+  display: none !important;
+}
+
+/* Kolory linków w publikacjach */
 .publication-link, .publication-link:visited {
   color: var(--moj-zielony) !important;
 }
 
-.archive__item-title {
-  color: var(--global-text-color) !important;
-  pointer-events: none; 
+/* Tryb ciemny dla logo */
+html[data-theme='dark'] {
+  .author__urls li i.fa-building-columns::before,
+  .author__urls li i.fa-location-dot::before {
+    filter: none !important;
+    background-color: transparent !important;
+  }
 }
