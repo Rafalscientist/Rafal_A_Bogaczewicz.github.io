@@ -129,3 +129,39 @@ html[data-theme='dark'] {
   color: var(--global-text-color) !important;
   pointer-events: none; 
 }
+
+/* ==========================================================================
+   FINALNA STABILIZACJA SIDEBARU - REAKCJA NA ZOOM 133%+ (Rafał A. Bogaczewicz)
+   ========================================================================== */
+@media screen and (max-width: 1440px) {
+  .author__avatar {
+    text-align: center !important;
+    img {
+      margin: 0 auto 15px auto !important; 
+    }
+  }
+
+  .author__content {
+    /* Ustawiamy kontener na środku paska bocznego */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important; 
+  }
+
+  .author__name, 
+  .author__bio {
+    /* Pozwalamy tekstowi rosnąć, ale wewnątrz trzymamy wyrównanie do lewej */
+    display: block !important;
+    width: fit-content !important; // Kontener dopasuje się do długości tekstu
+    max-width: 90% !important;    // Ale nie wyjdzie poza ekran na smartfonie
+    text-align: left !important;   // PIONOWA LINIA STARTU ZACHOWANA
+    margin-left: auto !important;  // Te dwie linie centrują blok tekstu...
+    margin-right: auto !important; // ...zachowując wewnątrz wyrównanie do lewej.
+  }
+
+  .author__urls-wrapper {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+}
