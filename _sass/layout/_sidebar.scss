@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SIDEBAR - Rafał A. Bogaczewicz - Version 2026.01.15 (Poszerzona Stabilizacja)
+   SIDEBAR - Rafał A. Bogaczewicz - Wersja 2026 (Powiększona + Stabilna)
    ========================================================================== */
 
 .sidebar {
@@ -108,11 +108,9 @@
   margin: 10px 0 20px 0;
   font-size: $type-size-6;
   text-align: left; 
-  
-  /* POSZERZONY BLOK BIO DLA TYPOGRAFII PL */
   display: block;
   width: fit-content;
-  max-width: 240px; 
+  max-width: 280px; /* Dopasowane do main.scss */
   margin-left: auto;
   margin-right: auto;
 
@@ -120,42 +118,76 @@
     text-align: left !important; 
     display: block !important;
     width: fit-content !important;
-    max-width: 240px !important;
+    max-width: 280px !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
 }
-/* --- POWIĘKSZENIE IKON I LINKÓW W SIDEBARZE --- */
 
-.author__urls {
-  li {
-    margin-bottom: 8px; /* Większy odstęp między wierszami dla "oddechu" */
-    
-    a {
-      font-size: 1.1rem !important; /* Powiększenie tekstu (standardowo jest ok. 0.9rem) */
-      font-weight: 500; /* Lekkie pogrubienie, by tekst był wyraźniejszy */
-      
-      /* Celujemy w ikony Font Awesome i Academicons */
-      i, span.ai {
-        font-size: 1.3rem !important; /* Ikona będzie wyraźnie większa od tekstu */
-        width: 1.5em !important;     /* Rezerwujemy stałe miejsce na ikonę (zapobiega drganiom tekstu) */
-        text-align: center;
-        margin-right: 10px !important;
-      }
-      
-      /* Logotypy PNG (PWr i IFT), które zdefiniowałeś wcześniej */
-      i.fa-location-dot::before,
-      i.fa-building-columns::before {
-        width: 22px !important;  /* Zwiększamy z 18px na 22px */
-        height: 22px !important;
-      }
+/* --- LINKI I IKONY - WERSJA POWIĘKSZONA --- */
+
+.author__urls-wrapper {
+  position: relative;
+  font-family: $sans-serif;
+  z-index: 20;
+
+  button {
+    @include breakpoint($large) {
+      display: none;
     }
   }
 }
 
-/* ==========================================================================
-   POPRAWKA DLA ZOOMU 133% - POSZERZONA SZEROKOŚĆ Z ZACHOWANIEM PIONU
-   ========================================================================== */
+.author__urls {
+  display: flex !important;      
+  flex-wrap: wrap !important;    
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  @include breakpoint($large) {
+    display: block !important;   
+  }
+
+  li {
+    white-space: nowrap;
+    margin-right: 15px;
+    margin-bottom: 12px; /* Odstęp pionowy dla czytelności */
+    
+    @include breakpoint($large) {
+      margin-right: 0;
+    }
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    color: inherit; /* Kolor kontrolowany przez main.scss */
+    font-size: 1.1rem !important; /* Powiększony tekst */
+    text-decoration: none;
+    line-height: 1.4;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    /* Ikony FontAwesome i Academicons */
+    i, span.ai {
+      font-size: 1.3rem !important; /* Powiększona ikona */
+      width: 1.5em !important;      /* Rezerwacja stałego miejsca */
+      text-align: center;
+      margin-right: 10px !important;
+    }
+
+    img {
+      width: 22px; 
+      height: 22px;
+      margin-right: 10px;
+    }
+  }
+}
+
+/* --- DOPASOWANIE DLA ZOOMU I MOBILES --- */
 
 @media screen and (max-width: 1440px) {
   .author__avatar {
@@ -175,7 +207,7 @@
   .author__bio {
     display: block !important;
     width: fit-content !important; 
-    max-width: 240px !important; /* Dajemy więcej miejsca niż zdjęcie */
+    max-width: 280px !important;
     text-align: left !important;   
     margin-left: auto !important;  
     margin-right: auto !important; 
