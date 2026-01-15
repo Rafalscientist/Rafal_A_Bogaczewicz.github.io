@@ -31,7 +31,7 @@
   display: flex;
   align-items: center;
   flex: 1 1 auto;
-  overflow: hidden; /* KLUCZOWE: Przywraca mechanizm ukrywania linków */
+  overflow: visible; /* KLUCZOWE: Przywraca mechanizm ukrywania linków */
 
   a {
     display: block;
