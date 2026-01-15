@@ -1,13 +1,13 @@
 {% include base_path %}
 
 <style>
-  /* 1. GLOBALNY HOVER DLA MENU GÓRNEGO */
+  /* 1. GLOBALNY HOVER DLA MENU GÓRNEGO - MORSKA ZIELEŃ */
   .masthead__menu-item a:hover {
     color: #16a085 !important;
     opacity: 1 !important;
   }
 
-  /* 2. SYMRETRIA I WAGA MENU GÓRNEGO */
+  /* 2. SYMETRIA I WAGA AKTYWNEJ ZAKŁADKI */
   .masthead__menu-item--active a,
   .masthead__menu-item.active a {
     font-weight: 900 !important;
@@ -18,93 +18,43 @@
     letter-spacing: 0.3px;
   }
 
-  /* 3. LEWA KOLUMNA - HOVER LINKÓW */
-  .sidebar .author__urls-wrapper a:hover,
-  .sidebar .author__urls-wrapper a:hover i,
-  .sidebar .author__urls-wrapper a:hover span {
-    color: #16a085 !important;
-    opacity: 1 !important;
-    text-decoration: none !important;
+  /* 3. WYMUSZENIE LEWEJ STRONY DLA ZDJĘCIA I PROFILU */
+  /* Kasujemy stare centrowanie, które psuło pionową linię */
+  .sidebar .author__profile, 
+  .author__avatar {
+    text-align: left !important;
   }
 
-  /* 4. IKONA SŁOŃCA/KSIĘŻYCA */
-  #theme-toggle:hover, .greedy-nav__toggle:hover {
-    color: #16a085 !important;
+  .author__avatar img {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    display: block !important;
   }
 
-  /* 5. PŁYNNOŚĆ PRZEJŚĆ */
+  /* 4. PRZYWRÓCENIE WIDOCZNOŚCI IKON (ORCID, RG, ACADEMIA) */
+  /* Usunięto display:none, który był tutaj wcześniej */
+  .sidebar i, .sidebar .ai {
+    display: inline-block !important;
+    margin-right: 10px !important;
+    visibility: visible !important;
+  }
+
+  /* 5. STYLIZACJA TEKSTU W SIDEBARZE - LEWA STRONA */
+  .author__urls, .author__bio, .author__location {
+    text-align: left !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  /* 6. PŁYNNOŚĆ PRZEJŚĆ */
   a, .author__urls i, .author__urls span, .masthead__menu-item a {
     transition: all 0.2s ease-in-out !important;
   }
 
-  /* 6. ŚRODKOWANIE PROFILU I DEFINITYWNA NAPRAWA PIONOWEJ LINII */
-  .sidebar .author__profile {
-    text-align: center !important;
-  }
-
-  .author__avatar img {
-    margin-left: auto !important;
-    margin-right: auto !important;
-    float: none !important;
-  }
-
-  .author__urls-wrapper {
-    text-align: center !important;
-  }
-
-  /* Kontener na listę linków i biogram */
-  .author__urls, .author__bio, .author__location {
-    display: inline-flex !important;
-    flex-direction: column !important;
+  /* 7. WYRÓWNANIE TREŚCI PRAWEJ KOLUMNY */
+  .page__title, .page__content p, .page__content li {
     text-align: left !important;
-    padding-left: 0 !important;
-    margin-left: 0 !important;
-    list-style-type: none !important;
-  }
-
-  /* Ujednolicenie struktury każdego wiersza w sidebarze */
-  .author__urls li, .author__urls li a, .author__bio, .author__location {
-    display: flex !important;
-    align-items: center !important; /* Środkowanie pionowe ikony i tekstu */
-    justify-content: flex-start !important;
-    padding: 3px 0 !important;
-    text-decoration: none !important;
-    border: none !important;
-  }
-
-  /* UKRYWANIE STARYCH IKON FONT AWESOME (Duchy, które spychały tekst) */
-  .sidebar i, .sidebar .fas, .sidebar .fab, .sidebar .ai {
-    display: none !important;
-  }
-
-  /* TWOJE IKONKI PNG/SVG - SZTYWNE WYMIARY I IDEALNA LINIA */
-  .sidebar img:not(.author__avatar img) {
-    display: inline-block !important;
-    width: 20px !important;         /* Stała szerokość każdej ikonki */
-    height: 20px !important;        /* Stała wysokość każdej ikonki */
-    min-width: 20px !important;     /* Blokada przed ściskaniem */
-    margin-right: 12px !important;  /* STAŁY ODSTĘP - TO ON TWORZY LINIĘ PIONOWĄ */
-    object-fit: contain !important; /* Zachowanie proporcji ikon */
-    flex-shrink: 0 !important;
-    border: none !important;
-  }
-
-  /* WYRÓWNANIE TEKSTU LINKÓW I AFILIACJI */
-  .author__urls li a span, .author__bio, .author__location {
-    line-height: 1.3 !important;
-    margin: 0 !important;
-    display: inline-block !important;
-  }
-
-  /* 7. WYRÓWNANIE TREŚCI (PRAWA KOLUMNA) */
-  .page__title {
-    text-align: left !important;
-  }
-  .page__content p, .page__content li {
-    text-align: left !important;
-  }
-  .page__content {
-    margin-left: 0 !important;
   }
 </style>
 
