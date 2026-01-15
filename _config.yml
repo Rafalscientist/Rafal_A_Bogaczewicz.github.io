@@ -16,7 +16,7 @@ repository               : "rafal-a-bogaczewicz/rafal-a-bogaczewicz.github.io"
 author:
   name   : "Rafał A. Bogaczewicz"
   avatar : "rafal.jpg"
-  bio    : "Lubię odkrywać świat, pracując naukowo oraz podczas wypraw"
+  bio    : "Lubię odkrywać świat, pracując naukowo oraz podczas wypraw."
   # Instytut - wymuszamy wyświetlanie w jednej linii
   employer: '<a href="https://www.kft.pwr.edu.pl/" target="_blank" style="color: inherit; text-decoration: none;">Instytut Fizyki Teoretycznej PWr</a>'
   location: '<a href="https://pwr.edu.pl" target="_blank" style="color: inherit; text-decoration: none;">Politechnika Wrocławska</a>'
