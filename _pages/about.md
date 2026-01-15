@@ -57,10 +57,10 @@ permalink: /
   <!-- WSTĘP BEZ NAGŁÓWKA -->
   <div class="cv-content-grid" style="margin-top: 10px;">
     <div class="lang-pl">
-      Jestem fizykiem teoretykiem i doktorantem w <b>Instytucie Fizyki Teoretycznej Politechniki Wrocławskiej</b>. Moja praca koncentruje się na poszukiwaniu matematycznego piękna i precyzji w fundamentalnych prawach świata kwantowego.
+      Cześć, jestem fizykiem teoretykiem, doktorantem w <b>Instytucie Fizyki Teoretycznej PWr</b>. Pracuję w grupie naukowej <b>prof. dra hab. inż. Pawła Machnikowskiego<b>, zajmując się rezonansową fluorescencją z kwantowego emitera oddziałującego z zaszumionym otoczeniem.
     </div>
     <div class="lang-en">
-      I am a theoretical physicist and a PhD student at the <b>Institute of Theoretical Physics (WUST)</b>. My work focuses on seeking mathematical beauty and precision within the fundamental laws of the quantum world.
+      Hey, I am a theoretical physicist, a PhD student at the <b>Institute of Theoretical Physics (WUST)</b>. I work in the scientific group of <b>prof. Paweł Machnikowski<b>, focusing on the resonance fluorescence of a quantum emitter, which interacts with the noisy environment.
     </div>
   </div>
 
